@@ -28,7 +28,8 @@ typedef enum
     ERR_IP,
     ERR_CONN,
     ERR_QUERY,
-    ERR_RECV
+    ERR_RECV,
+    NOT_HTTP
 } errors;
 
 class Downloader {
@@ -36,7 +37,10 @@ private:
     std::string m_url;
     std::string m_url_server;
     std::string m_url_path;
-
+    int m_contentLength;
+    int m_chunked;
+    std::string m_headers;
+    std::string m_content;
     struct sockaddr_in *m_location;
     int m_sock;
     int m_port;
@@ -53,6 +57,9 @@ private:
 public:
     Downloader(std::string url) : m_url(url)
     {
+        m_chunked = false;
+        m_contentLength = -1;
+        m_headers = "";
         SSL_load_error_strings();
         ERR_load_BIO_strings();
         OpenSSL_add_all_algorithms();
@@ -63,9 +70,12 @@ public:
     int my_connect();
     int get_line();
     int initiateConnection(int port);
+    int get_headers();
     int get_content();
     int splitUrl();
+    int read_data(void *str, const std::string& end);
     int MakeUnsecuredConn();
+    int httpResponseCheck(std::string& in);
     int initSocketAndAssignIP();
     std::string httpRequest(std::string server, std::string path);
     bool read_bytes(std::string& input, std::string seq);

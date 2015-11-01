@@ -5,11 +5,11 @@
 int Downloader::splitUrl()
 {
     //regex
-    std::regex expr(".*\/.*");
+   /* std::regex expr(".*\/.*");
     if (std::regex_match(m_url, expr))
     {
         std::cout << "Its an URL\n";
-    }
+    }*/
 
     m_path = "/httpgallery/chunked/chunkedimage.aspx";
     m_path = "/dailydose/dailydose_atom.xml";
@@ -55,14 +55,36 @@ std::string Downloader::httpRequest(std::string server, std::string path)
     return headers;
 }
 
+int Downloader::read_data(void *str, const std::string& end)
+{
+    char B;
+    std::string *s;
+    do
+    {
+        if (recv(m_sock, static_cast<char*>(&B), 1, 0x200) == -1)
+        {
+            throw ERR_RECV;
+        }
+        else
+        {
+            (str) += B;
+        }
+        s = static_cast<std::string*>(str);
+    } while (read_bytes(*s, end));
+}
+
+ bool Downloader::read_bytes(std::string& input, std::string seq)
+ {
+     auto result = std::search(input.begin(), input.end(), seq.begin(), seq.end());
+     return (result != input.end()) ? true : false;
+ }
+
 int Downloader::get_line()
 {
-    //TODO
-    const int lim = 1024;
-    std::string line;
-    char buffer[lim];
-    int iter = 0;
-
+    std::string buffer;
+    read_data(&buffer, "\r\n");
+    std::cout << "jesus0;";
+    std::cout << buffer << std::endl;
 }
 
 int Downloader::initiateConnection(int port)
@@ -94,10 +116,20 @@ int Downloader::initiateConnection(int port)
     return 0;
 }
 
-bool Downloader::read_bytes(std::string& input, std::string seq)
+
+
+int Downloader::httpResponseCheck(std::string& in)
 {
-    auto result = std::search(input.begin(), input.end(), seq.begin(), seq.end());
-    return (result != input.end()) ? true : false;
+    std::stringstream sstream;
+    std::string http;
+    short status;
+    sstream << in;
+    sstream >> http;
+    sstream >> status;
+    if (status == 0)
+    {
+        throw NOT_HTTP;
+    }
 }
 
 int Downloader::find_chunked(std::string& content)
@@ -123,29 +155,43 @@ int Downloader::find_chunked(std::string& content)
             return retVal;
         }
     }
+    // returns content length if available, else returns -1 (chunked)
     return retVal;
 }
 
-int Downloader::get_content()
+int Downloader::get_headers()
 {
     my_connect();
     send_request();
 
-    std::string content = "";
     char buffer[1];
     int count;
     std::string endHeaderSequence = "\r\n\r\n";
-    std::string headers;
+    std::string endLine = "\r\n";
+    std::string firstLine = "";
+    bool doOnce = true;
     while (errno == EINTR || (errno = 0, (count = recv(m_sock, buffer, sizeof(buffer), 0)) > 0))
     {
         if (count > 0)
         {
-            content.append(buffer, count);
-            auto r = read_bytes(content, endHeaderSequence);
+            m_headers.append(buffer, count);
+            if (doOnce)
+            {
+                firstLine.append(buffer, count);
+                auto firstRes = read_bytes(firstLine, endLine);
+                if (firstRes)
+                {
+                    httpResponseCheck(firstLine);
+                    doOnce = false;
+                }
+            }
+
+            auto r = read_bytes(m_headers, endHeaderSequence);
             if (r)
             {
-                headers = content;
-                std::cout << find_chunked(headers) << std::endl;
+                int res = find_chunked(m_headers); // determine if chunked
+                if (res == -1) m_chunked = true;
+                else m_contentLength = res; // or to use content-length
                 break;
             }
         }
@@ -156,19 +202,31 @@ int Downloader::get_content()
         throw ERR_RECV;
     }
 
+    return 0;
+}
 
-
-
-    std::cout << "begin headers" << std::endl;
-    std::cout << headers << std::endl;
-    std::cout << "END " << std::endl;
+int Downloader::get_content()
+{
+    std::cout << "zeaj";
+    if (m_chunked)
+    {
+        long chunkLength = 1;
+        while (chunkLength)
+        {
+            get_line();
+        }
+    }
+    else
+    {
+        get_line();
+    }
 }
 
 int Downloader::MakeUnsecuredConn()
 {
     splitUrl();
     initiateConnection(80);
+    get_headers();
     get_content();
-
     return 0;
 }
