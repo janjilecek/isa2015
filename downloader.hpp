@@ -68,7 +68,6 @@ public:
 
     int send_request();
     int my_connect();
-    int get_line();
     int initiateConnection(int port);
     int get_headers();
     int get_content();
@@ -78,9 +77,47 @@ public:
     int httpResponseCheck(std::string& in);
     int initSocketAndAssignIP();
     std::string httpRequest(std::string server, std::string path);
-    bool read_bytes(std::string& input, std::string seq);
+    bool contains_substring(std::string& input, std::string seq);
     int find_chunked(std::string& content);
     void printError(std::string msg);
+
+    void read_bytes(std::vector<char> &buffer, unsigned int size)
+    {
+        if (buffer.size() < size) buffer.resize(size);
+        if (recv(m_sock, static_cast<char*>(buffer.data()), size, 0x200) == -1)
+        {
+            std::cout << "read bytes err" << std::endl;
+            throw ERR_RECV;
+        }
+    }
+
+    std::string read_sequence(std::vector<char> &buffer, const std::string &text)
+    {
+
+
+        std::string test = "";
+        do
+        {
+            char B;
+            if (recv(m_sock, static_cast<char*>(&B), 1, 0x200) == -1)
+            {
+                std::cout << "read seq err" << std::endl;
+                throw ERR_RECV;
+            }
+            else
+            {
+                buffer.push_back(B);
+            }
+            test = std::string(buffer.begin(), buffer.end());
+        } while (!contains_substring(test, text));
+        return std::string(buffer.begin(), buffer.end());
+    }
+
+    std::string get_line()
+    {
+        std::vector<char> buffer;
+        return read_sequence(buffer, "\r\n");
+    }
 };
 
 #endif // DOWNLOADER_HPP

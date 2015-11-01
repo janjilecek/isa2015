@@ -57,35 +57,14 @@ std::string Downloader::httpRequest(std::string server, std::string path)
 
 int Downloader::read_data(void *str, const std::string& end)
 {
-    char B;
-    std::string *s;
-    do
-    {
-        if (recv(m_sock, static_cast<char*>(&B), 1, 0x200) == -1)
-        {
-            throw ERR_RECV;
-        }
-        else
-        {
-            (str) += B;
-        }
-        s = static_cast<std::string*>(str);
-    } while (read_bytes(*s, end));
 }
 
- bool Downloader::read_bytes(std::string& input, std::string seq)
+ bool Downloader::contains_substring(std::string& input, std::string seq)
  {
      auto result = std::search(input.begin(), input.end(), seq.begin(), seq.end());
      return (result != input.end()) ? true : false;
  }
 
-int Downloader::get_line()
-{
-    std::string buffer;
-    read_data(&buffer, "\r\n");
-    std::cout << "jesus0;";
-    std::cout << buffer << std::endl;
-}
 
 int Downloader::initiateConnection(int port)
 {
@@ -135,7 +114,7 @@ int Downloader::httpResponseCheck(std::string& in)
 int Downloader::find_chunked(std::string& content)
 {
     int retVal = 0;
-    if (read_bytes(content, "Transfer-Encoding: chunked"))
+    if (contains_substring(content, "Transfer-Encoding: chunked"))
     {
         retVal = -1;
         return retVal;
@@ -145,7 +124,7 @@ int Downloader::find_chunked(std::string& content)
         // find content length
         std::string seq = "Content-Length: ";
         std::string endl = "\r\n";
-        if (read_bytes(content, seq))
+        if (contains_substring(content, seq))
         {
             auto start = std::search(content.begin(), content.end(), seq.begin(), seq.end());
             auto end = std::search(start, content.end(), endl.begin(), endl.end());
@@ -178,21 +157,19 @@ int Downloader::get_headers()
             if (doOnce)
             {
                 firstLine.append(buffer, count);
-                auto firstRes = read_bytes(firstLine, endLine);
-                if (firstRes)
+                if (contains_substring(firstLine, endLine))
                 {
                     httpResponseCheck(firstLine);
                     doOnce = false;
                 }
             }
 
-            auto r = read_bytes(m_headers, endHeaderSequence);
-            if (r)
+            if (contains_substring(m_headers, endHeaderSequence))
             {
                 int res = find_chunked(m_headers); // determine if chunked
                 if (res == -1) m_chunked = true;
                 else m_contentLength = res; // or to use content-length
-                break;
+                //break;
             }
         }
     }
@@ -202,24 +179,14 @@ int Downloader::get_headers()
         throw ERR_RECV;
     }
 
+    std::cout << m_headers << std::endl;
     return 0;
 }
 
 int Downloader::get_content()
 {
-    std::cout << "zeaj";
-    if (m_chunked)
-    {
-        long chunkLength = 1;
-        while (chunkLength)
-        {
-            get_line();
-        }
-    }
-    else
-    {
-        get_line();
-    }
+    std::cout << get_line() << std::endl;
+    std::cout << get_line() << std::endl;
 }
 
 int Downloader::MakeUnsecuredConn()
