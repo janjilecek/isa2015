@@ -187,27 +187,27 @@ std::string Downloader::get_content()
     std::string line;
     if (m_chunked)
     {
+        short endLnSize = 2;
         std::vector<char> data;
         unsigned long chunkSize = 1;
-        while (chunkSize - 2)
+        while (chunkSize - endLnSize)
         {
             line = get_line();
-            line.erase(std::remove(line.begin(), line.end(), '\r'), line.end()); // EDIT THIS
-            line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
             try
             {
-                chunkSize = std::stol(line, nullptr, 16) + 2;
+                chunkSize = std::stol(line, nullptr, 16) + endLnSize;
             }
             catch (std::invalid_argument& e)
             {
                 std::cerr << e.what() << std::endl;
+                throw ERR_CHUNKED;
             }
 
-            if (chunkSize - 2)
+            if (chunkSize - endLnSize)
             {
                 std::vector<char> tmp;
                 read_bytes(tmp, chunkSize);
-                data.insert(data.end(), tmp.begin(), tmp.end());
+                data.insert(data.end(), tmp.begin(), tmp.end() - endLnSize);
             }
         }
         return std::string(data.begin(), data.end());
@@ -229,9 +229,9 @@ int Downloader::MakeUnsecuredConn()
     get_headers();
     std::string s =  get_content();
 
-    std::ofstream out("output.jpg");
-    out << s;
-    out.close();
-    std::cout << s;
+    //std::ofstream out("output.jpg");
+    //out << s;
+    //out.close();
+    std::cout << s << std::endl;
     return 0;
 }

@@ -30,7 +30,8 @@ typedef enum
     ERR_CONN,
     ERR_QUERY,
     ERR_RECV,
-    NOT_HTTP
+    NOT_HTTP,
+    ERR_CHUNKED
 } errors;
 
 class Downloader {
