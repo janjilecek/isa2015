@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <sys/time.h>
 #include <sstream>
+#include <fstream>
 #include <libxml2/libxml/nanohttp.h>
 //cd /usr/include/
 //ln -s libxml2/libxml libxml

@@ -228,6 +228,10 @@ int Downloader::MakeUnsecuredConn()
     initiateConnection(80);
     get_headers();
     std::string s =  get_content();
+
+    std::ofstream out("output.jpg");
+    out << s;
+    out.close();
     std::cout << s;
     return 0;
 }
