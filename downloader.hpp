@@ -93,8 +93,6 @@ public:
 
     std::string read_sequence(std::vector<char> &buffer, const std::string &text)
     {
-
-
         std::string test = "";
         do
         {
@@ -116,7 +114,8 @@ public:
     std::string get_line()
     {
         std::vector<char> buffer;
-        return read_sequence(buffer, "\r\n");
+        std::string a = read_sequence(buffer, "\r\n");
+        return a;
     }
 };
 

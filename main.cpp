@@ -10,5 +10,5 @@ int main()
     url = "www.httpwatch.com";
     //url = "tools.ietf.org";
     Downloader downloader(url);
-    std::cout << downloader.MakeUnsecuredConn() << std::endl;
+    downloader.MakeUnsecuredConn();
 }

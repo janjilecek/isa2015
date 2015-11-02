@@ -189,25 +189,25 @@ std::string Downloader::get_content()
     {
         std::vector<char> data;
         unsigned long chunkSize = 1;
-        while (chunkSize)
+        while (chunkSize - 2)
         {
             line = get_line();
             line.erase(std::remove(line.begin(), line.end(), '\r'), line.end()); // EDIT THIS
             line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
             try
             {
-                chunkSize = std::stol(line, nullptr, 16);
+                chunkSize = std::stol(line, nullptr, 16) + 2;
             }
             catch (std::invalid_argument& e)
             {
                 std::cerr << e.what() << std::endl;
             }
 
-            if (chunkSize)
+            if (chunkSize - 2)
             {
                 std::vector<char> tmp;
                 read_bytes(tmp, chunkSize);
-                line.insert(line.end(), tmp.begin(), tmp.end());
+                data.insert(data.end(), tmp.begin(), tmp.end());
             }
         }
         return std::string(data.begin(), data.end());
