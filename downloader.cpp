@@ -12,7 +12,7 @@ int Downloader::splitUrl()
     }*/
 
     m_path = "/httpgallery/chunked/chunkedimage.aspx";
-    m_path = "/dailydose/dailydose_atom.xml";
+   // m_path = "/dailydose/dailydose_atom.xml";
 }
 
 int Downloader::send_request()
@@ -169,7 +169,7 @@ int Downloader::get_headers()
                 int res = find_chunked(m_headers); // determine if chunked
                 if (res == -1) m_chunked = true;
                 else m_contentLength = res; // or to use content-length
-                //break;
+                break;
             }
         }
     }
@@ -178,15 +178,48 @@ int Downloader::get_headers()
         std::cerr << "recv error" << std::endl;
         throw ERR_RECV;
     }
-
-    std::cout << m_headers << std::endl;
+//std::cout << m_headers;
     return 0;
 }
 
-int Downloader::get_content()
+std::string Downloader::get_content()
 {
-    std::cout << get_line() << std::endl;
-    std::cout << get_line() << std::endl;
+    std::string line;
+    if (m_chunked)
+    {
+        std::vector<char> data;
+        unsigned long chunkSize = 1;
+        while (chunkSize)
+        {
+            line = get_line();
+            line.erase(std::remove(line.begin(), line.end(), '\r'), line.end()); // EDIT THIS
+            line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
+            try
+            {
+                chunkSize = std::stol(line, nullptr, 16);
+            }
+            catch (std::invalid_argument& e)
+            {
+                std::cerr << e.what() << std::endl;
+            }
+
+            if (chunkSize)
+            {
+                std::vector<char> tmp;
+                read_bytes(tmp, chunkSize);
+                line.insert(line.end(), tmp.begin(), tmp.end());
+            }
+        }
+        return std::string(data.begin(), data.end());
+    }
+    else
+    {
+        std::string out = "";
+        std::vector<char> tmp;
+        read_bytes(tmp, m_contentLength);
+        out.insert(out.end(), tmp.begin(), tmp.end());
+        return out;
+    }
 }
 
 int Downloader::MakeUnsecuredConn()
@@ -194,6 +227,7 @@ int Downloader::MakeUnsecuredConn()
     splitUrl();
     initiateConnection(80);
     get_headers();
-    get_content();
+    std::string s =  get_content();
+    std::cout << s;
     return 0;
 }

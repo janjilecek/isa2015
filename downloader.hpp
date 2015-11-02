@@ -70,7 +70,7 @@ public:
     int my_connect();
     int initiateConnection(int port);
     int get_headers();
-    int get_content();
+    std::string get_content();
     int splitUrl();
     int read_data(void *str, const std::string& end);
     int MakeUnsecuredConn();
