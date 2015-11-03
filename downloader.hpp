@@ -4,8 +4,6 @@
 #include <openssl/bio.h>
 #include <openssl/ssl.h>
 #include <openssl/err.h>
-#include <iostream>
-#include <string>
 #include <sys/socket.h>
 #include <netdb.h>
 #include <arpa/inet.h>
@@ -14,9 +12,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <sys/time.h>
-#include <sstream>
-#include <fstream>
-#include <libxml2/libxml/nanohttp.h>
+#include "shared.h"
+
 //cd /usr/include/
 //ln -s libxml2/libxml libxml
 
@@ -86,9 +83,9 @@ public:
     void read_bytes(std::vector<char> &buffer, unsigned int size)
     {
         if (buffer.size() < size) buffer.resize(size);
-        if (recv(m_sock, static_cast<char*>(buffer.data()), size, 0x200) == -1)
+        if (recv(m_sock, static_cast<char*>(buffer.data()), size, 0x200) <= 0)
         {
-            std::cout << "read bytes err" << std::endl;
+            std::cerr << "read bytes err" << std::endl;
             throw ERR_RECV;
         }
     }
@@ -99,9 +96,9 @@ public:
         do
         {
             char B;
-            if (recv(m_sock, static_cast<char*>(&B), 1, 0x200) == -1)
+            if (recv(m_sock, static_cast<char*>(&B), 1, 0x200) <= 0)
             {
-                std::cout << "read seq err" << std::endl;
+                std::cerr  << "read seq err" << std::endl;
                 throw ERR_RECV;
             }
             else

@@ -12,7 +12,9 @@ int Downloader::splitUrl()
     }*/
 
     m_path = "/httpgallery/chunked/chunkedimage.aspx";
-   // m_path = "/dailydose/dailydose_atom.xml";
+    m_path = "/dailydose/dailydose_atom.xml";
+    m_path = "/atom.xml";
+    return 0;
 }
 
 int Downloader::send_request()
@@ -26,6 +28,7 @@ int Downloader::send_request()
         std::cerr << "error while sending request" << std::endl;
         throw ERR_QUERY;
     }
+    return 0;
 }
 
 int Downloader::my_connect()
@@ -36,6 +39,7 @@ int Downloader::my_connect()
         close(m_sock);
         throw ERR_QUERY;
     }
+    return 0;
 }
 
 std::string Downloader::httpRequest(std::string server, std::string path)
@@ -53,10 +57,6 @@ std::string Downloader::httpRequest(std::string server, std::string path)
 
     std::string headers = oss.str();
     return headers;
-}
-
-int Downloader::read_data(void *str, const std::string& end)
-{
 }
 
  bool Downloader::contains_substring(std::string& input, std::string seq)
@@ -109,6 +109,7 @@ int Downloader::httpResponseCheck(std::string& in)
     {
         throw NOT_HTTP;
     }
+    return 0;
 }
 
 int Downloader::find_chunked(std::string& content)
@@ -178,7 +179,6 @@ int Downloader::get_headers()
         std::cerr << "recv error" << std::endl;
         throw ERR_RECV;
     }
-//std::cout << m_headers;
     return 0;
 }
 
@@ -217,9 +217,10 @@ std::string Downloader::get_content()
         std::string out = "";
         std::vector<char> tmp;
         read_bytes(tmp, m_contentLength);
-        out.insert(out.end(), tmp.begin(), tmp.end());
+        out.append(tmp.begin(), tmp.end());
         return out;
     }
+    return "";
 }
 
 int Downloader::MakeUnsecuredConn()
@@ -229,9 +230,9 @@ int Downloader::MakeUnsecuredConn()
     get_headers();
     std::string s =  get_content();
 
-    //std::ofstream out("output.jpg");
-    //out << s;
-    //out.close();
+    std::ofstream out("output.xml");
+    out << s;
+    out.close();
     std::cout << s << std::endl;
     return 0;
 }
