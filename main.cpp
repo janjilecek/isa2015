@@ -15,6 +15,6 @@ int main()
     downloader.MakeUnsecuredConn();
 
     xmlViewer xmlView;
-    xmlDocPtr* docPtr = xmlView.docPtr();
-    std::cout << xmlView.dumpXML() << std::endl;
+    //std::cout << xmlView.dumpXML() << std::endl;
+    xmlView.loadTree();
 }

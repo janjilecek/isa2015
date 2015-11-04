@@ -17,6 +17,7 @@ private:
     xmlDocPtr doc;
     xmlChar *xmlBuff;
     int bufferSize;
+    xmlNode *root;
 public:
     xmlViewer()
     {
@@ -29,13 +30,17 @@ public:
         }
     };
 
-    xmlDocPtr* docPtr() { return &doc; }
-
     std::string dumpXML();
+
+    void loadTree();
+
+    void elements(xmlNode *inputNode);
+
+    void getEntry(xmlNode *inputNode);
 
     ~xmlViewer()
     {
-        xmlFreeDoc(xmlBuff);
+        //xmlFree(xmlBuff);
         xmlFreeDoc(doc);
         xmlCleanupParser();
     }
