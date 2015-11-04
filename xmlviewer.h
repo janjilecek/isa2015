@@ -15,9 +15,12 @@ class xmlViewer
 {
 private:
     xmlDocPtr doc;
+    xmlChar *xmlBuff;
+    int bufferSize;
 public:
     xmlViewer()
     {
+        std::cout << "Loading file output.xml" << std::endl;
         doc = xmlReadFile("output.xml", NULL, 0);
         if (doc == nullptr)
         {
@@ -28,8 +31,11 @@ public:
 
     xmlDocPtr* docPtr() { return &doc; }
 
+    std::string dumpXML();
+
     ~xmlViewer()
     {
+        xmlFreeDoc(xmlBuff);
         xmlFreeDoc(doc);
         xmlCleanupParser();
     }

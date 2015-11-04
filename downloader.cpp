@@ -233,6 +233,6 @@ int Downloader::MakeUnsecuredConn()
     std::ofstream out("output.xml");
     out << s;
     out.close();
-    std::cout << s << std::endl;
+    //std::cout << s << std::endl;
     return 0;
 }

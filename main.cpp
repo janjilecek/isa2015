@@ -16,4 +16,5 @@ int main()
 
     xmlViewer xmlView;
     xmlDocPtr* docPtr = xmlView.docPtr();
+    std::cout << xmlView.dumpXML() << std::endl;
 }
