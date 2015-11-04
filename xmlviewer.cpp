@@ -8,28 +8,42 @@ std::string xmlViewer::dumpXML()
 
 void xmlViewer::loadTree()
 {
+    //TODO error checking
     root = xmlDocGetRootElement(doc);
     elements(root);
 }
 
-void xmlViewer::getEntry(xmlNodePtr inputNode)
+void xmlViewer::getEntry(xmlNode *inputNode)
 {
-    auto node = inputNode->children;
-    xmlNodePtr temp;
-    std::string name, sBegin = "", sEnd = "";
-    for (temp = node; temp != nullptr; temp = temp->next)
+    xmlNodePtr children = inputNode->children;
+    xmlNodePtr node;
+    std::string text, sBegin = "", sEnd = "";
+    for (node = children; node != nullptr; node = node->next)
     {
-        auto print = temp->children->content;
-        name = (char*) temp->name;
-        if (name == "id")
+        std::string name = (char*)node->name;
+
+        if (name == "updated")
         {
-            sBegin = "URL: "; sEnd = "\n";
+            sBegin = "Aktualizace: ";
+            sEnd = "\n";
         }
-        else if (name == "updated")
+        else if (name == "title") {}
+        else if (name == "id")
         {
-            sBegin = "Aktualizace: "; sEnd = "\n";
+            sBegin = "URL: ";
+            sEnd = "\n";
         }
-        std::cout << sBegin << print << sEnd << std::endl;
+        else
+        {
+            continue;
+        }
+
+        if (node->children != nullptr && node->children->content != nullptr)
+        {
+            text = (char*) node->children->content;
+            std::cout << sBegin << text << sEnd << std::endl;
+        }
+
     }
 }
 
@@ -41,7 +55,7 @@ void xmlViewer::elements(xmlNode *inputNode)
 
         //std::cout << "node type: Element, name:" << node->name << std::endl;
         std::string name = (char*)node->name;
-        std::cout << name << std::endl;
+
         if (name == "title")
         {
             std::cout << "*** " << node->children->content << " ***" << std::endl;
@@ -49,7 +63,6 @@ void xmlViewer::elements(xmlNode *inputNode)
         else if (name == "entry")
         {
             getEntry(node);
-            //std::cout << "asdsad";
         }
 
 
