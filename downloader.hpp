@@ -83,7 +83,7 @@ public:
     void read_bytes(std::vector<char> &buffer, unsigned int size)
     {
         if (buffer.size() < size) buffer.resize(size);
-        if (recv(m_sock, static_cast<char*>(buffer.data()), size, 0x200) <= 0)
+        if (recv(m_sock, static_cast<char*>(buffer.data()), size, 0x100) <= 0)
         {
             std::cerr << "read bytes err" << std::endl;
             throw ERR_RECV;
@@ -96,7 +96,7 @@ public:
         do
         {
             char B;
-            if (recv(m_sock, static_cast<char*>(&B), 1, 0x200) <= 0)
+            if (recv(m_sock, static_cast<char*>(&B), 1, 0x100) <= 0)
             {
                 std::cerr  << "read seq err" << std::endl;
                 throw ERR_RECV;

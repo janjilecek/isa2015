@@ -14,6 +14,7 @@ int Downloader::splitUrl()
     m_path = "/httpgallery/chunked/chunkedimage.aspx";
     m_path = "/dailydose/dailydose_atom.xml";
     m_path = "/atom.xml";
+    m_path = "/data_centre/headlines.atom";
     return 0;
 }
 

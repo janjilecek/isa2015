@@ -11,6 +11,7 @@ int main()
     url = "www.httpwatch.com";
     url = "tools.ietf.org";
     url = "xkcd.com";
+    url = "www.theregister.co.uk";
     Downloader downloader(url);
     downloader.MakeUnsecuredConn();
 
