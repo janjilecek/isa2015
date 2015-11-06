@@ -22,16 +22,16 @@ void xmlViewer::getEntry(xmlNode *inputNode)
     {
         std::string name = (char*)node->name;
 
-        if (name == "updated")
+        if (name == "updated" && m_args->getAktualizace())
         {
             sBegin = "Aktualizace: ";
-            sEnd = "\n";
+            //sEnd = "\n";
         }
         else if (name == "title") {}
-        else if (name == "id")
+        else if (name == "id" && m_args->getUrl())
         {
             sBegin = "URL: ";
-            sEnd = "\n";
+            //sEnd = "\n";
         }
         else
         {
@@ -52,19 +52,35 @@ void xmlViewer::elements(xmlNode *inputNode)
     xmlNodePtr node;
     for (node = inputNode->children; node; node = node->next)
     {
-
-        //std::cout << "node type: Element, name:" << node->name << std::endl;
-        std::string name = (char*)node->name;
-
-        if (name == "title")
+        if (node->children != nullptr && node->children->content != nullptr)
         {
-            std::cout << "*** " << node->children->content << " ***" << std::endl;
-        }
-        else if (name == "entry")
-        {
-            getEntry(node);
-        }
+            std::string name = (char*)node->name;
 
+            if (name == "title")
+            {
+                std::cout << "*** " << node->children->content << " ***" << std::endl;
+            }
+            else if (name == "entry")
+            {
+                getEntry(node);
+                if (m_args->getLatest()) break;
+            }
+            else if (name == "author" && m_args->getAutor())
+            {
+                xmlNodePtr temp;
+                for (temp = node->children; temp != nullptr; temp = temp->next)
+                {
+                    if (temp->children != nullptr && temp->children->content != nullptr)
+                    {
+                        if ((std::string)(char*)temp->name == "name")
+                        {
+                            std::cout << "Autor: " << (char*) temp->children->content << std::endl;
+                        }
+                    }
 
+                }
+            }
+        }
     }
+    if (m_args->getFeedfileUsed()) std::cout << std::endl;
 }

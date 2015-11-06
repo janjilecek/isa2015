@@ -7,12 +7,14 @@ LIBS += -L/usr/local/lib -lssl -lcrypto -lxml2 -I/usr/include/libxml2 -lm
 
 SOURCES += main.cpp \
     downloader.cpp \
-    xmlviewer.cpp
+    xmlviewer.cpp \
+    cmdArguments.cpp
 
 HEADERS += \
     downloader.hpp \
     gadgets.h \
     test.h \
     xmlviewer.h \
-    shared.h
+    shared.h \
+    cmdArguments.hpp
 

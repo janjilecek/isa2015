@@ -2,6 +2,7 @@
 #include "downloader.hpp"
 #include "test.h"
 #include "xmlviewer.h"
+#include "cmdArguments.hpp"
 
 using namespace std;
 
@@ -12,10 +13,11 @@ int main()
     url = "tools.ietf.org";
     url = "xkcd.com";
     url = "www.theregister.co.uk";
+    Arguments args;
     Downloader downloader(url);
     downloader.MakeUnsecuredConn();
 
-    xmlViewer xmlView;
+    xmlViewer xmlView(&args);
     //std::cout << xmlView.dumpXML() << std::endl;
     xmlView.loadTree();
 }

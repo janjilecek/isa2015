@@ -4,9 +4,11 @@
 #include "shared.h"
 #include <libxml2/libxml/tree.h>
 #include <libxml2/libxml/parser.h>
+#include "cmdArguments.hpp"
 
 #endif // XMLVIEWER
 
+//class Arguments;
 typedef enum
 {
     ERR_XML_LOAD
@@ -18,8 +20,9 @@ private:
     xmlChar *xmlBuff;
     int bufferSize;
     xmlNode *root;
+    Arguments *m_args;
 public:
-    xmlViewer()
+    xmlViewer(Arguments *args) : m_args(args)
     {
         std::cout << "Loading file output.xml" << std::endl;
         doc = xmlReadFile("output.xml", NULL, 0);
