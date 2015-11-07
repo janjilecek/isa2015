@@ -3,7 +3,7 @@
 
 void Arguments::parseArgs(int argc, char **argv)
 {
-    while ((opt = getopt(argc, argv, "uaTl")) != -1)
+    while ((opt = getopt(argc, argv, "uaTlf:c:C:")) != -1)
     {
         switch (opt)
         {
@@ -19,14 +19,91 @@ void Arguments::parseArgs(int argc, char **argv)
         case 'l':
             setLatest(true);
             break;
+        case 'f':
+            setFeedfileUsed(true);
+            m_sFeedFile = optarg;
+            break;
+        case 'c':
+            setCertfileUsed(true);
+            m_sCertFileName = optarg;
+            break;
+        case 'C':
+            setCertfileFolderUsed(true);
+            m_sCertFilesFolder = optarg;
+            break;
         default:
             printHelp();
             exit(EXIT_FAILURE);
         }
     }
 
+    int countNonOption = 0;
+    if (optind < argc)
+    {
+        while (optind < argc)
+        {
+            if (countNonOption >= 1)
+            {
+                std::cerr << "Bad argument combination." << std::endl;
+                exit(EXIT_FAILURE);
+            }
+            countNonOption++;
+            m_sUrl = argv[optind++];
+        }
+    }
+
 
 }
+
+bool Arguments::getUrlUsed() const
+{
+    return urlUsed;
+}
+
+void Arguments::setUrlUsed(bool value)
+{
+    urlUsed = value;
+}
+std::string Arguments::sUrl() const
+{
+    return m_sUrl;
+}
+
+void Arguments::setSUrl(const std::string &sUrl)
+{
+    m_sUrl = sUrl;
+}
+std::string Arguments::sCertFileName() const
+{
+    return m_sCertFileName;
+}
+
+void Arguments::setSCertFileName(const std::string &sCertFileName)
+{
+    m_sCertFileName = sCertFileName;
+}
+std::string Arguments::sCertFilesFolder() const
+{
+    return m_sCertFilesFolder;
+}
+
+void Arguments::setSCertFilesFolder(const std::string &sCertFilesFolder)
+{
+    m_sCertFilesFolder = sCertFilesFolder;
+}
+std::string Arguments::sFeedFile() const
+{
+    return m_sFeedFile;
+}
+
+void Arguments::setSFeedFile(const std::string &sFeedFile)
+{
+    m_sFeedFile = sFeedFile;
+}
+
+
+
+
 
 
 void Arguments::printHelp()
@@ -43,16 +120,33 @@ void Arguments::printHelp()
                  "    Pri spusteni s parametrem -a se pro kazdy zaznam zobrazi jmeno autora (je-li ve stazenem souboru obsazeno)." << std::endl <<
                  "    Pri spusteni s parametrem -u se pro kazdy zaznam zobrazi asociovane URL (je-li ve stazenem souboru obsazeno)." << std::endl;
 }
+bool Arguments::getCertfileUsed() const
+{
+    return certfileUsed;
+}
 
+void Arguments::setCertfileUsed(bool value)
+{
+    certfileUsed = value;
+}
+bool Arguments::getCertfileFolderUsed() const
+{
+    return certfileFolderUsed;
+}
+
+void Arguments::setCertfileFolderUsed(bool value)
+{
+    certfileFolderUsed = value;
+}
 
 bool Arguments::getAktualizace() const
 {
-return aktualizace;
+    return aktualizace;
 }
 
 void Arguments::setAktualizace(bool value)
 {
-aktualizace = value;
+    aktualizace = value;
 }
 bool Arguments::getAutor() const
 {

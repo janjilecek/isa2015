@@ -226,7 +226,6 @@ std::string Downloader::get_content()
 
 int Downloader::MakeUnsecuredConn()
 {
-    splitUrl();
     initiateConnection(80);
     get_headers();
     std::string s =  get_content();

@@ -13,11 +13,11 @@
 #include <unistd.h>
 #include <sys/time.h>
 #include "shared.h"
+#include "gadgets.h"
 
 //cd /usr/include/
 //ln -s libxml2/libxml libxml
 
-#include <regex>
 
 
 typedef enum
@@ -54,8 +54,11 @@ private:
     struct sockaddr_in m_server;
     struct in_addr m_addr;
 public:
-    Downloader(std::string url) : m_url(url)
+    Downloader(std::string url)
     {
+        urlParser up(url);
+        m_url = up.host();
+        m_path = up.path();
         m_chunked = false;
         m_contentLength = -1;
         m_headers = "";

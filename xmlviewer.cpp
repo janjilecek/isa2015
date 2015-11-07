@@ -84,9 +84,10 @@ void xmlViewer::elements(xmlNode *inputNode)
     xmlNodePtr node;
     for (node = inputNode->children; node; node = node->next)
     {
-        if (node->children != nullptr && node->children->content != nullptr)
+        std::string name = (char*)node->name;
+        if (node->children != nullptr)
         {
-            std::string name = (char*)node->name;
+            name = (char*)node->name;
 
             if (name == "title")
             {
