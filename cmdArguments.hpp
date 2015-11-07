@@ -1,6 +1,9 @@
 #ifndef CMDARGUMENTS_HPP
 #define CMDARGUMENTS_HPP
 
+#include <unistd.h>
+#include <cstdlib>
+#include <iostream>
 
 class Arguments
 {
@@ -21,7 +24,10 @@ public:
     bool getFeedfileUsed() const;
     void setFeedfileUsed(bool value);
 
+    void parseArgs(int argc, char **argv);
+    void printHelp();
 private:
+    int opt;
     bool aktualizace;
     bool autor;
     bool url;

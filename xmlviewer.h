@@ -39,7 +39,7 @@ public:
 
     void elements(xmlNode *inputNode);
 
-    void getEntry(xmlNode *inputNode);
+    std::vector<std::string> getEntry(xmlNode *inputNode);
 
     ~xmlViewer()
     {
