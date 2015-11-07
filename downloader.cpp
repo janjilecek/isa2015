@@ -67,9 +67,8 @@ std::string Downloader::httpRequest(std::string server, std::string path)
  }
 
 
-int Downloader::initiateConnection(int port)
+int Downloader::initiateConnection()
 {
-    m_port = port;
     m_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (m_sock < 0)
     {
@@ -138,6 +137,21 @@ int Downloader::find_chunked(std::string& content)
     }
     // returns content length if available, else returns -1 (chunked)
     return retVal;
+}
+
+void Downloader::download()
+{
+    if (m_port == 443)
+    {
+        MakeSecureConn();
+    }
+    else
+    {
+        MakeUnsecuredConn();
+    }
+    xmlViewer xmlView(m_args);
+    //std::cout << xmlView.dumpXML() << std::endl;
+    xmlView.loadTree();
 }
 
 int Downloader::get_headers()
@@ -226,12 +240,29 @@ std::string Downloader::get_content()
 
 int Downloader::MakeUnsecuredConn()
 {
-    initiateConnection(80);
+    initiateConnection();
     get_headers();
     std::string s =  get_content();
 
     std::ofstream out("output.xml");
     out << s;
     out.close();
+    return 0;
+}
+
+int Downloader::MakeSecureConn()
+{
+    BIO_set_conn_hostname(bio, bioAddrStr.c_str()); // bioAddrStr in format hostname:port
+    if (BIO_do_connect(bio) <= 0)
+    {
+        throw SSL_CONN_FAILED;
+    }
+    if (SSL_get_verify_result(ssl) != X509_V_OK)
+    {
+        throw SSL_CERTCHECK_FAIL;
+    }
+
+
+
     return 0;
 }

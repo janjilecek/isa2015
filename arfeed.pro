@@ -14,7 +14,6 @@ SOURCES += main.cpp \
 HEADERS += \
     downloader.hpp \
     gadgets.h \
-    test.h \
     xmlviewer.h \
     shared.h \
     cmdArguments.hpp
