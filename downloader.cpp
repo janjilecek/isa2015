@@ -20,7 +20,7 @@ int Downloader::splitUrl()
 
 int Downloader::send_request()
 {
-    std::string query = httpRequest(m_url, m_path);
+    std::string query = makeHeaders(m_url, m_path);
 
     auto tmp = send(m_sock, query.c_str(), query.length(), 0);
     if (tmp == -1)
@@ -43,7 +43,7 @@ int Downloader::my_connect()
     return 0;
 }
 
-std::string Downloader::httpRequest(std::string server, std::string path)
+std::string Downloader::makeHeaders(std::string server, std::string path)
 {
     std::string query;
     std::ostringstream oss;
@@ -154,10 +154,8 @@ void Downloader::download()
     xmlView.loadTree();
 }
 
-int Downloader::get_headers()
+int Downloader::get_headers(int (Downloader::*conn_read)(int, void*, int, int, BIO*))
 {
-    my_connect();
-    send_request();
 
     char buffer[1];
     int count;
@@ -165,7 +163,7 @@ int Downloader::get_headers()
     std::string endLine = "\r\n";
     std::string firstLine = "";
     bool doOnce = true;
-    while (errno == EINTR || (errno = 0, (count = recv(m_sock, buffer, sizeof(buffer), 0)) > 0))
+    while (errno == EINTR || (errno = 0, (count = (*this.*conn_read)(m_sock, buffer, sizeof(buffer), 0, bio)) > 0))
     {
         if (count > 0)
         {
@@ -241,7 +239,9 @@ std::string Downloader::get_content()
 int Downloader::MakeUnsecuredConn()
 {
     initiateConnection();
-    get_headers();
+    my_connect();
+    send_request();
+    get_headers(&Downloader::http_read);
     std::string s =  get_content();
 
     std::ofstream out("output.xml");
@@ -262,7 +262,17 @@ int Downloader::MakeSecureConn()
         throw SSL_CERTCHECK_FAIL;
     }
 
+    std::string headers = makeHeaders(m_url, m_path);
 
+    if (BIO_write(bio, headers.c_str(), headers.length()) <= 0)
+    {
+        throw SSL_FAILED_SEND;
+    }
+    else
+    {
+        get_headers(&Downloader::ssl_read);
+
+    }
 
     return 0;
 }

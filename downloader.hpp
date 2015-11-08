@@ -34,7 +34,8 @@ typedef enum
     ERR_SSL_PEM,
     ERR_SSL_FOLDER,
     SSL_CONN_FAILED,
-    SSL_CERTCHECK_FAIL
+    SSL_CERTCHECK_FAIL,
+    SSL_FAILED_SEND
 } errors;
 
 class Downloader {
@@ -121,14 +122,14 @@ public:
     int send_request();
     int my_connect();
     int initiateConnection();
-    int get_headers();
+    int get_headers(int (Downloader::*conn_read)(int, void*, int, int, BIO*));
     std::string get_content();
     int splitUrl();
     int read_data(void *str, const std::string& end);
     int MakeUnsecuredConn();
     int MakeSecureConn();
     int httpResponseCheck(std::string& in);
-    std::string httpRequest(std::string server, std::string path);
+    std::string makeHeaders(std::string server, std::string path);
     bool contains_substring(std::string& input, std::string seq);
     int find_chunked(std::string& content);
     void printError(std::string msg);
@@ -169,6 +170,17 @@ public:
         std::vector<char> buffer;
         std::string a = read_sequence(buffer, "\r\n");
         return a;
+    }
+
+    int http_read(int fd, void *buf, int size, int flags, BIO *b)
+    {
+        return recv(fd, buf, size, flags);
+    }
+
+    int ssl_read(int fd, void *buf, int size, int flags, BIO *b)
+    {
+
+        return BIO_read(b, buf, size);
     }
 };
 
