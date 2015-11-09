@@ -22,10 +22,9 @@ int Downloader::send_request()
 {
     std::string query = makeHeaders(m_url, m_path);
 
-    auto tmp = send(m_sock, query.c_str(), query.length(), 0);
-    if (tmp == -1)
+    auto tmp = BIO_write(bio, query.c_str(), query.length());
+    if (tmp <= 0)
     {
-        close(m_sock);
         std::cerr << "error while sending request" << std::endl;
         throw ERR_QUERY;
     }
@@ -69,29 +68,17 @@ std::string Downloader::makeHeaders(std::string server, std::string path)
 
 int Downloader::initiateConnection()
 {
-    m_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-    if (m_sock < 0)
+    char* cpTemp = (char *)bioAddrStr.c_str();
+    bio = BIO_new_connect(cpTemp);
+    if (bio == NULL)
     {
-        std::cerr << "Socket init. failed." << std::endl;
-        throw ERR_SOCKET;
+        throw ERR_BIO_CREATE;
     }
 
-    std::cout << m_url<< std::endl;
-    m_info = gethostbyname(m_url.c_str());
-    if (m_info == nullptr)
+    if (BIO_do_connect(bio) <= 0)
     {
-        std::cerr << "IP translation failed." << std::endl;
-        throw ERR_IP;
+        throw ERR_BIO_CONN;
     }
-
-    addresses = (struct in_addr **) m_info->h_addr_list; // získání ip
-    for (int i = 0; addresses[i] != NULL; ++i) m_ip.assign(inet_ntoa(*addresses[i]));
-    m_server.sin_family = AF_INET;
-    m_server.sin_port = htons(m_port);
-    m_addr.s_addr = inet_addr(m_ip.c_str());
-    m_server.sin_addr = m_addr;
-
-    std::cout << m_ip << std::endl;
     return 0;
 }
 
@@ -154,7 +141,7 @@ void Downloader::download()
     xmlView.loadTree();
 }
 
-int Downloader::get_headers(int (Downloader::*conn_read)(int, void*, int, int, BIO*))
+int Downloader::get_headers()
 {
 
     char buffer[1];
@@ -163,7 +150,7 @@ int Downloader::get_headers(int (Downloader::*conn_read)(int, void*, int, int, B
     std::string endLine = "\r\n";
     std::string firstLine = "";
     bool doOnce = true;
-    while (errno == EINTR || (errno = 0, (count = (*this.*conn_read)(m_sock, buffer, sizeof(buffer), 0, bio)) > 0))
+    while (errno == EINTR || (errno = 0, (count = BIO_read(bio, buffer, 1)) > 0))
     {
         if (count > 0)
         {
@@ -239,9 +226,9 @@ std::string Downloader::get_content()
 int Downloader::MakeUnsecuredConn()
 {
     initiateConnection();
-    my_connect();
+   // my_connect();
     send_request();
-    get_headers(&Downloader::http_read);
+    get_headers();
     std::string s =  get_content();
 
     std::ofstream out("output.xml");
@@ -270,7 +257,7 @@ int Downloader::MakeSecureConn()
     }
     else
     {
-        get_headers(&Downloader::ssl_read);
+        get_headers();
 
     }
 

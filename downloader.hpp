@@ -26,6 +26,8 @@ typedef enum
 {
     ERR_SOCKET,
     ERR_IP,
+    ERR_BIO_CREATE,
+    ERR_BIO_CONN,
     ERR_CONN,
     ERR_QUERY,
     ERR_RECV,
@@ -75,12 +77,11 @@ public:
         m_url = up.host();
         m_path = up.path();
         m_port = 80;
+
+
         if (up.protocol() == "https")
         {
-            std::ostringstream oss;
             m_port = 443;
-            oss << m_url << ":" << m_port;
-            bioAddrStr = oss.str();
             ctx = SSL_CTX_new(TLSv1_2_client_method());
             if (args->getCertfileUsed())
             {
@@ -111,7 +112,9 @@ public:
             SSL_set_mode(ssl, SSL_MODE_AUTO_RETRY);
         }
 
-
+        std::ostringstream oss;
+        oss << m_url << ":" << m_port;
+        bioAddrStr = oss.str();
 
         m_chunked = false;
         m_contentLength = -1;
@@ -122,7 +125,7 @@ public:
     int send_request();
     int my_connect();
     int initiateConnection();
-    int get_headers(int (Downloader::*conn_read)(int, void*, int, int, BIO*));
+    int get_headers();
     std::string get_content();
     int splitUrl();
     int read_data(void *str, const std::string& end);
@@ -138,7 +141,7 @@ public:
     void read_bytes(std::vector<char> &buffer, unsigned int size)
     {
         if (buffer.size() < size) buffer.resize(size);
-        if (recv(m_sock, static_cast<char*>(buffer.data()), size, 0x100) <= 0)
+        if (BIO_read(bio, static_cast<char*>(buffer.data()), size) <= 0)
         {
             std::cerr << "read bytes err" << std::endl;
             throw ERR_RECV;
@@ -151,7 +154,7 @@ public:
         do
         {
             char B;
-            if (recv(m_sock, static_cast<char*>(&B), 1, 0x100) <= 0)
+            if (BIO_read(bio, static_cast<char*>(&B), 1) <= 0)
             {
                 std::cerr  << "read seq err" << std::endl;
                 throw ERR_RECV;
