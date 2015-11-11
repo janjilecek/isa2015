@@ -3,6 +3,11 @@
 
 void Arguments::parseArgs(int argc, char **argv)
 {
+    if (argc == 1)
+    {
+        printHelp();
+        exit(EXIT_FAILURE);
+    }
     while ((opt = getopt(argc, argv, "uaTlf:c:C:")) != -1)
     {
         switch (opt)

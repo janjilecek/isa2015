@@ -69,3 +69,70 @@ void urlParser::setProtocol(const std::string &protocol)
 }
 
 
+void Gadgets::printError(std::string msg)
+
+{
+    std::cerr << msg << std::endl;
+}
+
+bool Gadgets::contains_substring(std::string& input, std::string seq)
+{
+    auto result = std::search(input.begin(), input.end(), seq.begin(), seq.end());
+    return (result != input.end()) ? true : false;
+}
+
+int Gadgets::find_chunked(std::string& content)
+{
+    int retVal = 0;
+    if (contains_substring(content, "Transfer-Encoding: chunked"))
+    {
+        retVal = -1;
+        return retVal;
+    }
+    else
+    {
+        // find content length
+        std::string seq = "Content-Length: ";
+        std::string endl = "\r\n";
+        if (contains_substring(content, seq))
+        {
+            auto start = std::search(content.begin(), content.end(), seq.begin(), seq.end());
+            auto end = std::search(start, content.end(), endl.begin(), endl.end());
+            std::string num(start+seq.length(), end);
+            std::stringstream ss(num);
+            ss >> retVal;
+            return retVal;
+        }
+    }
+    // returns content length if available, else returns -1 (chunked)
+    return retVal;
+}
+
+
+
+int UrlDetail::port() const
+{
+    return m_port;
+}
+
+std::string UrlDetail::path() const
+{
+    return m_path;
+}
+
+std::string UrlDetail::server() const
+{
+    return m_server;
+}
+
+UrlDetail::UrlDetail(std::string url)
+{
+    urlParser up(url);
+    m_server = up.host();
+    m_path = up.path();
+    m_port = 80;
+    if (up.protocol() == "https")
+    {
+        m_port = 443;
+    }
+}

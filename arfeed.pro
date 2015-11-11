@@ -9,12 +9,14 @@ SOURCES += main.cpp \
     downloader.cpp \
     xmlviewer.cpp \
     cmdArguments.cpp \
-    gadgets.cpp
+    gadgets.cpp \
+    datadownloader.cpp
 
 HEADERS += \
     downloader.hpp \
     gadgets.h \
     xmlviewer.h \
     shared.h \
-    cmdArguments.hpp
+    cmdArguments.hpp \
+    datadownloader.hpp
 

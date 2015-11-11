@@ -13,6 +13,7 @@ typedef enum
 {
     ERR_XML_LOAD
 } xml_errors;
+
 class xmlViewer
 {
 private:

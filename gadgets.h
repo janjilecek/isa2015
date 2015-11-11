@@ -28,8 +28,25 @@ private:
     std::string protocol_, host_, path_, query_;
 };
 
+class Gadgets
+{
+public:
+    static void printError(std::string msg);
+    static bool contains_substring(std::string& input, std::string seq);
+    static int find_chunked(std::string& content);
+};
 
-
+class UrlDetail
+{
+private:
+    int m_port;
+    std::string m_path, m_server;
+public:
+    UrlDetail(std::string url);
+    int port() const;
+    std::string path() const;
+    std::string server() const;
+};
 
 
 #endif // GADGETS_H

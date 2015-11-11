@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <iostream>
+#include "gadgets.h"
 
 class Arguments
 {
