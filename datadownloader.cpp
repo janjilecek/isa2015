@@ -15,6 +15,7 @@
 
 int HTTP::initiateConnection()
 {
+
     m_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (m_sock < 0)
     {
@@ -38,11 +39,7 @@ int HTTP::initiateConnection()
     m_server.sin_addr = m_addr;
 
     std::cout << m_ip << std::endl;
-    return 0;
-}
 
-int HTTP::my_connect()
-{
     auto a = connect(m_sock, (struct sockaddr*) &m_server, sizeof(sockaddr_in)); // připojení k serveru
     if (a == -1)
     {
@@ -76,7 +73,7 @@ int HTTP::get_headers()
     std::string endLine = "\r\n";
     std::string firstLine = "";
     bool doOnce = true;
-    while (errno == EINTR || (errno = 0, (count = recv(m_sock, buffer, 1, 0)) > 0))
+    while (errno == EINTR || (errno = 0, (count = receive(buffer, 1)) > 0)) // can require 0 instead of 0x100
 
     {
         if (count > 0)
@@ -155,7 +152,6 @@ std::string HTTP::get_content()
 int HTTP::download()
 {
     initiateConnection();
-    my_connect();
     send_request();
     get_headers();
     std::string s =  get_content();
@@ -182,6 +178,10 @@ int HTTP::httpResponseCheck(std::string& in)
     return 0;
 }
 
+int HTTP::receive(void *buf, int size)
+{
+    return recv(m_sock, buf, size, 0x100);
+}
 
 std::string HTTP::makeHeaders(std::string server, std::string path)
 {
@@ -193,8 +193,7 @@ std::string HTTP::makeHeaders(std::string server, std::string path)
         << server
         << "\r\nUser-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:40.0) Gecko/20100101 Firefox/40.0\r\n"
         << "Accept: */*\r\n"
-        << "Referer: \r\n"
-        << "Connection: close\r\n\r\n";
+        << "Referer: \r\n\r\n";
 
     std::string headers = oss.str();
     return headers;
@@ -203,7 +202,7 @@ std::string HTTP::makeHeaders(std::string server, std::string path)
 void HTTP::read_bytes(std::vector<char> &buffer, unsigned int size)
 {
     if (buffer.size() < size) buffer.resize(size);
-    if (recv(m_sock, static_cast<char*>(buffer.data()), size, 0x100) <= 0)
+    if (receive(static_cast<char*>(buffer.data()), size) <= 0)
     {
         std::cerr << "read bytes err" << std::endl;
         throw ERR_RECV;
@@ -216,7 +215,7 @@ std::string HTTP::read_sequence(std::vector<char> &buffer, const std::string &te
     do
     {
         char B;
-        if (recv(m_sock, static_cast<char*>(&B), 1, 0x100) <= 0)
+        if (receive(static_cast<char*>(&B), 1) <= 0)
         {
             std::cerr  << "read seq err" << std::endl;
             throw ERR_RECV;
@@ -252,33 +251,6 @@ HTTP::HTTP(std::string inServer, std::string inPath)
 // HTTPS begin -----------------------------------------------------------------------------
 
 
-int HTTPS::download()
-{
-    BIO_set_conn_hostname(bio, bioAddrStr.c_str()); // bioAddrStr in format hostname:port
-    if (BIO_do_connect(bio) <= 0)
-    {
-        throw SSL_CONN_FAILED;
-    }
-    if (SSL_get_verify_result(ssl) != X509_V_OK)
-    {
-        throw SSL_CERTCHECK_FAIL;
-    }
-
-    std::string headers = makeHeaders(m_url, m_path);
-
-    if (BIO_write(bio, headers.c_str(), headers.length()) <= 0)
-    {
-        throw SSL_FAILED_SEND;
-    }
-    else
-    {
-        get_headers();
-
-    }
-
-    return 0;
-}
-
 HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(inServer, inPath)
 {
     SSL_library_init();
@@ -305,7 +277,7 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(i
     else
     {
 
-        if (!SSL_CTX_load_verify_locations(ctx, NULL, "/etc/ssl/certs/"))
+        if (!SSL_CTX_load_verify_locations(ctx, NULL, "/etc/ssl/certs/")) // default folder for certs
         {
             throw ERR_SSL_FOLDER;
         }
@@ -316,7 +288,53 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(i
     BIO_get_ssl(bio, &ssl);
     SSL_set_mode(ssl, SSL_MODE_AUTO_RETRY);
 
-    std::ostringstream oss;
+    std::ostringstream oss; // generate string from server and port for BIO connect
     oss << m_url << ":" << m_port;
     bioAddrStr = oss.str();
+}
+
+int HTTPS::initiateConnection()
+{
+    BIO_set_conn_hostname(bio, bioAddrStr.c_str()); // bioAddrStr in format hostname:port
+    if (BIO_do_connect(bio) <= 0)
+    {
+        throw SSL_CONN_FAILED;
+    }
+    if (SSL_get_verify_result(ssl) != X509_V_OK)
+    {
+        throw SSL_CERTCHECK_FAIL;
+    }
+    return 0;
+}
+
+int HTTPS::send_request()
+{
+    std::string headers = makeHeaders(m_url, m_path);
+
+    if (BIO_write(bio, headers.c_str(), headers.length()) <= 0)
+    {
+        throw SSL_FAILED_SEND;
+    }
+    return 0;
+}
+
+
+int HTTPS::receive(void *buf, int size)
+{
+    ERR_print_errors(bio);
+    int x = BIO_read(bio, buf, size);
+
+    if (x == 0)
+    {
+        return 0;
+    }
+    else if (x < 0)
+    {
+        if (!BIO_should_retry(bio))
+        {
+            return 0;
+        }
+        return BIO_read(bio, buf, size); // try to read again
+    }
+    return x;
 }

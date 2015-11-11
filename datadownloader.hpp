@@ -41,9 +41,8 @@ typedef enum
 
 class IDownload
 {
-
+    virtual int receive(void *buf, int size)=0;
     virtual int send_request()=0;
-    virtual int my_connect()=0;
     virtual int initiateConnection()=0;
     virtual int get_headers()=0;
     virtual std::string get_content()=0;
@@ -75,15 +74,15 @@ protected:
     struct hostent *m_info;
     int m_connection;
 
-    //copied from IPK
+    //copied from my IPK proj.1
     struct in_addr **addresses;
     struct sockaddr_in m_server;
     struct in_addr m_addr;
     Arguments* m_args;
 public:
     HTTP(std::string inServer, std::string inPath);
+    virtual int receive(void *buf, int size);
     virtual int send_request();
-    virtual int my_connect();
     virtual int initiateConnection();
     virtual int get_headers();
     virtual std::string get_content();
@@ -104,6 +103,7 @@ private:
     std::string bioAddrStr;
 public:
     HTTPS(std::string inServer, std::string inPath, Arguments *args);
-    virtual int download();
-
+    virtual int receive(void *buf, int size);
+    virtual int send_request();
+    virtual int initiateConnection();
 };
