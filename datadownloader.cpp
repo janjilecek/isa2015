@@ -15,7 +15,6 @@
 
 int HTTP::initiateConnection()
 {
-
     m_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (m_sock < 0)
     {
@@ -249,7 +248,6 @@ HTTP::HTTP(std::string inServer, std::string inPath)
     m_chunked = false;
     m_contentLength = -1;
     m_headers = "";
-
 }
 
 
@@ -264,7 +262,7 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(i
     OpenSSL_add_all_algorithms();
 
     m_port = 443;
-    ctx = SSL_CTX_new(TLSv1_2_client_method());
+    ctx = SSL_CTX_new(SSLv23_client_method());
     if (args->getCertfileUsed())
     {
         if (!SSL_CTX_load_verify_locations(ctx, args->sCertFileName().c_str(), NULL))
@@ -289,10 +287,17 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(i
 
     }
 
-    bio = BIO_new_ssl_connect(ctx);
+    ssl = SSL_new(ctx);
+
+    bio = BIO_new(BIO_s_socket());
+    BIO_set_fd(bio, m_sock, BIO_NOCLOSE);
+    SSL_set_bio(ssl, bio, bio);
+
+
     BIO_get_ssl(bio, &ssl);
     SSL_set_mode(ssl, SSL_MODE_AUTO_RETRY);
 
+    bio = BIO_new_ssl_connect(ctx);
     std::ostringstream oss; // generate string from server and port for BIO connect
     oss << m_url << ":" << m_port;
     bioAddrStr = oss.str();
@@ -300,7 +305,7 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(i
 
 int HTTPS::initiateConnection()
 {
-    BIO_set_conn_hostname(bio, bioAddrStr.c_str()); // bioAddrStr in format hostname:port
+    /*BIO_set_conn_hostname(bio, bioAddrStr.c_str()); // bioAddrStr in format hostname:port
     if (BIO_do_connect(bio) <= 0)
     {
         throw SSL_CONN_FAILED;
@@ -308,7 +313,18 @@ int HTTPS::initiateConnection()
     if (SSL_get_verify_result(ssl) != X509_V_OK)
     {
         throw SSL_CERTCHECK_FAIL;
+    }*/
+
+    HTTP::initiateConnection();
+    ctx = SSL_CTX_new(SSLv23_client_method());
+    ssl = SSL_new(ctx);
+    SSL_set_fd(ssl, m_sock);
+    int aa = SSL_connect(ssl);
+    if (aa != 1)
+    {
+        std::cerr << "ssl connection error" << std::endl;
     }
+
     return 0;
 }
 
@@ -316,7 +332,7 @@ int HTTPS::send_request()
 {
     std::string headers = makeHeaders(m_url, m_path);
 
-    if (BIO_write(bio, headers.c_str(), headers.length()) <= 0)
+    if (SSL_write(ssl, headers.c_str(), headers.length()) <= 0)
     {
         throw SSL_FAILED_SEND;
     }
@@ -326,10 +342,13 @@ int HTTPS::send_request()
 
 int HTTPS::receive(void *buf, int size)
 {
-    ERR_print_errors(bio);
-    int x = BIO_read(bio, buf, size);
+    //ERR_print_errors(bio);
+    int rec = 0;
+    while (rec != size) rec +=  SSL_read(ssl, static_cast<char*>(buf)+rec, size-rec);
+    return rec;
 
-    if (x == 0)
+
+    /*if (x == 0)
     {
         return 0;
     }
@@ -340,6 +359,5 @@ int HTTPS::receive(void *buf, int size)
             return 0;
         }
         return BIO_read(bio, buf, size); // try to read again
-    }
-    return x;
+    }*/
 }
