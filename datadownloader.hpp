@@ -36,7 +36,8 @@ typedef enum
     ERR_SSL_FOLDER,
     SSL_CONN_FAILED,
     SSL_CERTCHECK_FAIL,
-    SSL_FAILED_SEND
+    SSL_FAILED_SEND,
+    ERR_DIFFERENT_CODE
 } errors;
 
 class IDownload

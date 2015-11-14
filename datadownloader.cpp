@@ -103,6 +103,7 @@ int HTTP::get_headers()
         std::cerr << "recv error" << std::endl;
         throw ERR_RECV;
     }
+    std::cout << m_headers << std::endl;
     return 0;
 }
 
@@ -174,6 +175,10 @@ int HTTP::httpResponseCheck(std::string& in)
     if (status == 0)
     {
         throw NOT_HTTP;
+    }
+    else if (status != 200)
+    {
+        throw ERR_DIFFERENT_CODE; // implement redirection
     }
     return 0;
 }
