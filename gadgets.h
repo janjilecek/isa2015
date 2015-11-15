@@ -37,6 +37,7 @@ public:
     static void printError(std::string msg);
     static bool contains_substring(std::string& input, std::string seq);
     static int find_chunked(std::string& content);
+    void loadFileIntoVector(std::string filename, std::vector<std::string> *urls);
 };
 
 class UrlDetail

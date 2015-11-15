@@ -8,7 +8,6 @@
 
 #endif // XMLVIEWER
 
-//class Arguments;
 typedef enum
 {
     ERR_XML_LOAD
@@ -25,7 +24,6 @@ private:
 public:
     xmlViewer(Arguments *args) : m_args(args)
     {
-        std::cout << "Loading file output.xml" << std::endl;
         doc = xmlReadFile("output.xml", NULL, 0);
         if (doc == nullptr)
         {

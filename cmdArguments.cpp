@@ -57,6 +57,12 @@ void Arguments::parseArgs(int argc, char **argv)
         }
     }
 
+    if (feedfileUsed)
+    {
+        Gadgets g;
+        g.loadFileIntoVector(sFeedFile(), &urls);
+    }
+
 
 }
 
@@ -105,10 +111,10 @@ void Arguments::setSFeedFile(const std::string &sFeedFile)
 {
     m_sFeedFile = sFeedFile;
 }
-
-
-
-
+std::vector<std::string> Arguments::getUrls() const
+{
+    return urls;
+}
 
 
 void Arguments::printHelp()

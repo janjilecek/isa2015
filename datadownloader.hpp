@@ -38,7 +38,10 @@ typedef enum
     SSL_CERTCHECK_FAIL,
     SSL_FAILED_SEND,
     ERR_DIFFERENT_CODE,
-    SSL_CONN_ERROR
+    SSL_CONN_ERROR,
+    BAD_CERT,
+    NO_URLS,
+    NON_EXISTENT_FEEDFILE
 } errors;
 
 class IDownload
@@ -83,6 +86,7 @@ protected:
     Arguments* m_args;
 public:
     HTTP(std::string inServer, std::string inPath);
+    virtual ~HTTP();
     virtual int receive(void *buf, int size);
     virtual int send_request();
     virtual int initiateConnection();
@@ -105,6 +109,7 @@ private:
     std::string bioAddrStr;
 public:
     HTTPS(std::string inServer, std::string inPath, Arguments *args);
+    virtual ~HTTPS();
     virtual int receive(void *buf, int size);
     virtual int send_request();
     virtual int initiateConnection();

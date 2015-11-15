@@ -118,6 +118,27 @@ int Gadgets::find_chunked(std::string& content)
     return retVal;
 }
 
+void Gadgets::loadFileIntoVector(string filename, std::vector<string> *urls)
+{
+    string line;
+    ifstream feedfile(filename);
+    if (feedfile.is_open())
+    {
+        while (getline(feedfile, line))
+        {
+            if (line.find("#") != 0) // if string doesnt start with hash
+            {
+                (*urls).push_back(line);
+            }
+        }
+        feedfile.close();
+    }
+    else
+    {
+        throw std::runtime_error("Non existent feedfile");
+    }
+}
+
 
 
 int UrlDetail::port() const

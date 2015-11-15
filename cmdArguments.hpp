@@ -49,7 +49,10 @@ public:
     std::string sFeedFile() const;
     void setSFeedFile(const std::string &sFeedFile);
 
+    std::vector<std::string> getUrls() const;
+
 private:
+    std::vector<std::string> urls;
     std::string m_sUrl;
     std::string m_sCertFileName;
     std::string m_sCertFilesFolder;

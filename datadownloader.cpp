@@ -1,18 +1,5 @@
 #include "datadownloader.hpp"
 
-/*
- * initiateConnection();
-    my_connect();
-    send_request();
-    get_headers();
-    std::string s =  get_content();
-
-    std::ofstream out("output.xml");
-    out << s;
-    out.close();
-    return 0;
- */
-
 int HTTP::initiateConnection()
 {
     m_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -22,7 +9,6 @@ int HTTP::initiateConnection()
         throw ERR_SOCKET;
     }
 
-    std::cout << m_url<< std::endl;
     m_info = gethostbyname(m_url.c_str());
     if (m_info == nullptr)
     {
@@ -36,8 +22,6 @@ int HTTP::initiateConnection()
     m_server.sin_port = htons(m_port);
     m_addr.s_addr = inet_addr(m_ip.c_str());
     m_server.sin_addr = m_addr;
-
-    std::cout << m_ip << std::endl;
 
     auto a = connect(m_sock, (struct sockaddr*) &m_server, sizeof(sockaddr_in)); // připojení k serveru
     if (a == -1)
@@ -102,7 +86,6 @@ int HTTP::get_headers()
         std::cerr << "recv error" << std::endl;
         throw ERR_RECV;
     }
-    std::cout << m_headers << std::endl;
     return 0;
 }
 
@@ -250,15 +233,22 @@ HTTP::HTTP(std::string inServer, std::string inPath)
     m_headers = "";
 }
 
+HTTP::~HTTP()
+{
+    close(m_sock);
+}
+
 
 // HTTPS begin -----------------------------------------------------------------------------
 
 
 HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(inServer, inPath)
 {
+    ctx = NULL;
+    ssl = NULL;
     SSL_library_init();
-    SSL_load_error_strings();
-    ERR_load_BIO_strings();
+    //SSL_load_error_strings();
+    //ERR_load_BIO_strings();
     OpenSSL_add_all_algorithms();
 
     m_port = 443;
@@ -286,19 +276,43 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(i
         }
 
     }
+    SSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
+}
+
+HTTPS::~HTTPS()
+{
+    if (ctx != NULL) SSL_CTX_free(ctx);
+    if (ssl != NULL)
+    {
+        SSL_shutdown(ssl);
+        SSL_free(ssl);
+    }
 }
 
 int HTTPS::initiateConnection()
 {
     HTTP::initiateConnection();
+
     ssl = SSL_new(ctx);
     SSL_set_mode(ssl, SSL_MODE_AUTO_RETRY);
     SSL_set_fd(ssl, m_sock);
-    int aa = SSL_connect(ssl);
-    if (aa != 1)
+    int sslresult = SSL_connect(ssl);
+    if (sslresult != 1)
     {
         std::cerr << "ssl connection error" << std::endl;
         throw SSL_CONN_ERROR;
+    }
+
+    if (SSL_get_peer_certificate(ssl) != NULL)
+    {
+        if (SSL_get_verify_result(ssl) != X509_V_OK)
+        {
+            throw BAD_CERT;
+        }
+    }
+    else
+    {
+        throw BAD_CERT;
     }
 
     return 0;
@@ -318,22 +332,7 @@ int HTTPS::send_request()
 
 int HTTPS::receive(void *buf, int size)
 {
-    //ERR_print_errors(bio);
     int rec = 0;
-    while (rec != size) rec +=  SSL_read(ssl, static_cast<char*>(buf)+rec, size-rec);
+    while (rec != size) rec +=  SSL_read(ssl, static_cast<char*>(buf) + rec, size - rec);
     return rec;
-
-
-    /*if (x == 0)
-    {
-        return 0;
-    }
-    else if (x < 0)
-    {
-        if (!BIO_should_retry(bio))
-        {
-            return 0;
-        }
-        return BIO_read(bio, buf, size); // try to read again
-    }*/
 }
