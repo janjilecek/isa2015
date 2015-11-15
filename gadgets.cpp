@@ -38,6 +38,16 @@ void urlParser::parse(const string& url_s)
         ++query_i;
     query_.assign(query_i, url_s.end());
 }
+std::string urlParser::query() const
+{
+    return query_;
+}
+
+void urlParser::setQuery(const std::string &query)
+{
+    query_ = query;
+}
+
 std::string urlParser::path() const
 {
     return path_;
@@ -125,10 +135,24 @@ std::string UrlDetail::server() const
     return m_server;
 }
 
+
+std::string UrlDetail::query() const
+{
+    return m_query;
+}
+
+string UrlDetail::file() const
+{
+    ostringstream oss;
+    oss << m_path << "?" << m_query;
+    return oss.str();
+}
+
 UrlDetail::UrlDetail(std::string url)
 {
     urlParser up(url);
     m_server = up.host();
+    m_query = up.query();
     m_path = up.path();
     m_port = 80;
     if (up.protocol() == "https")

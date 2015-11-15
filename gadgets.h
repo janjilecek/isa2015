@@ -22,6 +22,9 @@ public:
     std::string path() const;
     void setPath(const std::string &path);
 
+    std::string query() const;
+    void setQuery(const std::string &query);
+
 private:
     void parse(const std::string& url_s);
 private:
@@ -40,12 +43,14 @@ class UrlDetail
 {
 private:
     int m_port;
-    std::string m_path, m_server;
+    std::string m_path, m_server, m_query;
 public:
     UrlDetail(std::string url);
     int port() const;
     std::string path() const;
     std::string server() const;
+    std::string query() const;
+    std::string file() const;
 };
 
 

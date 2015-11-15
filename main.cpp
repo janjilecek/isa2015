@@ -13,12 +13,12 @@ int main(int argc, char **argv)
 
     if (urldet.port() == 80)
     {
-        HTTP downloader(urldet.server(), urldet.path());
+        HTTP downloader(urldet.server(), urldet.file());
         downloader.download();
     }
     else
     {
-        HTTPS downloader(urldet.server(), urldet.path(), &args);
+        HTTPS downloader(urldet.server(), urldet.file(), &args);
         downloader.download();
     }
 

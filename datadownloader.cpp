@@ -286,43 +286,19 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(i
         }
 
     }
-
-    ssl = SSL_new(ctx);
-
-    bio = BIO_new(BIO_s_socket());
-    BIO_set_fd(bio, m_sock, BIO_NOCLOSE);
-    SSL_set_bio(ssl, bio, bio);
-
-
-    BIO_get_ssl(bio, &ssl);
-    SSL_set_mode(ssl, SSL_MODE_AUTO_RETRY);
-
-    bio = BIO_new_ssl_connect(ctx);
-    std::ostringstream oss; // generate string from server and port for BIO connect
-    oss << m_url << ":" << m_port;
-    bioAddrStr = oss.str();
 }
 
 int HTTPS::initiateConnection()
 {
-    /*BIO_set_conn_hostname(bio, bioAddrStr.c_str()); // bioAddrStr in format hostname:port
-    if (BIO_do_connect(bio) <= 0)
-    {
-        throw SSL_CONN_FAILED;
-    }
-    if (SSL_get_verify_result(ssl) != X509_V_OK)
-    {
-        throw SSL_CERTCHECK_FAIL;
-    }*/
-
     HTTP::initiateConnection();
-    ctx = SSL_CTX_new(SSLv23_client_method());
     ssl = SSL_new(ctx);
+    SSL_set_mode(ssl, SSL_MODE_AUTO_RETRY);
     SSL_set_fd(ssl, m_sock);
     int aa = SSL_connect(ssl);
     if (aa != 1)
     {
         std::cerr << "ssl connection error" << std::endl;
+        throw SSL_CONN_ERROR;
     }
 
     return 0;
