@@ -5,50 +5,69 @@
 
 using namespace std;
 
-void DL(Arguments args, std::string mainUrl);
+int DL(Arguments args, std::string mainUrl);
 
 int main(int argc, char **argv)
 {
     Arguments args;
     args.parseArgs(argc, argv);
 
-    if (args.getFeedfileUsed())
+    try
     {
-        auto urls = args.getUrls();
-        if (urls.size() > 0)
+        if (args.getFeedfileUsed())
         {
-            for (auto &lineUrl : urls)
+            auto urls = args.getUrls();
+            if (urls.size() > 0)
             {
-                DL(args, lineUrl);
+                for (auto &lineUrl : urls)
+                {
+                    DL(args, lineUrl);
+                }
             }
+            else throw std::runtime_error("Error - Feedfile is empty.");
         }
-        else throw NO_URLS;
+        else
+        {
+            return DL(args, args.sUrl());
+        }
     }
-    else
+    catch (std::exception &e)
     {
-        DL(args, args.sUrl());
+        std::cerr << e.what() << std::endl;
+        return 1;
     }
+
 
     return 0;
 }
 
 
-void DL(Arguments args, std::string mainUrl)
+int DL(Arguments args, std::string mainUrl)
 {
     UrlDetail urldet(mainUrl);
 
-    if (urldet.port() == 80)
+    try
     {
-        HTTP downloader(urldet.server(), urldet.file());
-        downloader.download();
+        if (urldet.port() == 80)
+        {
+            HTTP downloader(urldet.server(), urldet.file());
+            downloader.download();
+        }
+        else
+        {
+            HTTPS downloader(urldet.server(), urldet.file(), &args);
+            downloader.download();
+        }
     }
-    else
+    catch (std::runtime_error &e)
     {
-        HTTPS downloader(urldet.server(), urldet.file(), &args);
-        downloader.download();
+        std::cerr << e.what() << std::endl;
+        return 1;
     }
+
 
     xmlViewer xmlView(&args);
     xmlView.loadTree();
+    return 0;
 }
 

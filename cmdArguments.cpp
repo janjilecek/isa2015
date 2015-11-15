@@ -54,7 +54,14 @@ void Arguments::parseArgs(int argc, char **argv)
             }
             countNonOption++;
             m_sUrl = argv[optind++];
+            setUrlUsed(true);
         }
+    }
+
+    if (getFeedfileUsed() && getUrlUsed())
+    {
+        std::cerr << "Can't combine URL and FeedFile" << std::endl;
+        exit(EXIT_FAILURE);
     }
 
     if (feedfileUsed)

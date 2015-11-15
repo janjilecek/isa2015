@@ -27,8 +27,7 @@ public:
         doc = xmlReadFile("output.xml", NULL, 0);
         if (doc == nullptr)
         {
-            std::cerr << "XML file could not be loaded." << std::endl;
-            throw ERR_XML_LOAD;
+            throw std::runtime_error("Error - XML file could not be loaded.");
         }
     };
 

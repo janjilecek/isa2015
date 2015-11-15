@@ -5,15 +5,13 @@ int HTTP::initiateConnection()
     m_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (m_sock < 0)
     {
-        std::cerr << "Socket init. failed." << std::endl;
-        throw ERR_SOCKET;
+        throw std::runtime_error("Error - Socket init. failed.");
     }
 
     m_info = gethostbyname(m_url.c_str());
     if (m_info == nullptr)
     {
-        std::cerr << "IP translation failed." << std::endl;
-        throw ERR_IP;
+        throw std::runtime_error("Error - IP translation failed.");
     }
 
     addresses = (struct in_addr **) m_info->h_addr_list; // získání ip
@@ -27,7 +25,7 @@ int HTTP::initiateConnection()
     if (a == -1)
     {
         close(m_sock);
-        throw ERR_QUERY;
+        throw std::runtime_error("Error - Socket - Failed connecting to server");
     }
     return 0;
 }
@@ -41,8 +39,7 @@ int HTTP::send_request()
     if (tmp == -1)
     {
         close(m_sock);
-        std::cerr << "error while sending request" << std::endl;
-        throw ERR_QUERY;
+        throw std::runtime_error("Error - Sending request");
     }
     return 0;
 }
@@ -83,8 +80,7 @@ int HTTP::get_headers()
     }
     if (count < 0)
     {
-        std::cerr << "recv error" << std::endl;
-        throw ERR_RECV;
+        throw std::runtime_error("Error - Recv bytes");
     }
     return 0;
 }
@@ -107,8 +103,7 @@ std::string HTTP::get_content()
             }
             catch (std::invalid_argument& e)
             {
-                std::cerr << e.what() << std::endl;
-                throw ERR_CHUNKED;
+                throw std::runtime_error("Error - Chunked decoding.");
             }
 
             if (chunkSize - endLnSize)
@@ -156,11 +151,19 @@ int HTTP::httpResponseCheck(std::string& in)
     sstream >> status;
     if (status == 0)
     {
-        throw NOT_HTTP;
+        throw std::runtime_error("Error - Not an HTTP response.");
     }
     else if (status != 200)
     {
-        throw ERR_DIFFERENT_CODE; // implement redirection
+        // implement redirection
+        if (status == 301)
+        {
+            throw std::runtime_error("Error - 301 - Site got moved");
+        }
+        else
+        {
+            throw std::runtime_error("Error - Not a 200 OK response.");
+        }
     }
     return 0;
 }
@@ -190,9 +193,8 @@ void HTTP::read_bytes(std::vector<char> &buffer, unsigned int size)
 {
     if (buffer.size() < size) buffer.resize(size);
     if (receive(static_cast<char*>(buffer.data()), size) <= 0)
-    {
-        std::cerr << "read bytes err" << std::endl;
-        throw ERR_RECV;
+    {        
+        throw std::runtime_error("Error - reading bytes");
     }
 }
 
@@ -204,8 +206,7 @@ std::string HTTP::read_sequence(std::vector<char> &buffer, const std::string &te
         char B;
         if (receive(static_cast<char*>(&B), 1) <= 0)
         {
-            std::cerr  << "read seq err" << std::endl;
-            throw ERR_RECV;
+            throw std::runtime_error("Error - reading sequence");
         }
         else
         {
@@ -247,8 +248,6 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(i
     ctx = NULL;
     ssl = NULL;
     SSL_library_init();
-    //SSL_load_error_strings();
-    //ERR_load_BIO_strings();
     OpenSSL_add_all_algorithms();
 
     m_port = 443;
@@ -257,14 +256,14 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(i
     {
         if (!SSL_CTX_load_verify_locations(ctx, args->sCertFileName().c_str(), NULL))
         {
-            throw ERR_SSL_PEM;
+            throw std::runtime_error("Error - Loading Certificate File");
         }
     }
     else if (args->getCertfileFolderUsed())
     {
         if (!SSL_CTX_load_verify_locations(ctx, NULL, args->sCertFilesFolder().c_str()))
         {
-            throw ERR_SSL_FOLDER;
+            throw std::runtime_error("Error - Loading Certificates from a folder");
         }
     }
     else
@@ -272,7 +271,7 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(i
 
         if (!SSL_CTX_load_verify_locations(ctx, NULL, "/etc/ssl/certs/")) // default folder for certs
         {
-            throw ERR_SSL_FOLDER;
+            throw std::runtime_error("Error - Loading cerificates from /etc/ssl/certs");
         }
 
     }
@@ -299,20 +298,19 @@ int HTTPS::initiateConnection()
     int sslresult = SSL_connect(ssl);
     if (sslresult != 1)
     {
-        std::cerr << "ssl connection error" << std::endl;
-        throw SSL_CONN_ERROR;
+        throw std::runtime_error("Error - Start SSL connection error.");
     }
 
     if (SSL_get_peer_certificate(ssl) != NULL)
     {
         if (SSL_get_verify_result(ssl) != X509_V_OK)
         {
-            throw BAD_CERT;
+            throw std::runtime_error("Error - Invalid peer certificate.");
         }
     }
     else
     {
-        throw BAD_CERT;
+        throw std::runtime_error("Error - Invalid peer certificate.");
     }
 
     return 0;
@@ -324,7 +322,7 @@ int HTTPS::send_request()
 
     if (SSL_write(ssl, headers.c_str(), headers.length()) <= 0)
     {
-        throw SSL_FAILED_SEND;
+        throw std::runtime_error("Error - SSL sending failed.");
     }
     return 0;
 }
