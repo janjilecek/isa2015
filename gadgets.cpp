@@ -94,6 +94,9 @@ bool Gadgets::contains_substring(std::string& input, std::string seq)
 int Gadgets::find_chunked(std::string& content)
 {
     int retVal = 0;
+    //std::cout << content << std::endl;
+   // std::transform(content.begin(), content.end(), content.begin(), ::tolower);
+    //std::cout << content << std::endl;
     if (contains_substring(content, "Transfer-Encoding: chunked"))
     {
         retVal = -1;
@@ -118,6 +121,22 @@ int Gadgets::find_chunked(std::string& content)
     return retVal;
 }
 
+string Gadgets::find_location_on_redirect(string &content)
+{
+    std::string seq = "Location: ";
+    std::string endl = "\r\n";
+    if (contains_substring(content, seq))
+    {
+        auto start = std::search(content.begin(), content.end(), seq.begin(), seq.end());
+        auto end = std::search(start, content.end(), endl.begin(), endl.end());
+        std::string retStr(start+seq.length(), end);
+        std::stringstream ss(retStr);
+        return ss.str();
+    }
+
+    return "";
+}
+
 void Gadgets::loadFileIntoVector(string filename, std::vector<string> *urls)
 {
     string line;
@@ -135,7 +154,7 @@ void Gadgets::loadFileIntoVector(string filename, std::vector<string> *urls)
     }
     else
     {
-        throw std::runtime_error("Non existent feedfile");
+        throw ISAException("Non existent feedfile");
     }
 }
 

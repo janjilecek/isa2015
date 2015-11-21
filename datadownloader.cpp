@@ -5,13 +5,13 @@ int HTTP::initiateConnection()
     m_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (m_sock < 0)
     {
-        throw std::runtime_error("Error - Socket init. failed.");
+        throw ISAException("Error - Socket init. failed.");
     }
 
     m_info = gethostbyname(m_url.c_str());
     if (m_info == nullptr)
     {
-        throw std::runtime_error("Error - IP translation failed.");
+        throw ISAException("Error - IP translation failed.");
     }
 
     addresses = (struct in_addr **) m_info->h_addr_list; // získání ip
@@ -25,7 +25,7 @@ int HTTP::initiateConnection()
     if (a == -1)
     {
         close(m_sock);
-        throw std::runtime_error("Error - Socket - Failed connecting to server");
+        throw ISAException("Error - Socket - Failed connecting to server");
     }
     return 0;
 }
@@ -39,7 +39,7 @@ int HTTP::send_request()
     if (tmp == -1)
     {
         close(m_sock);
-        throw std::runtime_error("Error - Sending request");
+        throw ISAException("Error - Sending request");
     }
     return 0;
 }
@@ -53,6 +53,7 @@ int HTTP::get_headers()
     std::string endLine = "\r\n";
     std::string firstLine = "";
     bool doOnce = true;
+    int resCheck = 0;
     while (errno == EINTR || (errno = 0, (count = receive(buffer, 1)) > 0)) // can require 0 instead of 0x100
 
     {
@@ -64,7 +65,7 @@ int HTTP::get_headers()
                 firstLine.append(buffer, count);
                 if (Gadgets::contains_substring(firstLine, endLine))
                 {
-                    httpResponseCheck(firstLine);
+                    resCheck = httpResponseCheck(firstLine);
                     doOnce = false;
                 }
             }
@@ -74,13 +75,37 @@ int HTTP::get_headers()
                 int res = Gadgets::find_chunked(m_headers); // determine if chunked
                 if (res == -1) m_chunked = true;
                 else m_contentLength = res; // or to use content-length
+
+                if (resCheck == 301)
+                {
+                    std::string redirectUrl = Gadgets::find_location_on_redirect(m_headers);
+                    UrlDetail urldet(redirectUrl);
+
+
+                    if (urldet.port() == 80)
+                    {
+                        HTTP downloader(urldet.server(), urldet.file());
+                        downloader.download();
+                        throw ISAException("redirection complete");
+                    }
+                    else
+                    {
+                        HTTPS downloader(urldet.server(), urldet.file(), m_args);
+                        downloader.download();
+                        throw ISAException("redirection complete");
+                    }
+
+
+                }
+
+                std::cout << m_headers << std::endl;
                 break;
             }
         }
     }
     if (count < 0)
     {
-        throw std::runtime_error("Error - Recv bytes");
+        throw ISAException("Error - Recv bytes");
     }
     return 0;
 }
@@ -103,7 +128,7 @@ std::string HTTP::get_content()
             }
             catch (std::invalid_argument& e)
             {
-                throw std::runtime_error("Error - Chunked decoding.");
+                throw ISAException("Error - Chunked decoding.");
             }
 
             if (chunkSize - endLnSize)
@@ -151,18 +176,19 @@ int HTTP::httpResponseCheck(std::string& in)
     sstream >> status;
     if (status == 0)
     {
-        throw std::runtime_error("Error - Not an HTTP response.");
+        throw ISAException("Error - Not an HTTP response.");
     }
     else if (status != 200)
     {
         // implement redirection
         if (status == 301)
         {
-            throw std::runtime_error("Error - 301 - Site got moved");
+            //throw ISAException("Error - 301 - Site got moved");
+            return 301;
         }
         else
         {
-            throw std::runtime_error("Error - Not a 200 OK response.");
+            throw ISAException("Error - Not a 200 OK response.");
         }
     }
     return 0;
@@ -194,7 +220,7 @@ void HTTP::read_bytes(std::vector<char> &buffer, unsigned int size)
     if (buffer.size() < size) buffer.resize(size);
     if (receive(static_cast<char*>(buffer.data()), size) <= 0)
     {        
-        throw std::runtime_error("Error - reading bytes");
+        throw ISAException("Error - reading bytes");
     }
 }
 
@@ -206,7 +232,7 @@ std::string HTTP::read_sequence(std::vector<char> &buffer, const std::string &te
         char B;
         if (receive(static_cast<char*>(&B), 1) <= 0)
         {
-            throw std::runtime_error("Error - reading sequence");
+            throw ISAException("Error - reading sequence");
         }
         else
         {
@@ -256,14 +282,14 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(i
     {
         if (!SSL_CTX_load_verify_locations(ctx, args->sCertFileName().c_str(), NULL))
         {
-            throw std::runtime_error("Error - Loading Certificate File");
+            throw ISAException("Error - Loading Certificate File");
         }
     }
     else if (args->getCertfileFolderUsed())
     {
         if (!SSL_CTX_load_verify_locations(ctx, NULL, args->sCertFilesFolder().c_str()))
         {
-            throw std::runtime_error("Error - Loading Certificates from a folder");
+            throw ISAException("Error - Loading Certificates from a folder");
         }
     }
     else
@@ -271,7 +297,7 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(i
 
         if (!SSL_CTX_load_verify_locations(ctx, NULL, "/etc/ssl/certs/")) // default folder for certs
         {
-            throw std::runtime_error("Error - Loading cerificates from /etc/ssl/certs");
+            throw ISAException("Error - Loading cerificates from /etc/ssl/certs");
         }
 
     }
@@ -298,19 +324,19 @@ int HTTPS::initiateConnection()
     int sslresult = SSL_connect(ssl);
     if (sslresult != 1)
     {
-        throw std::runtime_error("Error - Start SSL connection error.");
+        throw ISAException("Error - Start SSL connection error.");
     }
 
     if (SSL_get_peer_certificate(ssl) != NULL)
     {
         if (SSL_get_verify_result(ssl) != X509_V_OK)
         {
-            throw std::runtime_error("Error - Invalid peer certificate.");
+            throw ISAException("Error - Invalid peer certificate.");
         }
     }
     else
     {
-        throw std::runtime_error("Error - Invalid peer certificate.");
+        throw ISAException("Error - Invalid peer certificate.");
     }
 
     return 0;
@@ -322,7 +348,7 @@ int HTTPS::send_request()
 
     if (SSL_write(ssl, headers.c_str(), headers.length()) <= 0)
     {
-        throw std::runtime_error("Error - SSL sending failed.");
+        throw ISAException("Error - SSL sending failed.");
     }
     return 0;
 }

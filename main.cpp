@@ -24,14 +24,14 @@ int main(int argc, char **argv)
                     DL(args, lineUrl);
                 }
             }
-            else throw std::runtime_error("Error - Feedfile is empty.");
+            else throw ISAException("Error - Feedfile is empty.");
         }
         else
         {
             return DL(args, args.sUrl());
         }
     }
-    catch (std::exception &e)
+    catch (ISAException &e)
     {
         std::cerr << e.what() << std::endl;
         return 1;
@@ -59,10 +59,13 @@ int DL(Arguments args, std::string mainUrl)
             downloader.download();
         }
     }
-    catch (std::runtime_error &e)
+    catch (ISAException &e)
     {
-        std::cerr << e.what() << std::endl;
-        return 1;
+        if (e.what() != "redirection complete")
+        {
+            std::cerr << e.what() << std::endl;
+            return 1;
+        }
     }
 
 

@@ -27,7 +27,7 @@ public:
         doc = xmlReadFile("output.xml", NULL, 0);
         if (doc == nullptr)
         {
-            throw std::runtime_error("Error - XML file could not be loaded.");
+            throw ISAException("Error - XML file could not be loaded.");
         }
     };
 
