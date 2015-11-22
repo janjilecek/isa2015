@@ -64,6 +64,12 @@ void Arguments::parseArgs(int argc, char **argv)
         exit(EXIT_FAILURE);
     }
 
+    if (getCertfileFolderUsed() && getCertfileUsed())
+    {
+        std::cerr << "Can't combine Certificate Folder and Certificate file" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
     if (feedfileUsed)
     {
         Gadgets g;

@@ -276,13 +276,14 @@ HTTP::~HTTP()
 
 HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args, int max_redir) : HTTP(inServer, inPath, max_redir)
 {
+    m_args = args;
     ctx = NULL;
     ssl = NULL;
     SSL_library_init();
     OpenSSL_add_all_algorithms();
 
     m_port = 443;
-    ctx = SSL_CTX_new(SSLv23_client_method());
+    ctx = SSL_CTX_new(TLSv1_2_client_method());
     if (args->getCertfileUsed())
     {
         if (!SSL_CTX_load_verify_locations(ctx, args->sCertFileName().c_str(), NULL))
@@ -307,6 +308,14 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args, int max_
 
     }
     SSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
+    SSL_CTX_set_options(ctx, SSL_OP_SINGLE_DH_USE);
+    SSL_CTX_get_cert_store(ctx);
+    certstore = X509_STORE_new();
+    if (m_args->getCertfileUsed()) X509_STORE_load_locations(certstore, m_args->sCertFileName().c_str(), NULL);
+    else if (m_args->getCertfileFolderUsed()) X509_STORE_load_locations(certstore, NULL, m_args->sCertFilesFolder().c_str());
+    else X509_STORE_load_locations(certstore, NULL, "/etc/ssl/certs/");
+    if (certstore == NULL) throw ISAException("Error - Certificate could not be loaded.");
+    SSL_CTX_set_cert_store(ctx, certstore);
 }
 
 HTTPS::~HTTPS()
@@ -326,12 +335,21 @@ int HTTPS::initiateConnection()
     ssl = SSL_new(ctx);
     SSL_set_mode(ssl, SSL_MODE_AUTO_RETRY);
     SSL_set_fd(ssl, m_sock);
+
     int sslresult = SSL_connect(ssl);
     if (sslresult != 1)
     {
+        ssl_print_error();
         throw ISAException("Error - Start SSL connection error.");
     }
 
+    ssl_print_error();
+
+    return 0;
+}
+
+void HTTPS::ssl_print_error()
+{
     if (SSL_get_peer_certificate(ssl) != NULL)
     {
         if (SSL_get_verify_result(ssl) != X509_V_OK)
@@ -343,8 +361,6 @@ int HTTPS::initiateConnection()
     {
         throw ISAException("Error - Invalid peer certificate.");
     }
-
-    return 0;
 }
 
 int HTTPS::send_request()

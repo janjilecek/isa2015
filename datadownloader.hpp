@@ -104,6 +104,7 @@ public:
 class HTTPS : virtual IDownload, public HTTP
 {
 private:
+    X509_STORE *certstore;
     SSL_CTX *ctx;
     SSL *ssl;
     BIO *bio;
@@ -114,4 +115,5 @@ public:
     virtual int receive(void *buf, int size);
     virtual int send_request();
     virtual int initiateConnection();
+    void ssl_print_error();
 };
