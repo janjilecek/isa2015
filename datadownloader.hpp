@@ -56,7 +56,6 @@ protected:
     struct hostent *m_info;
     int m_connection;
 
-    //copied from my IPK proj.1
     struct in_addr **addresses;
     struct sockaddr_in m_server;
     struct in_addr m_addr;

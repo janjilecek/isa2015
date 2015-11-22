@@ -2,30 +2,30 @@
 
 /**
  * @brief HTTP::initiateConnection
- * @return
+ * @return int with state of error
  */
 int HTTP::initiateConnection()
 {
-    m_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    m_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); // initiate socket
     if (m_sock < 0)
     {
         throw ISAException("Error - Socket init. failed.");
     }
 
-    m_info = gethostbyname(m_url.c_str());
+    m_info = gethostbyname(m_url.c_str()); // convert url
     if (m_info == nullptr)
     {
         throw ISAException("Error - IP translation failed.");
     }
 
-    addresses = (struct in_addr **) m_info->h_addr_list; // získání ip
+    addresses = (struct in_addr **) m_info->h_addr_list; // get ip
     for (int i = 0; addresses[i] != NULL; ++i) m_ip.assign(inet_ntoa(*addresses[i]));
     m_server.sin_family = AF_INET;
     m_server.sin_port = htons(m_port);
     m_addr.s_addr = inet_addr(m_ip.c_str());
     m_server.sin_addr = m_addr;
 
-    auto a = connect(m_sock, (struct sockaddr*) &m_server, sizeof(sockaddr_in)); // připojení k serveru
+    auto a = connect(m_sock, (struct sockaddr*) &m_server, sizeof(sockaddr_in)); // connection to the server
     if (a == -1)
     {
         close(m_sock);
@@ -36,13 +36,13 @@ int HTTP::initiateConnection()
 
 /**
  * @brief HTTP::send_request
- * @return
+ * @return int
  */
 int HTTP::send_request()
 {
-    std::string query = makeHeaders(m_url, m_path);
+    std::string query = makeHeaders(m_url, m_path); // prepare the headers
 
-    auto tmp = send(m_sock, query.c_str(), query.length(), 0);
+    auto tmp = send(m_sock, query.c_str(), query.length(), 0); // send request
     if (tmp == -1)
     {
         close(m_sock);
@@ -53,30 +53,30 @@ int HTTP::send_request()
 
 /**
  * @brief HTTP::get_headers
- * @return
+ * @return int
  */
 int HTTP::get_headers()
 {
 
     char buffer[1];
     int count;
-    std::string endHeaderSequence = "\r\n\r\n";
+    std::string endHeaderSequence = "\r\n\r\n"; // end headers string
     std::string endLine = "\r\n";
     std::string firstLine = "";
-    bool doOnce = true;
+    bool doOnce = true; // for first line check
     int resCheck = 0;
     while (errno == EINTR || (errno = 0, (count = receive(buffer, 1)) > 0))
 
     {
         if (count > 0)
         {
-            m_headers.append(buffer, count);
+            m_headers.append(buffer, count); // append to headers
             if (doOnce)
             {
                 firstLine.append(buffer, count);
                 if (Gadgets::contains_substring(firstLine, endLine))
                 {
-                    resCheck = httpResponseCheck(firstLine);
+                    resCheck = httpResponseCheck(firstLine); // check if we have 200 or 301, or error
                     doOnce = false;
                 }
             }
@@ -87,22 +87,22 @@ int HTTP::get_headers()
                 if (res == -1) m_chunked = true;
                 else m_contentLength = res; // or to use content-length
 
-                if (resCheck == 301)
+                if (resCheck == 301) // if we found 301 state
                 {
-                    std::string redirectUrl = Gadgets::find_location_on_redirect(m_headers);
+                    std::string redirectUrl = Gadgets::find_location_on_redirect(m_headers); // we find location which to redirect to
                     UrlDetail urldet(redirectUrl);
 
-                    if (m_maxRedir > 0)
+                    if (m_maxRedir > 0) // check if we still can redirect
                     {
                         if (urldet.port() == 80)
                         {
-                            HTTP downloader(urldet.server(), urldet.file(), m_maxRedir - 1);
+                            HTTP downloader(urldet.server(), urldet.file(), m_maxRedir - 1); // http
                             downloader.download();
                             throw ISAException(Gadgets::redirc);
                         }
                         else
                         {
-                            HTTPS downloader(urldet.server(), urldet.file(), m_args, m_maxRedir - 1);
+                            HTTPS downloader(urldet.server(), urldet.file(), m_args, m_maxRedir - 1); // ssl
                             downloader.download();
                             throw ISAException(Gadgets::redirc);
                         }
@@ -127,22 +127,22 @@ int HTTP::get_headers()
 
 /**
  * @brief HTTP::get_content
- * @return
+ * @return string with content
  */
 std::string HTTP::get_content()
 {
     std::string line;
     if (m_chunked)
     {
-        short endLnSize = 2;
+        short endLnSize = 2; // overlapping characters
         std::vector<char> data;
         unsigned long chunkSize = 1;
         while (chunkSize - endLnSize)
         {
-            line = get_line();
+            line = get_line(); // get one line
             try
             {
-                chunkSize = std::stol(line, nullptr, 16) + endLnSize;
+                chunkSize = std::stol(line, nullptr, 16) + endLnSize; // convert chunk size from string to long int
             }
             catch (std::invalid_argument& e)
             {
@@ -152,36 +152,36 @@ std::string HTTP::get_content()
             if (chunkSize - endLnSize)
             {
                 std::vector<char> tmp;
-                read_bytes(tmp, chunkSize);
-                data.insert(data.end(), tmp.begin(), tmp.end() - endLnSize);
+                read_bytes(tmp, chunkSize); // read bytes
+                data.insert(data.end(), tmp.begin(), tmp.end() - endLnSize); // we append the retrieved byte
             }
         }
-        return std::string(data.begin(), data.end());
+        return std::string(data.begin(), data.end()); // after we are done we convert vector of bytes to a string
     }
     else
     {
         std::string out = "";
         std::vector<char> tmp;
-        read_bytes(tmp, m_contentLength);
-        out.append(tmp.begin(), tmp.end());
-        return out;
+        read_bytes(tmp, m_contentLength); // else the same thing, but without finding chunk size
+        out.append(tmp.begin(), tmp.end()); // append downloaded bytes
+        return out; // return string
     }
     return "";
 }
 
 /**
  * @brief HTTP::download
- * @return
+ * @return int
  */
 int HTTP::download()
 {
-    initiateConnection();
-    send_request();
-    get_headers();
-    std::string s =  get_content();
+    initiateConnection(); // connection init
+    send_request(); // send request with headers
+    get_headers(); // get headers, find if chunked, redirection etc.
+    std::string s =  get_content(); // save the content
 
     std::ofstream out("output.xml");
-    out << s;
+    out << s; // save to file
     out.close();
 
     return 0;
@@ -190,7 +190,7 @@ int HTTP::download()
 /**
  * @brief HTTP::httpResponseCheck
  * @param in
- * @return
+ * @return int, 0 not specified, 200 if ok and 301 if redirection
  */
 int HTTP::httpResponseCheck(std::string& in)
 {
@@ -222,18 +222,18 @@ int HTTP::httpResponseCheck(std::string& in)
  * @brief HTTP::receive
  * @param buf
  * @param size
- * @return
+ * @return int of received bytes
  */
 int HTTP::receive(void *buf, int size)
 {
-    return recv(m_sock, buf, size, 0x100);
+    return recv(m_sock, buf, size, 0x100); // read and wait for all
 }
 
 /**
  * @brief HTTP::makeHeaders
  * @param server
  * @param path
- * @return
+ * @return string with created headers
  */
 std::string HTTP::makeHeaders(std::string server, std::string path)
 {
@@ -256,8 +256,8 @@ std::string HTTP::makeHeaders(std::string server, std::string path)
  */
 void HTTP::read_bytes(std::vector<char> &buffer, unsigned int size)
 {
-    if (buffer.size() < size) buffer.resize(size);
-    if (receive(static_cast<char*>(buffer.data()), size) <= 0)
+    if (buffer.size() < size) buffer.resize(size); // resize if needed
+    if (receive(static_cast<char*>(buffer.data()), size) <= 0) // receive the bytes
     {        
         throw ISAException("Error - reading bytes");
     }
@@ -267,7 +267,7 @@ void HTTP::read_bytes(std::vector<char> &buffer, unsigned int size)
  * @brief HTTP::read_sequence
  * @param buffer
  * @param text
- * @return
+ * @return string with read sequence
  */
 std::string HTTP::read_sequence(std::vector<char> &buffer, const std::string &text)
 {
@@ -275,27 +275,27 @@ std::string HTTP::read_sequence(std::vector<char> &buffer, const std::string &te
     do
     {
         char B;
-        if (receive(static_cast<char*>(&B), 1) <= 0)
+        if (receive(static_cast<char*>(&B), 1) <= 0) // receive one char byte
         {
             throw ISAException("Error - reading sequence");
         }
         else
         {
-            buffer.push_back(B);
+            buffer.push_back(B); // push back into vector of bytes
         }
-        test = std::string(buffer.begin(), buffer.end());
-    } while (!Gadgets::contains_substring(test, text));
+        test = std::string(buffer.begin(), buffer.end()); // if we found what we needed
+    } while (!Gadgets::contains_substring(test, text)); // end
     return std::string(buffer.begin(), buffer.end());
 }
 
 /**
  * @brief HTTP::get_line
- * @return
+ * @return string with retrieved line
  */
 std::string HTTP::get_line()
 {
     std::vector<char> buffer;
-    std::string a = read_sequence(buffer, "\r\n");
+    std::string a = read_sequence(buffer, "\r\n"); // reads until endline sequence
     return a;
 }
 
@@ -337,20 +337,20 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args, int max_
     ctx = NULL;
     ssl = NULL;
     SSL_library_init();
-    OpenSSL_add_all_algorithms();
+    OpenSSL_add_all_algorithms(); // requited initialization functions
 
-    m_port = 443;
-    ctx = SSL_CTX_new(SSLv23_client_method());
-    if (args->getCertfileUsed())
+    m_port = 443; // port for SSL
+    ctx = SSL_CTX_new(SSLv23_client_method()); // for better compatibility
+    if (args->getCertfileUsed()) // if we are using certfile
     {
-        if (!SSL_CTX_load_verify_locations(ctx, args->sCertFileName().c_str(), NULL))
+        if (!SSL_CTX_load_verify_locations(ctx, args->sCertFileName().c_str(), NULL)) // test the file
         {
             throw ISAException("Error - Loading Certificate File");
         }
     }
-    else if (args->getCertfileFolderUsed())
+    else if (args->getCertfileFolderUsed()) // if we are using a folder
     {
-        if (!SSL_CTX_load_verify_locations(ctx, NULL, args->sCertFilesFolder().c_str()))
+        if (!SSL_CTX_load_verify_locations(ctx, NULL, args->sCertFilesFolder().c_str())) // test the folder
         {
             throw ISAException("Error - Loading Certificates from a folder");
         }
@@ -366,13 +366,13 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args, int max_
     }
     SSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
     SSL_CTX_set_options(ctx, SSL_OP_SINGLE_DH_USE);
-    SSL_CTX_get_cert_store(ctx);
-    certstore = X509_STORE_new();
-    if (m_args->getCertfileUsed()) X509_STORE_load_locations(certstore, m_args->sCertFileName().c_str(), NULL);
-    else if (m_args->getCertfileFolderUsed()) X509_STORE_load_locations(certstore, NULL, m_args->sCertFilesFolder().c_str());
-    else X509_STORE_load_locations(certstore, NULL, "/etc/ssl/certs/");
-    if (certstore == NULL) throw ISAException("Error - Certificate could not be loaded.");
-    SSL_CTX_set_cert_store(ctx, certstore);
+    SSL_CTX_get_cert_store(ctx); // set up a store
+    certstore = X509_STORE_new(); // create a new one
+    if (m_args->getCertfileUsed()) X509_STORE_load_locations(certstore, m_args->sCertFileName().c_str(), NULL); // if we use file, test again
+    else if (m_args->getCertfileFolderUsed()) X509_STORE_load_locations(certstore, NULL, m_args->sCertFilesFolder().c_str()); // test folder
+    else X509_STORE_load_locations(certstore, NULL, "/etc/ssl/certs/"); // else load default location
+    if (certstore == NULL) throw ISAException("Error - Certificate could not be loaded."); // error, throw ISAException
+    SSL_CTX_set_cert_store(ctx, certstore); // set up the store with ctx
 }
 
 HTTPS::~HTTPS()
@@ -387,7 +387,7 @@ HTTPS::~HTTPS()
 
 /**
  * @brief HTTPS::initiateConnection
- * @return
+ * @return int
  */
 int HTTPS::initiateConnection()
 {
@@ -397,10 +397,10 @@ int HTTPS::initiateConnection()
     SSL_set_mode(ssl, SSL_MODE_AUTO_RETRY);
     SSL_set_fd(ssl, m_sock);
 
-    int sslresult = SSL_connect(ssl);
+    int sslresult = SSL_connect(ssl); // new ssl connection
     if (sslresult != 1)
     {
-        ssl_print_error();
+        ssl_print_error(); // print the error, try certs
         throw ISAException("Error - Start SSL connection error.");
     }
 
@@ -416,7 +416,7 @@ void HTTPS::ssl_print_error()
 {
     if (SSL_get_peer_certificate(ssl) != NULL)
     {
-        if (SSL_get_verify_result(ssl) != X509_V_OK)
+        if (SSL_get_verify_result(ssl) != X509_V_OK) // if the cert was not ok
         {
             throw ISAException("Error - Invalid peer certificate.");
         }
@@ -433,9 +433,9 @@ void HTTPS::ssl_print_error()
  */
 int HTTPS::send_request()
 {
-    std::string headers = makeHeaders(m_url, m_path);
+    std::string headers = makeHeaders(m_url, m_path); // make header string
 
-    if (SSL_write(ssl, headers.c_str(), headers.length()) <= 0)
+    if (SSL_write(ssl, headers.c_str(), headers.length()) <= 0) // write the data
     {
         throw ISAException("Error - SSL sending failed.");
     }
@@ -446,11 +446,11 @@ int HTTPS::send_request()
  * @brief HTTPS::receive
  * @param buf
  * @param size
- * @return
+ * @return int with received bytes
  */
 int HTTPS::receive(void *buf, int size)
 {
     int rec = 0;
-    while (rec != size) rec +=  SSL_read(ssl, static_cast<char*>(buf) + rec, size - rec);
+    while (rec != size) rec +=  SSL_read(ssl, static_cast<char*>(buf) + rec, size - rec); // read until there is something to read
     return rec;
 }

@@ -12,7 +12,7 @@ void Arguments::parseArgs(int argc, char **argv)
         printHelp();
         exit(EXIT_FAILURE);
     }
-    while ((opt = getopt(argc, argv, "uaTlf:c:C:")) != -1)
+    while ((opt = getopt(argc, argv, "uaTlf:c:C:")) != -1) // specified arguments with options or without
     {
         switch (opt)
         {
@@ -57,24 +57,24 @@ void Arguments::parseArgs(int argc, char **argv)
                 exit(EXIT_FAILURE);
             }
             countNonOption++;
-            m_sUrl = argv[optind++];
+            m_sUrl = argv[optind++]; // save the url address
             setUrlUsed(true);
         }
     }
 
-    if (getFeedfileUsed() && getUrlUsed())
+    if (getFeedfileUsed() && getUrlUsed()) // bad combination
     {
         std::cerr << "Can't combine URL and FeedFile" << std::endl;
         exit(EXIT_FAILURE);
     }
 
-    if (getCertfileFolderUsed() && getCertfileUsed())
+    if (getCertfileFolderUsed() && getCertfileUsed()) // bad combination
     {
         std::cerr << "Can't combine Certificate Folder and Certificate file" << std::endl;
         exit(EXIT_FAILURE);
     }
 
-    if (feedfileUsed)
+    if (feedfileUsed) // if we use feedfile, we load the urls into a vector
     {
         Gadgets g;
         g.loadFileIntoVector(sFeedFile(), &urls);
@@ -85,7 +85,7 @@ void Arguments::parseArgs(int argc, char **argv)
 
 /**
  * @brief Arguments::getUrlUsed
- * @return
+ * @return true if url is specified
  */
 bool Arguments::getUrlUsed() const
 {
@@ -103,7 +103,7 @@ void Arguments::setUrlUsed(bool value)
 
 /**
  * @brief Arguments::sUrl
- * @return
+ * @return string with url
  */
 std::string Arguments::sUrl() const
 {
@@ -121,7 +121,7 @@ void Arguments::setSUrl(const std::string &sUrl)
 
 /**
  * @brief Arguments::sCertFileName
- * @return
+ * @return string with certificate filename
  */
 std::string Arguments::sCertFileName() const
 {
@@ -139,7 +139,7 @@ void Arguments::setSCertFileName(const std::string &sCertFileName)
 
 /**
  * @brief Arguments::sCertFilesFolder
- * @return
+ * @return string with the name of the certificates folder
  */
 std::string Arguments::sCertFilesFolder() const
 {
@@ -157,7 +157,7 @@ void Arguments::setSCertFilesFolder(const std::string &sCertFilesFolder)
 
 /**
  * @brief Arguments::sFeedFile
- * @return
+ * @return string with the filename of the feedfile
  */
 std::string Arguments::sFeedFile() const
 {
@@ -175,7 +175,7 @@ void Arguments::setSFeedFile(const std::string &sFeedFile)
 
 /**
  * @brief Arguments::getUrls
- * @return
+ * @return vector with strings of urls
  */
 std::vector<std::string> Arguments::getUrls() const
 {
@@ -201,7 +201,7 @@ void Arguments::printHelp()
 }
 /**
  * @brief Arguments::getCertfileUsed
- * @return
+ * @return true if certifcate file is used
  */
 bool Arguments::getCertfileUsed() const
 {
@@ -219,7 +219,7 @@ void Arguments::setCertfileUsed(bool value)
 
 /**
  * @brief Arguments::getCertfileFolderUsed
- * @return
+ * @return true if certificate folder is used
  */
 bool Arguments::getCertfileFolderUsed() const
 {
@@ -237,7 +237,7 @@ void Arguments::setCertfileFolderUsed(bool value)
 
 /**
  * @brief Arguments::getAktualizace
- * @return
+ * @return true if we will print time
  */
 bool Arguments::getAktualizace() const
 {
@@ -255,7 +255,7 @@ void Arguments::setAktualizace(bool value)
 
 /**
  * @brief Arguments::getAutor
- * @return
+ * @return trrue if we print author
  */
 bool Arguments::getAutor() const
 {
@@ -273,7 +273,7 @@ autor = value;
 
 /**
  * @brief Arguments::getUrl
- * @return
+ * @return true if we print url
  */
 bool Arguments::getUrl() const
 {
@@ -291,7 +291,7 @@ url = value;
 
 /**
  * @brief Arguments::getLatest
- * @return
+ * @return true if we print only the latest
  */
 bool Arguments::getLatest() const
 {
@@ -309,7 +309,7 @@ void Arguments::setLatest(bool value)
 
 /**
  * @brief Arguments::getFeedfileUsed
- * @return
+ * @return true if we used feedfile
  */
 bool Arguments::getFeedfileUsed() const
 {

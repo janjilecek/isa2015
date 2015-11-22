@@ -13,7 +13,6 @@ std::string xmlViewer::dumpXML()
  */
 void xmlViewer::loadTree()
 {
-    //TODO error checking
     root = xmlDocGetRootElement(doc);
     elements(root);
 }
