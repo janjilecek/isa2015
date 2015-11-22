@@ -3,7 +3,7 @@
 /**
  * @brief strToChar
  * @param s
- * @return
+ * @return char*
  */
 char* strToChar(std::string s)
 {
@@ -53,7 +53,7 @@ void urlParser::parse(const string& url_s)
 }
 /**
  * @brief urlParser::query
- * @return
+ * @return string with query
  */
 std::string urlParser::query() const
 {
@@ -71,7 +71,7 @@ void urlParser::setQuery(const std::string &query)
 
 /**
  * @brief urlParser::path
- * @return
+ * @return string with path
  */
 std::string urlParser::path() const
 {
@@ -87,7 +87,7 @@ void urlParser::setPath(const std::string &path)
 }
 /**
  * @brief urlParser::host
- * @return
+ * @return string with host
  */
 std::string urlParser::host() const
 {
@@ -103,7 +103,7 @@ void urlParser::setHost(const std::string &host)
 }
 /**
  * @brief urlParser::protocol
- * @return
+ * @return string with protocol
  */
 std::string urlParser::protocol() const
 {
@@ -135,7 +135,7 @@ std::string Gadgets::redirc = "redirection complete";
  * @brief Gadgets::contains_substring
  * @param input
  * @param seq
- * @return
+ * @return true if we found the desired substring
  */
 bool Gadgets::contains_substring(std::string& input, std::string seq)
 {
@@ -145,7 +145,7 @@ bool Gadgets::contains_substring(std::string& input, std::string seq)
 /**
  * @brief Gadgets::find_chunked
  * @param content
- * @return
+ * @return int, size in bytes if static, -1 if chunked
  */
 int Gadgets::find_chunked(std::string& content)
 {
@@ -165,12 +165,12 @@ int Gadgets::find_chunked(std::string& content)
         std::string endl = "\r\n";
         if (contains_substring(content, seq))
         {
-            auto start = std::search(content.begin(), content.end(), seq.begin(), seq.end());
-            auto end = std::search(start, content.end(), endl.begin(), endl.end());
-            std::string num(start+seq.length(), end);
+            auto start = std::search(content.begin(), content.end(), seq.begin(), seq.end()); // beginning of the sequence
+            auto end = std::search(start, content.end(), endl.begin(), endl.end()); // end of it
+            std::string num(start+seq.length(), end); // we need only the value after the found text
             std::stringstream ss(num);
-            ss >> retVal;
-            content = backup;
+            ss >> retVal; // convert to int
+            content = backup; // renew
             return retVal;
         }
     }
@@ -181,7 +181,7 @@ int Gadgets::find_chunked(std::string& content)
 /**
  * @brief Gadgets::find_location_on_redirect
  * @param content
- * @return
+ * @return string with address of the redirection
  */
 string Gadgets::find_location_on_redirect(string &content)
 {
@@ -189,9 +189,9 @@ string Gadgets::find_location_on_redirect(string &content)
     std::string endl = "\r\n";
     if (contains_substring(content, seq))
     {
-        auto start = std::search(content.begin(), content.end(), seq.begin(), seq.end());
-        auto end = std::search(start, content.end(), endl.begin(), endl.end());
-        std::string retStr(start+seq.length(), end);
+        auto start = std::search(content.begin(), content.end(), seq.begin(), seq.end()); // begininning
+        auto end = std::search(start, content.end(), endl.begin(), endl.end()); // the end
+        std::string retStr(start+seq.length(), end); // only the location
         std::stringstream ss(retStr);
         return ss.str();
     }
@@ -213,7 +213,7 @@ void Gadgets::loadFileIntoVector(string filename, std::vector<string> *urls)
         {
             if (line.find("#") != 0) // if string doesnt start with hash
             {
-                (*urls).push_back(line);
+                (*urls).push_back(line); // add the line
             }
         }
         feedfile.close();
@@ -227,7 +227,7 @@ void Gadgets::loadFileIntoVector(string filename, std::vector<string> *urls)
 
 /**
  * @brief UrlDetail::port
- * @return
+ * @return int with port
  */
 int UrlDetail::port() const
 {
@@ -235,7 +235,7 @@ int UrlDetail::port() const
 }
 /**
  * @brief UrlDetail::path
- * @return
+ * @return string with path
  */
 std::string UrlDetail::path() const
 {
@@ -243,7 +243,7 @@ std::string UrlDetail::path() const
 }
 /**
  * @brief UrlDetail::server
- * @return
+ * @return string with server
  */
 std::string UrlDetail::server() const
 {
@@ -252,7 +252,7 @@ std::string UrlDetail::server() const
 
 /**
  * @brief UrlDetail::query
- * @return
+ * @return string with query
  */
 std::string UrlDetail::query() const
 {
@@ -260,7 +260,7 @@ std::string UrlDetail::query() const
 }
 /**
  * @brief UrlDetail::file
- * @return
+ * @return string with filename
  */
 string UrlDetail::file() const
 {
