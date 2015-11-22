@@ -1,0 +1,1584 @@
+*** IETF Agendas ***
+agenda-94-nmrg
+URL: http://tools.ietf.org/agenda/94/agenda-94-nmrg.html
+Aktualizace: 2015-11-17T14:50:07Z
+Autor: Agenda-94-nmrg Chairs
+
+agenda-94-hopsrg
+URL: http://tools.ietf.org/agenda/94/agenda-94-hopsrg.html
+Aktualizace: 2015-11-13T10:47:58Z
+Autor: Agenda-94-hopsrg Chairs
+
+agenda-94-perc
+URL: http://tools.ietf.org/agenda/94/agenda-94-perc.html
+Aktualizace: 2015-11-06T03:02:34Z
+Autor: Agenda-94-perc Chairs
+
+agenda-94-mif
+URL: http://tools.ietf.org/agenda/94/agenda-94-mif.html
+Aktualizace: 2015-11-05T09:39:16Z
+Autor: Agenda-94-mif Chairs
+
+agenda-94-intarea
+URL: http://tools.ietf.org/agenda/94/agenda-94-intarea.html
+Aktualizace: 2015-11-05T07:58:33Z
+Autor: Agenda-94-intarea Chairs
+
+agenda-94-l3sm
+URL: http://tools.ietf.org/agenda/94/agenda-94-l3sm.html
+Aktualizace: 2015-11-05T07:40:28Z
+Autor: Agenda-94-l3sm Chairs
+
+agenda-94-sidr
+URL: http://tools.ietf.org/agenda/94/agenda-94-sidr.html
+Aktualizace: 2015-11-05T07:32:13Z
+Autor: Agenda-94-sidr Chairs
+
+agenda-94-roll
+URL: http://tools.ietf.org/agenda/94/agenda-94-roll.html
+Aktualizace: 2015-11-05T07:29:00Z
+Autor: Agenda-94-roll Chairs
+
+agenda-94-tsvwg
+URL: http://tools.ietf.org/agenda/94/agenda-94-tsvwg.html
+Aktualizace: 2015-11-05T07:08:56Z
+Autor: Agenda-94-tsvwg Chairs
+
+agenda-94-rmcat
+URL: http://tools.ietf.org/agenda/94/agenda-94-rmcat.html
+Aktualizace: 2015-11-05T04:19:34Z
+Autor: Agenda-94-rmcat Chairs
+
+agenda-94-opsarea
+URL: http://tools.ietf.org/agenda/94/agenda-94-opsarea.html
+Aktualizace: 2015-11-05T03:59:35Z
+Autor: Agenda-94-opsarea Chairs
+
+agenda-94-eppext
+URL: http://tools.ietf.org/agenda/94/agenda-94-eppext.html
+Aktualizace: 2015-11-05T03:05:38Z
+Autor: Agenda-94-eppext Chairs
+
+agenda-94-dhc
+URL: http://tools.ietf.org/agenda/94/agenda-94-dhc.html
+Aktualizace: 2015-11-05T02:21:54Z
+Autor: Agenda-94-dhc Chairs
+
+agenda-94-isis
+URL: http://tools.ietf.org/agenda/94/agenda-94-isis.html
+Aktualizace: 2015-11-04T22:25:19Z
+Autor: Agenda-94-isis Chairs
+
+agenda-94-dnsop
+URL: http://tools.ietf.org/agenda/94/agenda-94-dnsop.html
+Aktualizace: 2015-11-04T20:09:51Z
+Autor: Agenda-94-dnsop Chairs
+
+agenda-94-6lo
+URL: http://tools.ietf.org/agenda/94/agenda-94-6lo.html
+Aktualizace: 2015-11-04T08:21:27Z
+Autor: Agenda-94-6lo Chairs
+
+agenda-94-xrblock
+URL: http://tools.ietf.org/agenda/94/agenda-94-xrblock.html
+Aktualizace: 2015-11-04T05:05:25Z
+Autor: Agenda-94-xrblock Chairs
+
+IETF
+URL: http://tools.ietf.org/agenda/94/IETF.html
+Aktualizace: 2015-11-04T04:40:04Z
+Autor: IETF Secretariat
+
+agenda-94-ietf-plenary
+URL: http://tools.ietf.org/agenda/94/agenda-94-ietf-plenary.html
+Aktualizace: 2015-11-04T04:38:59Z
+Autor: Agenda-94-ietf-plenary Chairs
+
+agenda-94-tcpinc
+URL: http://tools.ietf.org/agenda/94/agenda-94-tcpinc.html
+Aktualizace: 2015-11-04T00:24:59Z
+Autor: Agenda-94-tcpinc Chairs
+
+agenda-94-netconf
+URL: http://tools.ietf.org/agenda/94/agenda-94-netconf.html
+Aktualizace: 2015-11-03T23:50:35Z
+Autor: Agenda-94-netconf Chairs
+
+agenda-94-mpls
+URL: http://tools.ietf.org/agenda/94/agenda-94-mpls.html
+Aktualizace: 2015-11-03T21:11:15Z
+Autor: Agenda-94-mpls Chairs
+
+agenda-94-sfc
+URL: http://tools.ietf.org/agenda/94/agenda-94-sfc.html
+Aktualizace: 2015-11-03T14:15:29Z
+Autor: Agenda-94-sfc Chairs
+
+agenda-94-softwire
+URL: http://tools.ietf.org/agenda/94/agenda-94-softwire.html
+Aktualizace: 2015-11-03T13:18:10Z
+Autor: Agenda-94-softwire Chairs
+
+agenda-94-cose
+URL: http://tools.ietf.org/agenda/94/agenda-94-cose.html
+Aktualizace: 2015-11-03T05:33:47Z
+Autor: Agenda-94-cose Chairs
+
+agenda-94-6man
+URL: http://tools.ietf.org/agenda/94/agenda-94-6man.html
+Aktualizace: 2015-11-03T05:16:52Z
+Autor: Agenda-94-6man Chairs
+
+agenda-94-dispatch
+URL: http://tools.ietf.org/agenda/94/agenda-94-dispatch.html
+Aktualizace: 2015-11-03T05:03:51Z
+Autor: Agenda-94-dispatch Chairs
+
+agenda-94-ippm
+URL: http://tools.ietf.org/agenda/94/agenda-94-ippm.html
+Aktualizace: 2015-11-03T05:01:21Z
+Autor: Agenda-94-ippm Chairs
+
+agenda-94-supa
+URL: http://tools.ietf.org/agenda/94/agenda-94-supa.html
+Aktualizace: 2015-11-03T02:05:15Z
+Autor: Agenda-94-supa Chairs
+
+agenda-94-radext
+URL: http://tools.ietf.org/agenda/94/agenda-94-radext.html
+Aktualizace: 2015-11-03T02:01:22Z
+Autor: Agenda-94-radext Chairs
+
+agenda-94-webpush
+URL: http://tools.ietf.org/agenda/94/agenda-94-webpush.html
+Aktualizace: 2015-11-03T00:15:02Z
+Autor: Agenda-94-webpush Chairs
+
+agenda-94-teas
+URL: http://tools.ietf.org/agenda/94/agenda-94-teas.html
+Aktualizace: 2015-11-02T20:45:30Z
+Autor: Agenda-94-teas Chairs
+
+agenda-94-tcpm
+URL: http://tools.ietf.org/agenda/94/agenda-94-tcpm.html
+Aktualizace: 2015-11-02T15:17:35Z
+Autor: Agenda-94-tcpm Chairs
+
+agenda-94-homenet
+URL: http://tools.ietf.org/agenda/94/agenda-94-homenet.html
+Aktualizace: 2015-11-02T13:52:21Z
+Autor: Agenda-94-homenet Chairs
+
+agenda-94-core
+URL: http://tools.ietf.org/agenda/94/agenda-94-core.html
+Aktualizace: 2015-11-02T10:05:54Z
+Autor: Agenda-94-core Chairs
+
+agenda-94-netmod
+URL: http://tools.ietf.org/agenda/94/agenda-94-netmod.html
+Aktualizace: 2015-11-02T09:58:08Z
+Autor: Agenda-94-netmod Chairs
+
+agenda-94-trill
+URL: http://tools.ietf.org/agenda/94/agenda-94-trill.html
+Aktualizace: 2015-11-02T09:39:51Z
+Autor: Agenda-94-trill Chairs
+
+agenda-94-i2nsf
+URL: http://tools.ietf.org/agenda/94/agenda-94-i2nsf.html
+Aktualizace: 2015-11-02T08:35:56Z
+Autor: Agenda-94-i2nsf Chairs
+
+agenda-94-taps
+URL: http://tools.ietf.org/agenda/94/agenda-94-taps.html
+Aktualizace: 2015-11-02T06:42:56Z
+Autor: Agenda-94-taps Chairs
+
+agenda-94-t2trg
+URL: http://tools.ietf.org/agenda/94/agenda-94-t2trg.html
+Aktualizace: 2015-11-02T05:03:19Z
+Autor: Agenda-94-t2trg Chairs
+
+agenda-94-hrpc
+URL: http://tools.ietf.org/agenda/94/agenda-94-hrpc.html
+Aktualizace: 2015-11-02T04:10:38Z
+Autor: Agenda-94-hrpc Chairs
+
+agenda-94-pals
+URL: http://tools.ietf.org/agenda/94/agenda-94-pals.html
+Aktualizace: 2015-11-02T03:50:47Z
+Autor: Agenda-94-pals Chairs
+
+agenda-94-nmlrg
+URL: http://tools.ietf.org/agenda/94/agenda-94-nmlrg.html
+Aktualizace: 2015-11-02T03:23:40Z
+Autor: Agenda-94-nmlrg Chairs
+
+agenda-94-httpbis
+URL: http://tools.ietf.org/agenda/94/agenda-94-httpbis.html
+Aktualizace: 2015-11-02T01:58:19Z
+Autor: Agenda-94-httpbis Chairs
+
+agenda-94-grow
+URL: http://tools.ietf.org/agenda/94/agenda-94-grow.html
+Aktualizace: 2015-11-02T01:28:38Z
+Autor: Agenda-94-grow Chairs
+
+agenda-94-tls
+URL: http://tools.ietf.org/agenda/94/agenda-94-tls.html
+Aktualizace: 2015-11-02T01:10:33Z
+Autor: Agenda-94-tls Chairs
+
+agenda-94-dime
+URL: http://tools.ietf.org/agenda/94/agenda-94-dime.html
+Aktualizace: 2015-11-02T00:53:16Z
+Autor: Agenda-94-dime Chairs
+
+agenda-94-dnssd
+URL: http://tools.ietf.org/agenda/94/agenda-94-dnssd.html
+Aktualizace: 2015-11-01T23:36:46Z
+Autor: Agenda-94-dnssd Chairs
+
+agenda-94-mptcp
+URL: http://tools.ietf.org/agenda/94/agenda-94-mptcp.html
+Aktualizace: 2015-11-01T23:03:23Z
+Autor: Agenda-94-mptcp Chairs
+
+agenda-94-sdnrg
+URL: http://tools.ietf.org/agenda/94/agenda-94-sdnrg.html
+Aktualizace: 2015-11-01T21:34:13Z
+Autor: Agenda-94-sdnrg Chairs
+
+
+*** The Daily Dose of IETF ***
+The Daily Dose of IETF - Issue 2463 - 2015-11-20
+URL: http://tools.ietf.org/dailydose/2463.html
+Aktualizace: 2015-11-20T05:00:52Z
+
+The Daily Dose of IETF - Issue 2462 - 2015-11-19
+URL: http://tools.ietf.org/dailydose/2462.html
+Aktualizace: 2015-11-19T05:00:53Z
+
+The Daily Dose of IETF - Issue 2461 - 2015-11-18
+URL: http://tools.ietf.org/dailydose/2461.html
+Aktualizace: 2015-11-18T05:00:44Z
+
+The Daily Dose of IETF - Issue 2460 - 2015-11-17
+URL: http://tools.ietf.org/dailydose/2460.html
+Aktualizace: 2015-11-17T05:00:44Z
+
+The Daily Dose of IETF - Issue 2459 - 2015-11-16
+URL: http://tools.ietf.org/dailydose/2459.html
+Aktualizace: 2015-11-16T05:00:48Z
+
+The Daily Dose of IETF - Issue 2458 - 2015-11-13
+URL: http://tools.ietf.org/dailydose/2458.html
+Aktualizace: 2015-11-13T05:00:54Z
+
+The Daily Dose of IETF - Issue 2457 - 2015-11-12
+URL: http://tools.ietf.org/dailydose/2457.html
+Aktualizace: 2015-11-12T05:00:48Z
+
+The Daily Dose of IETF - Issue 2456 - 2015-11-11
+URL: http://tools.ietf.org/dailydose/2456.html
+Aktualizace: 2015-11-11T05:03:02Z
+
+The Daily Dose of IETF - Issue 2455 - 2015-11-10
+URL: http://tools.ietf.org/dailydose/2455.html
+Aktualizace: 2015-11-10T05:00:44Z
+
+The Daily Dose of IETF - Issue 2454 - 2015-11-09
+URL: http://tools.ietf.org/dailydose/2454.html
+Aktualizace: 2015-11-09T05:00:43Z
+
+The Daily Dose of IETF - Issue 2453 - 2015-11-06
+URL: http://tools.ietf.org/dailydose/2453.html
+Aktualizace: 2015-11-06T05:00:58Z
+
+The Daily Dose of IETF - Issue 2452 - 2015-11-05
+URL: http://tools.ietf.org/dailydose/2452.html
+Aktualizace: 2015-11-05T05:02:37Z
+
+The Daily Dose of IETF - Issue 2451 - 2015-11-04
+URL: http://tools.ietf.org/dailydose/2451.html
+Aktualizace: 2015-11-04T05:01:56Z
+
+The Daily Dose of IETF - Issue 2450 - 2015-11-03
+URL: http://tools.ietf.org/dailydose/2450.html
+Aktualizace: 2015-11-03T05:02:30Z
+
+The Daily Dose of IETF - Issue 2449 - 2015-11-02
+URL: http://tools.ietf.org/dailydose/2449.html
+Aktualizace: 2015-11-02T05:00:47Z
+
+The Daily Dose of IETF - Issue 2448 - 2015-10-30
+URL: http://tools.ietf.org/dailydose/2448.html
+Aktualizace: 2015-10-30T05:00:54Z
+
+The Daily Dose of IETF - Issue 2447 - 2015-10-29
+URL: http://tools.ietf.org/dailydose/2447.html
+Aktualizace: 2015-10-29T05:00:51Z
+
+The Daily Dose of IETF - Issue 2446 - 2015-10-28
+URL: http://tools.ietf.org/dailydose/2446.html
+Aktualizace: 2015-10-28T05:00:55Z
+
+The Daily Dose of IETF - Issue 2445 - 2015-10-27
+URL: http://tools.ietf.org/dailydose/2445.html
+Aktualizace: 2015-10-27T05:01:00Z
+
+The Daily Dose of IETF - Issue 2444 - 2015-10-26
+URL: http://tools.ietf.org/dailydose/2444.html
+Aktualizace: 2015-10-26T05:01:23Z
+
+
+*** Wikipedia  - Recent changes [en] ***
+Talk:Lynching in the United States
+URL: https://en.wikipedia.org/w/index.php?title=Talk:Lynching_in_the_United_States&diff=691894382&oldid=691893866
+Aktualizace: 2015-11-22T22:09:36Z
+
+Magnus Carlsen
+URL: https://en.wikipedia.org/w/index.php?title=Magnus_Carlsen&diff=691894381&oldid=691693570
+Aktualizace: 2015-11-22T22:09:36Z
+
+Pieter Gerkens
+URL: https://en.wikipedia.org/w/index.php?title=Pieter_Gerkens&diff=691894379&oldid=681461566
+Aktualizace: 2015-11-22T22:09:36Z
+
+List of highest grossing South Indian films
+URL: https://en.wikipedia.org/w/index.php?title=List_of_highest_grossing_South_Indian_films&diff=691894378&oldid=691842997
+Aktualizace: 2015-11-22T22:09:35Z
+
+Assemblies of God USA
+URL: https://en.wikipedia.org/w/index.php?title=Assemblies_of_God_USA&diff=691894376&oldid=680595597
+Aktualizace: 2015-11-22T22:09:34Z
+
+Admail.net
+URL: https://en.wikipedia.org/w/index.php?title=Admail.net&diff=691894374&oldid=691893604
+Aktualizace: 2015-11-22T22:09:33Z
+
+Urban America Television
+URL: https://en.wikipedia.org/w/index.php?title=Urban_America_Television&diff=691894375&oldid=691894296
+Aktualizace: 2015-11-22T22:09:33Z
+
+User:L Wolfman
+URL: https://en.wikipedia.org/wiki/User:L_Wolfman
+Aktualizace: 2015-11-22T22:09:33Z
+
+List of Dora the Explorer episodes
+URL: https://en.wikipedia.org/w/index.php?title=List_of_Dora_the_Explorer_episodes&diff=691894373&oldid=691888131
+Aktualizace: 2015-11-22T22:09:33Z
+
+User:Dcheagle/fixitboxIX
+URL: https://en.wikipedia.org/wiki/User:Dcheagle/fixitboxIX
+Aktualizace: 2015-11-22T22:09:32Z
+
+2010s in music
+URL: https://en.wikipedia.org/w/index.php?title=2010s_in_music&diff=691894372&oldid=691894242
+Aktualizace: 2015-11-22T22:09:31Z
+
+Template:Associated Press Male Athlete of the Year navbox
+URL: https://en.wikipedia.org/w/index.php?title=Template:Associated_Press_Male_Athlete_of_the_Year_navbox&diff=691894371&oldid=675608662
+Aktualizace: 2015-11-22T22:09:31Z
+
+Health in Iran
+URL: https://en.wikipedia.org/w/index.php?title=Health_in_Iran&diff=691894370&oldid=691894077
+Aktualizace: 2015-11-22T22:09:30Z
+
+User:Vivek Booka Vasu
+URL: https://en.wikipedia.org/wiki/User:Vivek_Booka_Vasu
+Aktualizace: 2015-11-22T22:09:30Z
+
+User talk:Mattythewhite
+URL: https://en.wikipedia.org/w/index.php?title=User_talk:Mattythewhite&diff=691894369&oldid=691878298
+Aktualizace: 2015-11-22T22:09:30Z
+
+Disha Vakani
+URL: https://en.wikipedia.org/w/index.php?title=Disha_Vakani&diff=691894367&oldid=687563537
+Aktualizace: 2015-11-22T22:09:29Z
+
+Talk:Elizabeth II
+URL: https://en.wikipedia.org/w/index.php?title=Talk:Elizabeth_II&diff=691894366&oldid=691888399
+Aktualizace: 2015-11-22T22:09:29Z
+
+Best Southwest
+URL: https://en.wikipedia.org/w/index.php?title=Best_Southwest&diff=691894368&oldid=538419669
+Aktualizace: 2015-11-22T22:09:29Z
+
+Cyprus Popular Bank
+URL: https://en.wikipedia.org/w/index.php?title=Cyprus_Popular_Bank&diff=691894365&oldid=691805481
+Aktualizace: 2015-11-22T22:09:29Z
+
+Fleetwood
+URL: https://en.wikipedia.org/w/index.php?title=Fleetwood&diff=691894364&oldid=690915595
+Aktualizace: 2015-11-22T22:09:29Z
+
+Eric Singer
+URL: https://en.wikipedia.org/w/index.php?title=Eric_Singer&diff=691894361&oldid=690365508
+Aktualizace: 2015-11-22T22:09:28Z
+
+Brett Eldredge
+URL: https://en.wikipedia.org/w/index.php?title=Brett_Eldredge&diff=691894363&oldid=691333776
+Aktualizace: 2015-11-22T22:09:28Z
+
+Neverland
+URL: https://en.wikipedia.org/w/index.php?title=Neverland&diff=691894362&oldid=691892858
+Aktualizace: 2015-11-22T22:09:28Z
+
+Eurocopter AS365 Dauphin
+URL: https://en.wikipedia.org/w/index.php?title=Eurocopter_AS365_Dauphin&diff=691894360&oldid=691893093
+Aktualizace: 2015-11-22T22:09:28Z
+
+Anheuser-Busch
+URL: https://en.wikipedia.org/w/index.php?title=Anheuser-Busch&diff=691894359&oldid=691095125
+Aktualizace: 2015-11-22T22:09:27Z
+
+Tai-Leng Nationalities Development Party
+URL: https://en.wikipedia.org/w/index.php?title=Tai-Leng_Nationalities_Development_Party&diff=691894358&oldid=691894275
+Aktualizace: 2015-11-22T22:09:26Z
+
+Asti
+URL: https://en.wikipedia.org/w/index.php?title=Asti&diff=691894357&oldid=691894295
+Aktualizace: 2015-11-22T22:09:25Z
+
+Vision Zero
+URL: https://en.wikipedia.org/w/index.php?title=Vision_Zero&diff=691894355&oldid=691894253
+Aktualizace: 2015-11-22T22:09:25Z
+
+Lil Jon
+URL: https://en.wikipedia.org/w/index.php?title=Lil_Jon&diff=691894354&oldid=690135624
+Aktualizace: 2015-11-22T22:09:24Z
+
+Jason Rezaian
+URL: https://en.wikipedia.org/w/index.php?title=Jason_Rezaian&diff=691894353&oldid=691893591
+Aktualizace: 2015-11-22T22:09:23Z
+
+South African locomotive history
+URL: https://en.wikipedia.org/w/index.php?title=South_African_locomotive_history&diff=691894352&oldid=691276732
+Aktualizace: 2015-11-22T22:09:23Z
+
+Carla Mendonça
+URL: https://en.wikipedia.org/w/index.php?title=Carla_Mendon%C3%A7a&diff=691894351&oldid=686000880
+Aktualizace: 2015-11-22T22:09:23Z
+
+User talk:201.230.158.190
+URL: https://en.wikipedia.org/w/index.php?title=User_talk:201.230.158.190&diff=691894350&oldid=0
+Aktualizace: 2015-11-22T22:09:22Z
+
+Japanese colonial empire
+URL: https://en.wikipedia.org/w/index.php?title=Japanese_colonial_empire&diff=691894349&oldid=691892732
+Aktualizace: 2015-11-22T22:09:21Z
+
+User:Kges1901/sandbox/Mikhail Tikhonov
+URL: https://en.wikipedia.org/w/index.php?title=User:Kges1901/sandbox/Mikhail_Tikhonov&diff=691894348&oldid=691891591
+Aktualizace: 2015-11-22T22:09:20Z
+
+Victory over Japan Day
+URL: https://en.wikipedia.org/w/index.php?title=Victory_over_Japan_Day&diff=691894347&oldid=688969641
+Aktualizace: 2015-11-22T22:09:20Z
+
+American Falls Dam
+URL: https://en.wikipedia.org/w/index.php?title=American_Falls_Dam&diff=691894346&oldid=681124990
+Aktualizace: 2015-11-22T22:09:19Z
+
+User:InfoDataMonger/sandbox
+URL: https://en.wikipedia.org/w/index.php?title=User:InfoDataMonger/sandbox&diff=691894344&oldid=691894297
+Aktualizace: 2015-11-22T22:09:18Z
+
+User talk:93.168.61.11
+URL: https://en.wikipedia.org/w/index.php?title=User_talk:93.168.61.11&diff=691894343&oldid=0
+Aktualizace: 2015-11-22T22:09:18Z
+
+Aldo Alvarez
+URL: https://en.wikipedia.org/w/index.php?title=Aldo_Alvarez&diff=691894342&oldid=691894223
+Aktualizace: 2015-11-22T22:09:18Z
+
+Rhoda Penmark
+URL: https://en.wikipedia.org/w/index.php?title=Rhoda_Penmark&diff=691894341&oldid=691894265
+Aktualizace: 2015-11-22T22:09:18Z
+
+Vembayam
+URL: https://en.wikipedia.org/w/index.php?title=Vembayam&diff=691894340&oldid=691868675
+Aktualizace: 2015-11-22T22:09:17Z
+
+Wikipedia:Administrators' noticeboard
+URL: https://en.wikipedia.org/w/index.php?title=Wikipedia:Administrators%27_noticeboard&diff=691894339&oldid=691891981
+Aktualizace: 2015-11-22T22:09:17Z
+
+Alta California
+URL: https://en.wikipedia.org/w/index.php?title=Alta_California&diff=691894338&oldid=688612957
+Aktualizace: 2015-11-22T22:09:15Z
+
+Salih Gjuka
+URL: https://en.wikipedia.org/w/index.php?title=Salih_Gjuka&diff=691894337&oldid=667391295
+Aktualizace: 2015-11-22T22:09:14Z
+
+Anaheim, California
+URL: https://en.wikipedia.org/w/index.php?title=Anaheim,_California&diff=691894336&oldid=691333429
+Aktualizace: 2015-11-22T22:09:14Z
+
+Raising Malawi
+URL: https://en.wikipedia.org/w/index.php?title=Raising_Malawi&diff=691894335&oldid=672295491
+Aktualizace: 2015-11-22T22:09:13Z
+
+First-wave feminism
+URL: https://en.wikipedia.org/w/index.php?title=First-wave_feminism&diff=691894334&oldid=691025322
+Aktualizace: 2015-11-22T22:09:12Z
+
+User:Uncle Milty/CSD log
+URL: https://en.wikipedia.org/w/index.php?title=User:Uncle_Milty/CSD_log&diff=691894333&oldid=691893843
+Aktualizace: 2015-11-22T22:09:12Z
+
+Alberta
+URL: https://en.wikipedia.org/w/index.php?title=Alberta&diff=691894332&oldid=691798748
+Aktualizace: 2015-11-22T22:09:12Z
+
+
+*** The Register ***
+<i>Doctor Who</i>: Even the TARDIS key can't unpick the chronolock in <i>Face the Raven</i>
+URL: tag:theregister.co.uk,2005:story/2015/11/21/doctor_who_face_the_raven_review/
+Aktualizace: 2015-11-21T20:56:13Z
+Autor: Kelly Fiveash
+
+Yahoo<i>!</i> Mail<i>!</i> is<i>!</i> still<i>!</i> a<i>!</i> thing<i>!</i>, tries<i>!</i> blocking<i>!</i> Adblock<i>!</i> users<i>!</i>
+URL: tag:theregister.co.uk,2005:story/2015/11/21/yahoo_screws_with_adblock_users/
+Aktualizace: 2015-11-21T00:47:15Z
+Autor: Shaun Nichols
+
+Taxi for NASA! SpaceX to fly astronauts to space station
+URL: tag:theregister.co.uk,2005:story/2015/11/21/nasa_clears_spacex_for_astronaut_delivery/
+Aktualizace: 2015-11-21T00:09:56Z
+Autor: Iain Thomson
+
+Who's running dozens of top-secret unpatched databases? The Dept of Homeland Security
+URL: tag:theregister.co.uk,2005:story/2015/11/20/homeland_securitys_secret_unpatched_pcs_dbs/
+Aktualizace: 2015-11-20T23:34:36Z
+Autor: Kieren McCarthy
+
+Malware caught checking out credit cards in 54 luxury hotels
+URL: tag:theregister.co.uk,2005:story/2015/11/20/starwood_hotels_resorts_pwned/
+Aktualizace: 2015-11-20T23:04:29Z
+Autor: Shaun Nichols
+
+Tesla recalls every single Model S car in seatbelt safety probe
+URL: tag:theregister.co.uk,2005:story/2015/11/20/tesla_recalls_every_model_s/
+Aktualizace: 2015-11-20T22:39:16Z
+Autor: Iain Thomson
+
+Hillary Clinton: Stop helping terrorists, Silicon Valley – weaken your encryption
+URL: tag:theregister.co.uk,2005:story/2015/11/20/clinton_silicon_valley/
+Aktualizace: 2015-11-20T20:18:04Z
+Autor: Kieren McCarthy
+
+Network problems? It's not just you. Level3 outages reported in the US
+URL: tag:theregister.co.uk,2005:story/2015/11/20/level3_outages_reported_in_us/
+Aktualizace: 2015-11-20T19:44:11Z
+Autor: Shaun Nichols
+
+How NSA continued to spy on American citizens' email traffic – from overseas
+URL: tag:theregister.co.uk,2005:story/2015/11/20/remember_mass_email_slurping_nsa_stopped/
+Aktualizace: 2015-11-20T19:32:01Z
+Autor: Iain Thomson
+
+Roundworm infection increases female fertility
+URL: tag:theregister.co.uk,2005:story/2015/11/20/roundworm_increases_fertility/
+Aktualizace: 2015-11-20T18:21:16Z
+Autor: Lester Haines
+
+Crimestoppers finally revamps weak crypto. Take your time guys
+URL: tag:theregister.co.uk,2005:story/2015/11/20/crimestoppers_weak_crypto/
+Aktualizace: 2015-11-20T17:29:13Z
+Autor: John Leyden
+
+Many UK ecommerce sites allow ‘password’ for logins – report
+URL: tag:theregister.co.uk,2005:story/2015/11/20/password_security_retail_survey/
+Aktualizace: 2015-11-20T16:22:05Z
+Autor: John Leyden
+
+Half the staff go gardening at the now not-so-jolly Jolla
+URL: tag:theregister.co.uk,2005:story/2015/11/20/jolla_sends_staff_gardening/
+Aktualizace: 2015-11-20T15:42:04Z
+Autor: Andrew Orlowski
+
+Why Microsoft's .NET Core is the future of its development platform
+URL: tag:theregister.co.uk,2005:story/2015/11/20/microsoft_net_core_development_platform_fork/
+Aktualizace: 2015-11-20T14:59:04Z
+Autor: Tim Anderson
+
+Struggling to understand Docker? Let's start with a Minecraft demo
+URL: tag:theregister.co.uk,2005:story/2015/11/20/docker_uses_minecraft_as_interface/
+Aktualizace: 2015-11-20T14:26:05Z
+Autor: Joe Fay
+
+NetApp adds in-line dedupe to all-flash FAS arrays
+URL: tag:theregister.co.uk,2005:story/2015/11/20/netapp_adds_inline_dedupe_to_allflash_fas_arrays/
+Aktualizace: 2015-11-20T13:58:09Z
+Autor: Chris Mellor
+
+<i>The Register</i> reveals SAP’s very own version of Black Friday
+URL: tag:theregister.co.uk,2005:story/2015/11/20/sap_maintenance_discounts_s4_hana/
+Aktualizace: 2015-11-20T13:25:05Z
+Autor: Gavin Clarke
+
+Short weekend break: Skegness or exoplanet HD 189733b?
+URL: tag:theregister.co.uk,2005:story/2015/11/20/weekend_break_skegness_hd_189733b/
+Aktualizace: 2015-11-20T12:53:07Z
+Autor: Lester Haines
+
+Shares tumble at flash-disk array maker Nimble: Time to crack open the all-flash?
+URL: tag:theregister.co.uk,2005:story/2015/11/20/shares_tumble_array_maker_nimble/
+Aktualizace: 2015-11-20T12:35:08Z
+Autor: Chris Mellor
+
+Love your IoT gadget but could you keep the noise down?
+URL: tag:theregister.co.uk,2005:story/2015/11/20/love_your_iot_gadget_but_could_you_keep_the_noise_down/
+Aktualizace: 2015-11-20T12:16:04Z
+Autor: Alistair Dabbs
+
+Ofcom asks: Do kids believe anything they read on the internet?
+URL: tag:theregister.co.uk,2005:story/2015/11/20/ofcom_childrens_digital_literacy_survey/
+Aktualizace: 2015-11-20T12:03:41Z
+Autor: Andrew Orlowski
+
+Want to take the stage at our DevOps and Continuous Delivery Conference?
+URL: tag:theregister.co.uk,2005:story/2015/11/20/countdown_to_continuous_lifecycle/
+Aktualizace: 2015-11-20T11:43:05Z
+Autor: Joe Fay
+
+Dell PCs to be never knowingly undersold by John Lewis this Chrimbo
+URL: tag:theregister.co.uk,2005:story/2015/11/20/dell_john_lewis/
+Aktualizace: 2015-11-20T11:19:12Z
+Autor: Paul Kunert
+
+Looking for a council house in Sheffield City? Meet your fellow tenants
+URL: tag:theregister.co.uk,2005:story/2015/11/20/sheffield_city_council_email_public/
+Aktualizace: 2015-11-20T10:52:10Z
+Autor: Alexander J Martin
+
+NCC Group sowing the seeds of disruption in the cyber security industry
+URL: tag:theregister.co.uk,2005:story/2015/11/20/ncc_group_is_sowing_the_seed_of_disruption_in_the_cyber_security_industry/
+Aktualizace: 2015-11-20T10:31:41Z
+Autor: David Gordon
+
+France's 3-month state of emergency lets govt censor the web
+URL: tag:theregister.co.uk,2005:story/2015/11/20/france_extends_state_emergency_3_months_police_censor_web/
+Aktualizace: 2015-11-20T10:03:13Z
+Autor: Alexander J Martin
+
+Another $75m for Datto as EMEA and APAC expansion beckons
+URL: tag:theregister.co.uk,2005:story/2015/11/20/another_75m_datto_emea_apac_expansion_beckons/
+Aktualizace: 2015-11-20T09:35:09Z
+Autor: Chris Mellor
+
+Rdio's collapse another nail in the coffin of the 'digital economy'
+URL: tag:theregister.co.uk,2005:story/2015/11/20/lessons_from_rdio_and_vinyl/
+Aktualizace: 2015-11-20T09:06:04Z
+Autor: Andrew Orlowski
+
+One-armed bandit steals four hours of engineer's busy day
+URL: tag:theregister.co.uk,2005:story/2015/11/20/onearmed_bandit_steals_four_hours_of_engineers_busy_day/
+Aktualizace: 2015-11-20T08:38:10Z
+Autor: Simon Sharwood
+
+600,000 cable modems have an easy to pop backdoor in a backdoor
+URL: tag:theregister.co.uk,2005:story/2015/11/20/arris_modem_backdoor/
+Aktualizace: 2015-11-20T08:24:50Z
+Autor: Darren Pauli
+
+Remember Windows 1.0? It's been 30 years (and you're officially old)
+URL: tag:theregister.co.uk,2005:story/2015/11/20/windows_1_dot_0_is_30_years_old/
+Aktualizace: 2015-11-20T08:02:13Z
+Autor: Shaun Nichols
+
+Windows Server and System Centre 2016 get fourth previews
+URL: tag:theregister.co.uk,2005:story/2015/11/20/windows_server_and_system_centre_2016_get_fourth_previews/
+Aktualizace: 2015-11-20T07:31:12Z
+Autor: Simon Sharwood
+
+Cat discovers GNOME desktop bug
+URL: tag:theregister.co.uk,2005:story/2015/11/20/cat_gnome_bug/
+Aktualizace: 2015-11-20T06:56:06Z
+Autor: Lester Haines
+
+Shall we Drupal 8? Hint: it's not a verb, but the 8th version of Drupal
+URL: tag:theregister.co.uk,2005:story/2015/11/20/shall_we_drupal_8_hint_its_not_a_verb_but_the_8th_version_of_drupal/
+Aktualizace: 2015-11-20T06:29:06Z
+Autor: Simon Sharwood
+
+US 'swatting' Bill will jail crank callers for five years to life
+URL: tag:theregister.co.uk,2005:story/2015/11/20/us_swatting_hoax_act/
+Aktualizace: 2015-11-20T05:55:11Z
+Autor: Darren Pauli
+
+Don't flip your lid: The Internet of Helmets has arrived
+URL: tag:theregister.co.uk,2005:story/2015/11/20/internet_of_thing_wearables_extend_to_helmets/
+Aktualizace: 2015-11-20T05:26:12Z
+Autor: Simon Sharwood
+
+Android's accessibility service grants god-mode p0wn power
+URL: tag:theregister.co.uk,2005:story/2015/11/20/shedun_adware/
+Aktualizace: 2015-11-20T04:57:08Z
+Autor: Team Register
+
+NASA palms off blunder-bot Valkyrie for top US universities to fix
+URL: tag:theregister.co.uk,2005:story/2015/11/20/nasa_palms_off_rubbish_robots/
+Aktualizace: 2015-11-20T04:06:03Z
+Autor: Iain Thomson
+
+Seven-year itch claims Splunk CEO
+URL: tag:theregister.co.uk,2005:story/2015/11/20/splunk_ceo_steps_down/
+Aktualizace: 2015-11-20T02:58:08Z
+Autor: Simon Sharwood
+
+Uncle Sam's IT bods find 2,000 data centers they FORGOT about
+URL: tag:theregister.co.uk,2005:story/2015/11/20/us_gov_2000_more_datacenters/
+Aktualizace: 2015-11-20T02:00:27Z
+Autor: Shaun Nichols
+
+How TV ads silently ping commands to phones: Sneaky SilverPush code reverse-engineered
+URL: tag:theregister.co.uk,2005:story/2015/11/20/silverpush_soundwave_ad_tracker/
+Aktualizace: 2015-11-20T01:41:50Z
+Autor: Iain Thomson
+
+Tech goliaths stand firm against demands for weaker encryption after Paris terror attacks
+URL: tag:theregister.co.uk,2005:story/2015/11/20/tech_companies_against_weaker_encryption/
+Aktualizace: 2015-11-20T00:45:06Z
+Autor: Kieren McCarthy
+
+VMware cofounder and CEO Diane Greene to run Google's cloud
+URL: tag:theregister.co.uk,2005:story/2015/11/20/dianne_greene_to_run_all_of_google_cloud/
+Aktualizace: 2015-11-20T00:23:23Z
+Autor: Simon Sharwood
+
+How much has ICANN spent on lobbying US govt this year? $2.5m
+URL: tag:theregister.co.uk,2005:story/2015/11/19/real_icann_lobbying_expenses/
+Aktualizace: 2015-11-19T22:54:34Z
+Autor: Kieren McCarthy
+
+Apple's Watch charging pad proves Cupertino still screwing buyers
+URL: tag:theregister.co.uk,2005:story/2015/11/19/apples_watch_charging_pad_qi/
+Aktualizace: 2015-11-19T21:24:52Z
+Autor: Iain Thomson
+
+Apple – it's true: iPad Pro slabs freeze when plugged in to charge
+URL: tag:theregister.co.uk,2005:story/2015/11/19/apple_frozen_ipad_confirmation/
+Aktualizace: 2015-11-19T20:50:25Z
+Autor: Shaun Nichols
+
+From $6bn to $4.2bn to $2.9bn: Square's ever shrinking unicorn horn
+URL: tag:theregister.co.uk,2005:story/2015/11/19/square_ipo/
+Aktualizace: 2015-11-19T18:34:11Z
+Autor: Kieren McCarthy
+
+Red Hat tops out Ansible Tower 2.4
+URL: tag:theregister.co.uk,2005:story/2015/11/19/red_hat_tops_out_ansible_tower_24/
+Aktualizace: 2015-11-19T17:27:03Z
+Autor: Joe Fay
+
+Western Digital begins navigating the non-volatile memory maze
+URL: tag:theregister.co.uk,2005:story/2015/11/19/western_digital_navigating_non_volatile_memory_maze/
+Aktualizace: 2015-11-19T16:56:05Z
+Autor: Chris Mellor
+
+Qualcomm huffs and puffs at Korean competition probe
+URL: tag:theregister.co.uk,2005:story/2015/11/19/qualcomm_huffs_and_puffs_at_korean_competition_probe/
+Aktualizace: 2015-11-19T16:31:06Z
+Autor: Kelly Fiveash
+
+
+*** The Register - Data Centre ***
+NetApp adds in-line dedupe to all-flash FAS arrays
+URL: tag:theregister.co.uk,2005:story/2015/11/20/netapp_adds_inline_dedupe_to_allflash_fas_arrays/
+Aktualizace: 2015-11-20T13:58:09Z
+Autor: Chris Mellor
+
+Shares tumble at flash-disk array maker Nimble: Time to crack open the all-flash?
+URL: tag:theregister.co.uk,2005:story/2015/11/20/shares_tumble_array_maker_nimble/
+Aktualizace: 2015-11-20T12:35:08Z
+Autor: Chris Mellor
+
+Another $75m for Datto as EMEA and APAC expansion beckons
+URL: tag:theregister.co.uk,2005:story/2015/11/20/another_75m_datto_emea_apac_expansion_beckons/
+Aktualizace: 2015-11-20T09:35:09Z
+Autor: Chris Mellor
+
+Uncle Sam's IT bods find 2,000 data centers they FORGOT about
+URL: tag:theregister.co.uk,2005:story/2015/11/20/us_gov_2000_more_datacenters/
+Aktualizace: 2015-11-20T02:00:27Z
+Autor: Shaun Nichols
+
+VMware cofounder and CEO Diane Greene to run Google's cloud
+URL: tag:theregister.co.uk,2005:story/2015/11/20/dianne_greene_to_run_all_of_google_cloud/
+Aktualizace: 2015-11-20T00:23:23Z
+Autor: Simon Sharwood
+
+Western Digital begins navigating the non-volatile memory maze
+URL: tag:theregister.co.uk,2005:story/2015/11/19/western_digital_navigating_non_volatile_memory_maze/
+Aktualizace: 2015-11-19T16:56:05Z
+Autor: Chris Mellor
+
+Telecity fix nixed: Borked UK internet hub 'had no UPS protection'
+URL: tag:theregister.co.uk,2005:story/2015/11/19/telecity_sovereign_house_no_ups_fix_failed_twice/
+Aktualizace: 2015-11-19T15:33:29Z
+Autor: Gavin Clarke
+
+Is Tsinghua Unigroup still stalking Micron for NAND IP?
+URL: tag:theregister.co.uk,2005:story/2015/11/19/is_tsinghua_unigroup_stalking_micron_nand_ip/
+Aktualizace: 2015-11-19T14:34:04Z
+Autor: Chris Mellor
+
+Fujitsu hits the data accelerator and parallelises SSD access
+URL: tag:theregister.co.uk,2005:story/2015/11/19/fujitsu_parallelises_ssd_access/
+Aktualizace: 2015-11-19T13:03:08Z
+Autor: Chris Mellor
+
+Samsung tosses lifeline to Netlist NVDIMMs
+URL: tag:theregister.co.uk,2005:story/2015/11/19/samsung_lifeline_for_netlist_nvdimms/
+Aktualizace: 2015-11-19T12:21:05Z
+Autor: Chris Mellor
+
+Amazon: Just to let you know, Oracle's cloud is so 2011. That's all
+URL: tag:theregister.co.uk,2005:story/2015/11/19/amazon_baits_cloud_weakling_oracle/
+Aktualizace: 2015-11-19T09:06:12Z
+Autor: Gavin Clarke
+
+Broadcom builds better backbone for WiFi
+URL: tag:theregister.co.uk,2005:story/2015/11/19/broadcom_preps_for_80111ac_second_wave_with_new_silicon/
+Aktualizace: 2015-11-19T04:56:05Z
+Autor: Richard Chirgwin
+
+VMware warns of info leaks flowing from Apache-Adobe mess
+URL: tag:theregister.co.uk,2005:story/2015/11/19/vmware_warns_of_info_leaks_flowing_from_apacheadobe_mess/
+Aktualizace: 2015-11-19T03:30:11Z
+Autor: Simon Sharwood
+
+Custom virtual machines come to Google's Compute Engine
+URL: tag:theregister.co.uk,2005:story/2015/11/19/custom_virtual_machines_come_to_googles_compute_engine/
+Aktualizace: 2015-11-19T03:04:05Z
+Autor: Simon Sharwood
+
+Speaking in Tech: Anonymous’s ‘total war’ on ISIS – how effective can it be?
+URL: tag:theregister.co.uk,2005:story/2015/11/18/speaking_in_tech_episode_186/
+Aktualizace: 2015-11-18T16:09:56Z
+Autor: Team Register
+
+Telecity's engineers to spend SECOND night fixing web hub power outage
+URL: tag:theregister.co.uk,2005:story/2015/11/18/telecity_outage_fix_failed/
+Aktualizace: 2015-11-18T13:04:30Z
+Autor: Gavin Clarke
+
+EMC enables data movement from the white fluffy stuff
+URL: tag:theregister.co.uk,2005:story/2015/11/18/emc_enables_data_movement_cloud/
+Aktualizace: 2015-11-18T12:03:40Z
+Autor: Chris Mellor
+
+Behold, the fantasy of infinite cloud compute elasticity
+URL: tag:theregister.co.uk,2005:story/2015/11/18/the_fantasy_of_infinite_cloud_compute_elasticity/
+Aktualizace: 2015-11-18T09:09:06Z
+Autor: Chris Mellor
+
+Dell and EMC customers happy about prospect of Dell/EMC merger
+URL: tag:theregister.co.uk,2005:story/2015/11/18/dell_emc_merger_research_finds_customers_optimistic/
+Aktualizace: 2015-11-18T07:02:07Z
+Autor: Simon Sharwood
+
+Nano-NAS market dives into the cloud
+URL: tag:theregister.co.uk,2005:story/2015/11/18/nanonas_market_dives_into_the_cloud/
+Aktualizace: 2015-11-18T06:33:09Z
+Autor: Simon Sharwood
+
+CloudFlare CEO blasts Anonymous claims of ISIS terrorist support
+URL: tag:theregister.co.uk,2005:story/2015/11/18/cloudflare_ceo_rubbishes_anonymous_claims_of_terrorist_support/
+Aktualizace: 2015-11-18T02:18:13Z
+Autor: Iain Thomson
+
+Cray hoists Docker containers into supercomputers
+URL: tag:theregister.co.uk,2005:story/2015/11/18/cray_docker/
+Aktualizace: 2015-11-18T00:01:56Z
+Autor: Drew Cullen
+
+Pure gives its flash boxes some 3D TLC
+URL: tag:theregister.co.uk,2005:story/2015/11/17/pure_makes_splash_in_3d_tlc_flash_pool/
+Aktualizace: 2015-11-17T21:53:31Z
+Autor: Chris Mellor
+
+Microsoft chief Satya drops an S bomb in Windows 10, cloud talk
+URL: tag:theregister.co.uk,2005:story/2015/11/17/ms_revamps_security_strategy/
+Aktualizace: 2015-11-17T20:24:29Z
+Autor: John Leyden
+
+DDN's cache wolves come howling out of the creek
+URL: tag:theregister.co.uk,2005:story/2015/11/17/ddn_cache_wolves_come_howling_out_of_the_creek/
+Aktualizace: 2015-11-17T16:39:11Z
+Autor: Chris Mellor
+
+Avere adds Azure to triple-headed cloud beast
+URL: tag:theregister.co.uk,2005:story/2015/11/17/avere_azure_cloud/
+Aktualizace: 2015-11-17T15:32:09Z
+Autor: Chris Mellor
+
+Telecity London data centre outage borks VoIP, websites, AWS...
+URL: tag:theregister.co.uk,2005:story/2015/11/17/telecity_voip_outage/
+Aktualizace: 2015-11-17T15:24:13Z
+Autor: Gareth Corfield
+
+Seagate serves up three layer ClusterStor sandwich
+URL: tag:theregister.co.uk,2005:story/2015/11/17/seagates_3layer_clusterstor_sandwich/
+Aktualizace: 2015-11-17T12:35:12Z
+Autor: Chris Mellor
+
+Fujitsu: We started the cloud party, honest
+URL: tag:theregister.co.uk,2005:story/2015/11/17/fujitsu_forum_meta_arc_cloud/
+Aktualizace: 2015-11-17T10:56:05Z
+Autor: Paul Kunert
+
+FCA paves way for cloud computing in UK financial services
+URL: tag:theregister.co.uk,2005:story/2015/11/17/fca_paves_the_way_for_cloud_computing_in_uk_financial_services/
+Aktualizace: 2015-11-17T09:37:10Z
+Autor: OUT-LAW.COM
+
+VMware open sources its Photon container control freak
+URL: tag:theregister.co.uk,2005:story/2015/11/17/vmware_open_sources_its_photon_container_control_freak/
+Aktualizace: 2015-11-17T05:54:05Z
+Autor: Simon Sharwood
+
+Netflix and skill: Web vid giant open sources Spinnaker cloud tool
+URL: tag:theregister.co.uk,2005:story/2015/11/17/netflix_offers_up_spinnaker_for_cloud_devs/
+Aktualizace: 2015-11-17T03:34:09Z
+Autor: Shaun Nichols
+
+Supercomputers get their own software stack – dev tools, libraries etc
+URL: tag:theregister.co.uk,2005:story/2015/11/17/supercomputers_get_their_own_software_stack/
+Aktualizace: 2015-11-17T02:56:08Z
+Autor: Kieren McCarthy
+
+Intel's Omni-Path InfiniBand-killer debuts at sizzling 100 Gb/sec
+URL: tag:theregister.co.uk,2005:story/2015/11/17/intel_omni_path_debuts/
+Aktualizace: 2015-11-17T01:26:28Z
+Autor: Richard Chirgwin
+
+Intel Xeon chip ban? Pfeh. China triples top 500 supercomputer tally
+URL: tag:theregister.co.uk,2005:story/2015/11/16/china_supercomputers/
+Aktualizace: 2015-11-16T22:27:21Z
+Autor: Chris Williams
+
+JURECA! Germany flips big red switch on 2.2 petaflop supercomputer
+URL: tag:theregister.co.uk,2005:story/2015/11/16/jureca_germany_goes_live/
+Aktualizace: 2015-11-16T21:07:01Z
+Autor: Shaun Nichols
+
+How to wrap your brain around HP Enterprise's reheated StoreOnce kit
+URL: tag:theregister.co.uk,2005:story/2015/11/16/storeonce_gets_good_going_over/
+Aktualizace: 2015-11-16T19:59:13Z
+Autor: Chris Mellor
+
+X-Gene 3 in 2016 – no, not a superhero movie. It's a 16nm FinFET 64-bit ARM chip for servers
+URL: tag:theregister.co.uk,2005:story/2015/11/16/appliedmicro_x_gene_3/
+Aktualizace: 2015-11-16T19:43:31Z
+Autor: Chris Williams
+
+IBM bets POWER8 processor farm on hardware acceleration
+URL: tag:theregister.co.uk,2005:story/2015/11/16/ibm_bets_power8_processor_farm_on_hardware_acceleration/
+Aktualizace: 2015-11-16T15:09:20Z
+Autor: Drew Cullen
+
+Next-gen killer hurricane hunter to be armed with Nvidia graphics chips
+URL: tag:theregister.co.uk,2005:story/2015/11/16/nvidia_noaa/
+Aktualizace: 2015-11-16T14:00:04Z
+Autor: Chris Williams
+
+Surprise! No wonder Oracle doesn't 'see' IBM or SAP in the cloud
+URL: tag:theregister.co.uk,2005:story/2015/11/16/oracle_cloud_cloud_claims/
+Aktualizace: 2015-11-16T12:57:06Z
+Autor: Matt Asay
+
+Hurricane Meg unleashes storm of HPE storage updates
+URL: tag:theregister.co.uk,2005:story/2015/11/16/hewlett_packard_enterprise_storage_news/
+Aktualizace: 2015-11-16T12:45:05Z
+Autor: Chris Mellor
+
+EU orders Equinix to dump colos in Amsterdam, London and Frankfurt
+URL: tag:theregister.co.uk,2005:story/2015/11/16/eu_equinix_offload_colos_amsterdam_london_frankfurt/
+Aktualizace: 2015-11-16T10:31:12Z
+Autor: Joe Fay
+
+Brace yourselves. Huawei’s launching an HCIA product
+URL: tag:theregister.co.uk,2005:story/2015/11/16/huaweis_fusioncube_hcia_looks_hot/
+Aktualizace: 2015-11-16T09:01:10Z
+Autor: Chris Mellor
+
+It's Gartner Magic Graph of Wonder time! And Google won't be happy
+URL: tag:theregister.co.uk,2005:story/2015/11/13/gartner_magic_quadrant_information_archive/
+Aktualizace: 2015-11-13T18:04:12Z
+Autor: Chris Mellor
+
+Seagate forms federal biz unit to latch onto the gov cash faucet
+URL: tag:theregister.co.uk,2005:story/2015/11/13/seagate_forms_federal_biz_unit/
+Aktualizace: 2015-11-13T17:28:12Z
+Autor: Chris Mellor
+
+Big Blue's big iron daddy Gene Amdahl dies aged 92
+URL: tag:theregister.co.uk,2005:story/2015/11/13/gene_amdahl_obit/
+Aktualizace: 2015-11-13T13:39:10Z
+Autor: Kelly Fiveash
+
+Has the next generation of monolithic storage arrived?
+URL: tag:theregister.co.uk,2005:story/2015/11/13/infinidat_monolith_hybrid_infinibox/
+Aktualizace: 2015-11-13T12:04:10Z
+Autor: Enrico Signoretti
+
+The ETERNUS dance: Fujitsu extends backup and archive box range
+URL: tag:theregister.co.uk,2005:story/2015/11/13/eternus_gets_extended_archive_fujitsu/
+Aktualizace: 2015-11-13T10:58:39Z
+Autor: Chris Mellor
+
+Sound waves could power the future's magnetic HDDs
+URL: tag:theregister.co.uk,2005:story/2015/11/13/sound_waves_could_power_hard_disk_drives_of_the_future/
+Aktualizace: 2015-11-13T10:31:08Z
+Autor: Tom Hayward
+
+
+*** The Register - Software ***
+Why Microsoft's .NET Core is the future of its development platform
+URL: tag:theregister.co.uk,2005:story/2015/11/20/microsoft_net_core_development_platform_fork/
+Aktualizace: 2015-11-20T14:59:04Z
+Autor: Tim Anderson
+
+<i>The Register</i> reveals SAP’s very own version of Black Friday
+URL: tag:theregister.co.uk,2005:story/2015/11/20/sap_maintenance_discounts_s4_hana/
+Aktualizace: 2015-11-20T13:25:05Z
+Autor: Gavin Clarke
+
+Remember Windows 1.0? It's been 30 years (and you're officially old)
+URL: tag:theregister.co.uk,2005:story/2015/11/20/windows_1_dot_0_is_30_years_old/
+Aktualizace: 2015-11-20T08:02:13Z
+Autor: Shaun Nichols
+
+Windows Server and System Centre 2016 get fourth previews
+URL: tag:theregister.co.uk,2005:story/2015/11/20/windows_server_and_system_centre_2016_get_fourth_previews/
+Aktualizace: 2015-11-20T07:31:12Z
+Autor: Simon Sharwood
+
+Cat discovers GNOME desktop bug
+URL: tag:theregister.co.uk,2005:story/2015/11/20/cat_gnome_bug/
+Aktualizace: 2015-11-20T06:56:06Z
+Autor: Lester Haines
+
+Shall we Drupal 8? Hint: it's not a verb, but the 8th version of Drupal
+URL: tag:theregister.co.uk,2005:story/2015/11/20/shall_we_drupal_8_hint_its_not_a_verb_but_the_8th_version_of_drupal/
+Aktualizace: 2015-11-20T06:29:06Z
+Autor: Simon Sharwood
+
+How TV ads silently ping commands to phones: Sneaky SilverPush code reverse-engineered
+URL: tag:theregister.co.uk,2005:story/2015/11/20/silverpush_soundwave_ad_tracker/
+Aktualizace: 2015-11-20T01:41:50Z
+Autor: Iain Thomson
+
+Enter our developer competition to win fabulous prizes
+URL: tag:theregister.co.uk,2005:story/2015/11/19/enter_our_developer_competition_to_win_fabulous_prizes/
+Aktualizace: 2015-11-19T08:27:06Z
+Autor: David Gordon
+
+Obscure Chinese web servers at the end of your connections? It's legit, and growing
+URL: tag:theregister.co.uk,2005:story/2015/11/19/obscure_chinese_web_server_in_your_logs_its_legit_and_growing/
+Aktualizace: 2015-11-19T01:58:09Z
+Autor: Simon Sharwood
+
+It's come to this for IBM: Watson is now a gimmick app on the iPhone
+URL: tag:theregister.co.uk,2005:story/2015/11/19/ibm_watson_toy_finder/
+Aktualizace: 2015-11-19T01:27:36Z
+Autor: Shaun Nichols
+
+Microsoft makes Raspberry Pi its preferred IoT dev board
+URL: tag:theregister.co.uk,2005:story/2015/11/19/redmond_expels_galileo/
+Aktualizace: 2015-11-19T00:29:09Z
+Autor: Richard Chirgwin
+
+Google extends search tendrils to cover data in apps
+URL: tag:theregister.co.uk,2005:story/2015/11/18/google_extends_search_to_within_apps/
+Aktualizace: 2015-11-18T19:34:43Z
+Autor: Kieren McCarthy
+
+Microsoft revamps its developer tools with a new cloud focus
+URL: tag:theregister.co.uk,2005:story/2015/11/18/microsoft_revamps_its_developer_tools_with_new_cloud_mobile_and_open_source_offerings/
+Aktualizace: 2015-11-18T15:30:06Z
+Autor: Tim Anderson
+
+Hey Cortana, how about you hide my app from the user?
+URL: tag:theregister.co.uk,2005:story/2015/11/18/cortana_hiding_app_from_users/
+Aktualizace: 2015-11-18T05:02:08Z
+Autor: Richard Chirgwin
+
+Microsoft working hard to unify its code base, all the way down to the IoT
+URL: tag:theregister.co.uk,2005:story/2015/11/18/microsoft_working_hard_to_unify_its_code_base_all_the_way_down_to_the_iot/
+Aktualizace: 2015-11-18T04:29:08Z
+Autor: Richard Chirgwin
+
+Cray hoists Docker containers into supercomputers
+URL: tag:theregister.co.uk,2005:story/2015/11/18/cray_docker/
+Aktualizace: 2015-11-18T00:01:56Z
+Autor: Drew Cullen
+
+Adobe releases out-of-band security patches – amazingly not for Flash
+URL: tag:theregister.co.uk,2005:story/2015/11/17/adobe_releases_outofband_security_patches_amazingly_not_for_flash/
+Aktualizace: 2015-11-17T22:17:32Z
+Autor: Iain Thomson
+
+Citrix to axe 1,000 workers, tells GoTo to go to someplace else
+URL: tag:theregister.co.uk,2005:story/2015/11/17/citrix_layoff/
+Aktualizace: 2015-11-17T22:02:27Z
+Autor: Shaun Nichols
+
+Microsoft chief Satya drops an S bomb in Windows 10, cloud talk
+URL: tag:theregister.co.uk,2005:story/2015/11/17/ms_revamps_security_strategy/
+Aktualizace: 2015-11-17T20:24:29Z
+Autor: John Leyden
+
+Debian daddy Murdock joins the unstoppable Docker crusade
+URL: tag:theregister.co.uk,2005:story/2015/11/17/ian_murdock_joins_docker/
+Aktualizace: 2015-11-17T17:27:13Z
+Autor: Gavin Clarke
+
+Xamarin releases version 4.0 of its cross-platform mobile developer suite
+URL: tag:theregister.co.uk,2005:story/2015/11/17/xamarin_releases_version_40_of_its_crossplatform_mobile_suite/
+Aktualizace: 2015-11-17T15:01:15Z
+Autor: Tim Anderson
+
+Refined player: Fedora 23's workin' it like Monday morning
+URL: tag:theregister.co.uk,2005:story/2015/11/17/fedora_23_review/
+Aktualizace: 2015-11-17T10:03:09Z
+Autor: Scott Gilbertson
+
+Microsoft to world: We've got open source machine learning too
+URL: tag:theregister.co.uk,2005:story/2015/11/17/microsoft_to_world_weve_got_open_source_machine_learning_too/
+Aktualizace: 2015-11-17T05:02:12Z
+Autor: Richard Chirgwin
+
+Netflix and skill: Web vid giant open sources Spinnaker cloud tool
+URL: tag:theregister.co.uk,2005:story/2015/11/17/netflix_offers_up_spinnaker_for_cloud_devs/
+Aktualizace: 2015-11-17T03:34:09Z
+Autor: Shaun Nichols
+
+Apple supremo Tim Cook rules out OS X fondleslab, iOS merger
+URL: tag:theregister.co.uk,2005:story/2015/11/16/cook_nixs_os_x_tablet/
+Aktualizace: 2015-11-16T23:56:54Z
+Autor: Shaun Nichols
+
+Microsoft quietly slips out patched patch for Outlook – in camouflage
+URL: tag:theregister.co.uk,2005:story/2015/11/16/microsofts_fixed_outlook_patch/
+Aktualizace: 2015-11-16T23:43:24Z
+Autor: Iain Thomson
+
+Microsoft shelves 'suicidal' Android-on-Windows plan
+URL: tag:theregister.co.uk,2005:story/2015/11/16/sanity_prevails_microsoft_sidelines_suicidal_androidonwindows_plan/
+Aktualizace: 2015-11-16T12:01:09Z
+Autor: Andrew Orlowski
+
+3ROS exploit wins plaudits for the prettiest Mal-GUI ever
+URL: tag:theregister.co.uk,2005:story/2015/11/16/exploit_kit_gui_a_lesson_in_user_friendy_design/
+Aktualizace: 2015-11-16T07:57:14Z
+Autor: Darren Pauli
+
+Microsoft boffins build better crypto for secure medical data crunching
+URL: tag:theregister.co.uk,2005:story/2015/11/16/microsoft_boffins_build_better_crypto_for_secure_medical_data_crunching/
+Aktualizace: 2015-11-16T03:57:03Z
+Autor: Team Register
+
+iPad data entry errors caused plane to strike runway during takeoff
+URL: tag:theregister.co.uk,2005:story/2015/11/16/ipad_data_entry_errors_caused_plane_to_strike_runway_during_takeoff/
+Aktualizace: 2015-11-16T02:54:40Z
+Autor: Simon Sharwood
+
+Badware in the firmware all over the place
+URL: tag:theregister.co.uk,2005:story/2015/11/16/badware_in_the_firmware_all_over_the_place/
+Aktualizace: 2015-11-16T01:56:11Z
+Autor: Richard Chirgwin
+
+GPS, you've gone too far this time
+URL: tag:theregister.co.uk,2005:story/2015/11/16/gps_youve_gone_too_far_this_time/
+Aktualizace: 2015-11-16T00:56:07Z
+Autor: Richard Chirgwin
+
+PNG pongs: critical bug patched in ubiquitous libpng
+URL: tag:theregister.co.uk,2005:story/2015/11/15/png_pongs_critical_bug_patched_in_ubiquitous_libpng/
+Aktualizace: 2015-11-15T22:56:07Z
+Autor: Richard Chirgwin
+
+CoreOS open sources Clair, the vulnerability scanner for your containers
+URL: tag:theregister.co.uk,2005:story/2015/11/13/coreos_open_sources_vulnerability_scanner/
+Aktualizace: 2015-11-13T18:12:15Z
+Autor: Iain Thomson
+
+NoSQL: Injection vaccination for a new generation
+URL: tag:theregister.co.uk,2005:story/2015/11/13/nosql_security_new_generation/
+Aktualizace: 2015-11-13T06:57:12Z
+Autor: Andrew Cobley
+
+PostgreSQL learns to walk and chew gum
+URL: tag:theregister.co.uk,2005:story/2015/11/13/postgresql_learns_to_walk_and_chew_gum/
+Aktualizace: 2015-11-13T05:56:08Z
+Autor: Richard Chirgwin
+
+Apple's OS X App Store downloads knackered by expired security cert
+URL: tag:theregister.co.uk,2005:story/2015/11/12/apple_security_certificate_snafu/
+Aktualizace: 2015-11-12T20:16:44Z
+Autor: Iain Thomson
+
+Microsoft rolls out first 'major update' to Windows 10
+URL: tag:theregister.co.uk,2005:story/2015/11/12/microsofts_1st_major_win_10_update/
+Aktualizace: 2015-11-12T20:01:53Z
+Autor: Shaun Nichols
+
+New Relic goes old school, wooing enterprises, partners at FutureStack
+URL: tag:theregister.co.uk,2005:story/2015/11/12/new_relic_updates_products/
+Aktualizace: 2015-11-12T19:03:21Z
+Autor: Joe Fay
+
+Mozilla releases iOS app version of Firefox browser for world+dog
+URL: tag:theregister.co.uk,2005:story/2015/11/12/mozilla_releases_ios_app_version_of_firefox_browser_for_worlddog/
+Aktualizace: 2015-11-12T17:27:13Z
+Autor: Kelly Fiveash
+
+Hey, software entrepreneurs! Open Ocean puts €100m up for grabs
+URL: tag:theregister.co.uk,2005:story/2015/11/12/software_entrepreneurs_open_ocean_puts_100m_up_for_grabs/
+Aktualizace: 2015-11-12T14:30:30Z
+Autor: Alexander J Martin
+
+Open to the core: MongoDB's enterprise push in 'joins' U-turn
+URL: tag:theregister.co.uk,2005:story/2015/11/11/mongodb_joins_u_turn/
+Aktualizace: 2015-11-11T09:34:11Z
+Autor: Matt Asay
+
+Google takes old Chrome versions on that long drive in the country
+URL: tag:theregister.co.uk,2005:story/2015/11/11/google_takes_old_chrome_versions_on_that_long_drive_in_the_country/
+Aktualizace: 2015-11-11T00:56:04Z
+Autor: Richard Chirgwin
+
+Edge joins Explorer in bumper crop of security patches
+URL: tag:theregister.co.uk,2005:story/2015/11/11/edge_explorer_flash_patches/
+Aktualizace: 2015-11-11T00:31:09Z
+Autor: Kieren McCarthy
+
+Here are the graphics processors cloud giants will use to crunch your voices, videos and data
+URL: tag:theregister.co.uk,2005:story/2015/11/10/nvidia_tesla_hyperscale/
+Aktualizace: 2015-11-10T14:00:04Z
+Autor: Chris Williams
+
+Untamed pledge() aims to improve OpenBSD security
+URL: tag:theregister.co.uk,2005:story/2015/11/10/untamed_pledge_hopes_to_improve_openbsd_security/
+Aktualizace: 2015-11-10T07:30:06Z
+Autor: Richard Chirgwin
+
+Google open sources machine learning software
+URL: tag:theregister.co.uk,2005:story/2015/11/09/google_open_sources_tensorflow/
+Aktualizace: 2015-11-09T23:25:03Z
+Autor: Iain Thomson
+
+Microsoft Windows Mobile 10: Uphill battle with 'work in progress'
+URL: tag:theregister.co.uk,2005:story/2015/11/09/microsoft_faces_uphill_battle_with_wm10/
+Aktualizace: 2015-11-09T17:29:08Z
+Autor: Andrew Orlowski
+
+Samsung KNOX Developer Challenge: Prizes galore
+URL: tag:theregister.co.uk,2005:story/2015/11/09/samsung_developer_competition/
+Aktualizace: 2015-11-09T12:25:08Z
+Autor: David Gordon
+
+Let's Encrypt gets automation
+URL: tag:theregister.co.uk,2005:story/2015/11/09/lets_encrypt_gets_automation/
+Aktualizace: 2015-11-09T00:57:10Z
+Autor: Richard Chirgwin
+
+
+*** The Register - Hardware ***
+Tesla recalls every single Model S car in seatbelt safety probe
+URL: tag:theregister.co.uk,2005:story/2015/11/20/tesla_recalls_every_model_s/
+Aktualizace: 2015-11-20T22:39:16Z
+Autor: Iain Thomson
+
+Dell PCs to be never knowingly undersold by John Lewis this Chrimbo
+URL: tag:theregister.co.uk,2005:story/2015/11/20/dell_john_lewis/
+Aktualizace: 2015-11-20T11:19:12Z
+Autor: Paul Kunert
+
+Don't flip your lid: The Internet of Helmets has arrived
+URL: tag:theregister.co.uk,2005:story/2015/11/20/internet_of_thing_wearables_extend_to_helmets/
+Aktualizace: 2015-11-20T05:26:12Z
+Autor: Simon Sharwood
+
+How TV ads silently ping commands to phones: Sneaky SilverPush code reverse-engineered
+URL: tag:theregister.co.uk,2005:story/2015/11/20/silverpush_soundwave_ad_tracker/
+Aktualizace: 2015-11-20T01:41:50Z
+Autor: Iain Thomson
+
+Apple's Watch charging pad proves Cupertino still screwing buyers
+URL: tag:theregister.co.uk,2005:story/2015/11/19/apples_watch_charging_pad_qi/
+Aktualizace: 2015-11-19T21:24:52Z
+Autor: Iain Thomson
+
+Apple – it's true: iPad Pro slabs freeze when plugged in to charge
+URL: tag:theregister.co.uk,2005:story/2015/11/19/apple_frozen_ipad_confirmation/
+Aktualizace: 2015-11-19T20:50:25Z
+Autor: Shaun Nichols
+
+Storm in a teacup: Wileyfox does Android cheapie, British style
+URL: tag:theregister.co.uk,2005:story/2015/11/19/wileyfox_storm/
+Aktualizace: 2015-11-19T15:58:07Z
+Autor: Andrew Orlowski
+
+DS5: Vive la différence ... oh, and throw away the Citroën badge
+URL: tag:theregister.co.uk,2005:story/2015/11/19/ds5_vive_la_diffrence/
+Aktualizace: 2015-11-19T10:03:07Z
+Autor: Alun Taylor
+
+BlackBerry Priv: After two weeks on test, looks like this is a keeper
+URL: tag:theregister.co.uk,2005:story/2015/11/18/blackberry_priv_looks_like_a_keeper/
+Aktualizace: 2015-11-18T11:32:12Z
+Autor: Dominic Young
+
+Apple's design 'drives up support costs, makes gadgets harder to use'
+URL: tag:theregister.co.uk,2005:story/2015/11/18/tog_norman_apple_design_fails/
+Aktualizace: 2015-11-18T10:31:10Z
+Autor: Andrew Orlowski
+
+Apple's Faulty Powers moment: iPad Pro slabs 'temporarily bricked' during recharge
+URL: tag:theregister.co.uk,2005:story/2015/11/17/apple_ipad_pro_faulty_as_charged/
+Aktualizace: 2015-11-17T22:36:10Z
+Autor: Shaun Nichols
+
+Apple supremo Tim Cook rules out OS X fondleslab, iOS merger
+URL: tag:theregister.co.uk,2005:story/2015/11/16/cook_nixs_os_x_tablet/
+Aktualizace: 2015-11-16T23:56:54Z
+Autor: Shaun Nichols
+
+Pope instructs followers to put the iPhone away during dinner
+URL: tag:theregister.co.uk,2005:story/2015/11/13/pope_says_put_your_damn_iphone_away_during_dinner/
+Aktualizace: 2015-11-13T19:52:26Z
+Autor: Kieren McCarthy
+
+California cops pull over Google car for driving too SLOWLY
+URL: tag:theregister.co.uk,2005:story/2015/11/13/california_cops_pull_over_google_car_for_driving_too_slowly/
+Aktualizace: 2015-11-13T19:50:32Z
+Autor: Iain Thomson
+
+Amazon vendors flog thousands of rooted, malware-laden tablets
+URL: tag:theregister.co.uk,2005:story/2015/11/13/amazon_vendors_flog_thousands_of_rooted_malwareladen_tablets/
+Aktualizace: 2015-11-13T07:31:05Z
+Autor: Darren Pauli
+
+D-Wave heads for New Mexico
+URL: tag:theregister.co.uk,2005:story/2015/11/13/dwave_heads_for_new_mexico/
+Aktualizace: 2015-11-13T03:56:10Z
+Autor: Richard Chirgwin
+
+Bluetooth SIG hints at 2016 roadmap
+URL: tag:theregister.co.uk,2005:story/2015/11/13/bluetooth_sig_2016_roadmap/
+Aktualizace: 2015-11-13T01:56:08Z
+Autor: Team Register
+
+Brits rattle tin for custom LCD Raspberry Pi funbox
+URL: tag:theregister.co.uk,2005:story/2015/11/12/raspberry_pi_tingbot/
+Aktualizace: 2015-11-12T15:32:11Z
+Autor: Lester Haines
+
+Instascam! Apple yanks phoney app, Google follows
+URL: tag:theregister.co.uk,2005:story/2015/11/12/instascam_apple_yanks_phoney_app_google_follows/
+Aktualizace: 2015-11-12T03:56:10Z
+Autor: Richard Chirgwin
+
+Latest Android phones hijacked with tidy one-stop-Chrome-pop
+URL: tag:theregister.co.uk,2005:story/2015/11/12/mobile_pwn2own/
+Aktualizace: 2015-11-12T00:30:05Z
+Autor: Darren Pauli
+
+US military readies drone submarine hunter
+URL: tag:theregister.co.uk,2005:story/2015/11/12/us_military_drone_submarine_hunter/
+Aktualizace: 2015-11-12T00:11:23Z
+Autor: Iain Thomson
+
+Nvidia unveils credit card-sized 'supercomputer' for portable AI
+URL: tag:theregister.co.uk,2005:story/2015/11/11/nvidias_latest_ai_hardware/
+Aktualizace: 2015-11-11T02:03:07Z
+Autor: Iain Thomson
+
+Get an Apple Watch or die warns Tim Cook
+URL: tag:theregister.co.uk,2005:story/2015/11/11/get_apple_watch_or_die/
+Aktualizace: 2015-11-11T00:29:06Z
+Autor: Kieren McCarthy
+
+Qualcomm sheds last veil from Snapdragon 820
+URL: tag:theregister.co.uk,2005:story/2015/11/10/qualcomm_sheds_last_veil_from_next_snapdragon/
+Aktualizace: 2015-11-10T22:56:10Z
+Autor: Richard Chirgwin
+
+ARM reveals the Internet of Things security defenses hackers will inevitably learn to evade
+URL: tag:theregister.co.uk,2005:story/2015/11/10/arm_trustzone_armv8m_mbed_os/
+Aktualizace: 2015-11-10T18:01:24Z
+Autor: Chris Williams
+
+ARM's new Cortex-A35: How to fine-tune a CPU for web browsing on bargain smartphones
+URL: tag:theregister.co.uk,2005:story/2015/11/10/arm_cortexa35/
+Aktualizace: 2015-11-10T17:30:11Z
+Autor: Chris Williams
+
+Here are the graphics processors cloud giants will use to crunch your voices, videos and data
+URL: tag:theregister.co.uk,2005:story/2015/11/10/nvidia_tesla_hyperscale/
+Aktualizace: 2015-11-10T14:00:04Z
+Autor: Chris Williams
+
+Team MIPS tries to spoil ARM's party with new 64-bit Warrior, 32-bit microcontroller brains
+URL: tag:theregister.co.uk,2005:story/2015/11/10/mips_new_64_bit_warrior/
+Aktualizace: 2015-11-10T07:00:07Z
+Autor: Chris Williams
+
+Einstein's brain to be picked by satellites
+URL: tag:theregister.co.uk,2005:story/2015/11/10/borked_eu_gps_satellites_braincheck_einstein/
+Aktualizace: 2015-11-10T00:59:53Z
+Autor: Iain Thomson
+
+Microsoft Band 2 wrist watchers in pay-first-ship-much-later rage
+URL: tag:theregister.co.uk,2005:story/2015/11/09/microsoft_band_2_money_first_delivery_much_later/
+Aktualizace: 2015-11-09T13:59:03Z
+Autor: Gavin Clarke
+
+AMD sued: Number of Bulldozer cores in its chips is a lie, allegedly
+URL: tag:theregister.co.uk,2005:story/2015/11/06/amd_sued_cores/
+Aktualizace: 2015-11-06T20:33:21Z
+Autor: Chris Williams
+
+Huawei who? We probe the sleeping storage dragon's brains
+URL: tag:theregister.co.uk,2005:story/2015/11/06/huawei_who/
+Aktualizace: 2015-11-06T09:02:11Z
+Autor: Chris Mellor
+
+BlackBerry Priv: Enterprise Android in a snazzy but functional package
+URL: tag:theregister.co.uk,2005:story/2015/11/06/blackberry_priv_review/
+Aktualizace: 2015-11-06T05:01:07Z
+Autor: Andrew Orlowski
+
+Google engineer names and shames dodgy USB Type-C cable makers
+URL: tag:theregister.co.uk,2005:story/2015/11/05/google_engineer_ids_dodgy_usbs/
+Aktualizace: 2015-11-05T23:34:49Z
+Autor: Iain Thomson
+
+Huawei is the new Nokia: Asian mobe maker sets out its stall
+URL: tag:theregister.co.uk,2005:story/2015/11/05/huawei_is_the_new_nokia/
+Aktualizace: 2015-11-05T13:24:04Z
+Autor: Simon Rockman
+
+BlackBerry makes Android security patch promises
+URL: tag:theregister.co.uk,2005:story/2015/11/05/blackberry_makes_android_patch_promises/
+Aktualizace: 2015-11-05T10:56:08Z
+Autor: Andrew Orlowski
+
+7 million Apple Watches just buried the competition – Canalys
+URL: tag:theregister.co.uk,2005:story/2015/11/05/apple_watch_shipments_canalys/
+Aktualizace: 2015-11-05T10:17:51Z
+Autor: Team Register
+
+What do you call a spreadsheet with lots of negative numbers? Qualcomm_FY2015.xlsx
+URL: tag:theregister.co.uk,2005:story/2015/11/05/qualcomm_losing_money/
+Aktualizace: 2015-11-05T01:09:44Z
+Autor: Shaun Nichols
+
+Biggest problem with virtual reality: It can be a little <i>too</i> real for people
+URL: tag:theregister.co.uk,2005:story/2015/11/04/vection_virtual_reality/
+Aktualizace: 2015-11-04T22:21:21Z
+Autor: Iain Thomson
+
+I've lost the remote! Fury as Samsung yoinks TV control from its iOS app
+URL: tag:theregister.co.uk,2005:story/2015/11/04/samsung_smart_tvs_dumber/
+Aktualizace: 2015-11-04T21:40:51Z
+Autor: Shaun Nichols
+
+HP Inc in indirect push for biggest UK and Ireland accounts
+URL: tag:theregister.co.uk,2005:story/2015/11/04/hp_inc_rallies_partners/
+Aktualizace: 2015-11-04T14:38:06Z
+Autor: Gavin Clarke
+
+Samsung S6 Edge has 11 nasties, says Google Project Zero team
+URL: tag:theregister.co.uk,2005:story/2015/11/04/google_project_zero_samsung_galaxy/
+Aktualizace: 2015-11-04T08:45:24Z
+Autor: Darren Pauli
+
+Alumina in glass could stop smartphones cracking up
+URL: tag:theregister.co.uk,2005:story/2015/11/04/alumina_in_glass_could_make_busted_smartphones_a_thing_of_the_past/
+Aktualizace: 2015-11-04T06:29:10Z
+Autor: Richard Chirgwin
+
+Sennheiser announces €50,000 headphones (we checked, no typos)
+URL: tag:theregister.co.uk,2005:story/2015/11/04/sennheiser_announces_50000_headphones/
+Aktualizace: 2015-11-04T05:58:05Z
+Autor: Simon Sharwood
+
+Intel puts cash behind Wi-Fi-first smartmobes
+URL: tag:theregister.co.uk,2005:story/2015/11/04/intel_to_freedompop_heres_some_money_now_buy_our_mobile_chips/
+Aktualizace: 2015-11-04T05:31:11Z
+Autor: Richard Chirgwin
+
+End in sight for wireless power standards war as field shrinks to two
+URL: tag:theregister.co.uk,2005:story/2015/11/03/to_consuemrs_who_invested_in_it/
+Aktualizace: 2015-11-03T23:26:23Z
+Autor: Iain Thomson
+
+PC sales will rise again, predicts Intel, but tablets are toast
+URL: tag:theregister.co.uk,2005:story/2015/11/03/intel_pc_sales/
+Aktualizace: 2015-11-03T19:29:57Z
+Autor: Iain Thomson
+
+Volkswagen: 800,000 of our cars may have cheated in CO2 tests
+URL: tag:theregister.co.uk,2005:story/2015/11/03/volkswagen_800000_of_our_cars_may_have_cheated_in_co2_tests/
+Aktualizace: 2015-11-03T19:13:36Z
+Autor: Chris Williams
+
+Halo 5: Overhyped, but still way above your average shooter
+URL: tag:theregister.co.uk,2005:story/2015/11/03/halo_5_guardians_review/
+Aktualizace: 2015-11-03T10:03:08Z
+Autor: Mike Plant
+
+Activision to buy Candy Crush developer King
+URL: tag:theregister.co.uk,2005:story/2015/11/03/activision_to_buy_candy_crush_developer_king/
+Aktualizace: 2015-11-03T06:47:15Z
+Autor: Simon Sharwood
+
+
+*** xkcd.com ***
+Five-Day Forecast
+Aktualizace: 2015-11-20T00:00:00Z
+URL: http://xkcd.com/1606/
+
+DNA
+Aktualizace: 2015-11-18T00:00:00Z
+URL: http://xkcd.com/1605/
+
+Snakes
+Aktualizace: 2015-11-16T00:00:00Z
+URL: http://xkcd.com/1604/
+
+Flashlights
+Aktualizace: 2015-11-13T00:00:00Z
+URL: http://xkcd.com/1603/
+
+
+*** What If? ***
+Proton Earth, Electron Moon
+URL: http://what-if.xkcd.com/140/
+Aktualizace: 2015-09-18T00:00:00Z
+
+Jupiter Descending
+URL: http://what-if.xkcd.com/139/
+Aktualizace: 2015-08-04T00:00:00Z
+
+Jupiter Submarine
+URL: http://what-if.xkcd.com/138/
+Aktualizace: 2015-07-28T00:00:00Z
+
+New Horizons
+URL: http://what-if.xkcd.com/137/
+Aktualizace: 2015-07-14T00:00:00Z
+
+Spiders vs. the Sun
+URL: http://what-if.xkcd.com/136/
+Aktualizace: 2015-04-12T00:00:00Z
+
+

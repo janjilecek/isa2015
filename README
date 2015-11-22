@@ -1,0 +1,26 @@
+# README arfeed
+# autor xjilec00
+
+Program arfeed je určen pro stahování informací ze zdrojů ve formátu Atom. Program po stažení požadovaných informací tyto vypíše na standardní výstup. Je možné přidat doplňující parametry, pro určení informací, které chceme vypsat. Program používá Unixové sokety, standardní knihovny jazyka C a C++, knihovnu OpenSSL a libxml2.
+
+Použití: arfeed http://tools.ietf.org/agenda/atom | -f feedfile [-c certfile] [-C certaddr] [-l] [-T] [-a] [-u]
+Příklad: arfeed https://tools.ietf.org/dailydose/dailydose_atom.xml -aT
+
+Odevzdané soubory:
+xjilec00.tar
+manual.pdf
+README
+cmdArguments.cpp
+cmdArguments.hpp
+datadownloader.cpp
+datadownloader.hpp
+gadgets.cpp
+gadgets.h
+main.cpp
+Makefile
+shared.h
+xmlviewer.cpp
+xmlviewer.h
+
+Nadstandardní vlastnosti:
+Implementace redirect, stav 301
