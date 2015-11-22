@@ -47,13 +47,13 @@ main.o: main.cpp cmdArguments.hpp \
 		shared.h \
 		datadownloader.hpp \
 		xmlviewer.h
-	$(CXX) -c $(CXXFLAGS) -o main.o main.cpp
+	$(CXX) -c $(CXXFLAGS) $(LIBS) -o main.o main.cpp
 
 xmlviewer.o: xmlviewer.cpp xmlviewer.h \
 		shared.h \
 		cmdArguments.hpp \
 		gadgets.h
-	$(CXX) -c $(CXXFLAGS) -o xmlviewer.o xmlviewer.cpp
+	$(CXX) -c $(CXXFLAGS) $(LIBS) -o xmlviewer.o xmlviewer.cpp
 
 cmdArguments.o: cmdArguments.cpp cmdArguments.hpp \
 		gadgets.h \
@@ -69,7 +69,7 @@ datadownloader.o: datadownloader.cpp datadownloader.hpp \
 		gadgets.h \
 		cmdArguments.hpp \
 		xmlviewer.h
-	$(CXX) -c $(CXXFLAGS) -o datadownloader.o datadownloader.cpp
+	$(CXX) -c $(CXXFLAGS) $(LIBS) -o datadownloader.o datadownloader.cpp
 
 clean:
 	rm arfeed *.o

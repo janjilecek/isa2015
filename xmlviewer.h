@@ -2,8 +2,8 @@
 #define XMLVIEWER
 
 #include "shared.h"
-#include <libxml2/libxml/tree.h>
-#include <libxml2/libxml/parser.h>
+#include <libxml/tree.h>
+#include <libxml/parser.h>
 #include "cmdArguments.hpp"
 
 #endif // XMLVIEWER
