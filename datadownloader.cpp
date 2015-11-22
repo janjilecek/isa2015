@@ -1,5 +1,9 @@
 #include "datadownloader.hpp"
 
+/**
+ * @brief HTTP::initiateConnection
+ * @return
+ */
 int HTTP::initiateConnection()
 {
     m_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -30,7 +34,10 @@ int HTTP::initiateConnection()
     return 0;
 }
 
-
+/**
+ * @brief HTTP::send_request
+ * @return
+ */
 int HTTP::send_request()
 {
     std::string query = makeHeaders(m_url, m_path);
@@ -44,6 +51,10 @@ int HTTP::send_request()
     return 0;
 }
 
+/**
+ * @brief HTTP::get_headers
+ * @return
+ */
 int HTTP::get_headers()
 {
 
@@ -54,7 +65,7 @@ int HTTP::get_headers()
     std::string firstLine = "";
     bool doOnce = true;
     int resCheck = 0;
-    while (errno == EINTR || (errno = 0, (count = receive(buffer, 1)) > 0)) // can require 0 instead of 0x100
+    while (errno == EINTR || (errno = 0, (count = receive(buffer, 1)) > 0))
 
     {
         if (count > 0)
@@ -114,7 +125,10 @@ int HTTP::get_headers()
     return 0;
 }
 
-
+/**
+ * @brief HTTP::get_content
+ * @return
+ */
 std::string HTTP::get_content()
 {
     std::string line;
@@ -155,7 +169,10 @@ std::string HTTP::get_content()
     return "";
 }
 
-
+/**
+ * @brief HTTP::download
+ * @return
+ */
 int HTTP::download()
 {
     initiateConnection();
@@ -170,6 +187,11 @@ int HTTP::download()
     return 0;
 }
 
+/**
+ * @brief HTTP::httpResponseCheck
+ * @param in
+ * @return
+ */
 int HTTP::httpResponseCheck(std::string& in)
 {
     std::stringstream sstream;
@@ -184,10 +206,8 @@ int HTTP::httpResponseCheck(std::string& in)
     }
     else if (status != 200)
     {
-        // implement redirection
         if (status == 301)
         {
-            //throw ISAException("Error - 301 - Site got moved");
             return 301;
         }
         else
@@ -198,27 +218,42 @@ int HTTP::httpResponseCheck(std::string& in)
     return 0;
 }
 
+/**
+ * @brief HTTP::receive
+ * @param buf
+ * @param size
+ * @return
+ */
 int HTTP::receive(void *buf, int size)
 {
     return recv(m_sock, buf, size, 0x100);
 }
 
+/**
+ * @brief HTTP::makeHeaders
+ * @param server
+ * @param path
+ * @return
+ */
 std::string HTTP::makeHeaders(std::string server, std::string path)
 {
-    std::string query;
     std::ostringstream oss;
     oss << "GET "
         << path
         << " HTTP/1.1\r\nHost: "
         << server
         << "\r\nUser-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:40.0) Gecko/20100101 Firefox/40.0\r\n"
-        << "Accept: */*\r\n"
-        << "Referer: \r\n\r\n";
+        << "Accept: */*\r\n\r\n";
 
     std::string headers = oss.str();
     return headers;
 }
 
+/**
+ * @brief HTTP::read_bytes
+ * @param buffer
+ * @param size
+ */
 void HTTP::read_bytes(std::vector<char> &buffer, unsigned int size)
 {
     if (buffer.size() < size) buffer.resize(size);
@@ -228,6 +263,12 @@ void HTTP::read_bytes(std::vector<char> &buffer, unsigned int size)
     }
 }
 
+/**
+ * @brief HTTP::read_sequence
+ * @param buffer
+ * @param text
+ * @return
+ */
 std::string HTTP::read_sequence(std::vector<char> &buffer, const std::string &text)
 {
     std::string test = "";
@@ -247,6 +288,10 @@ std::string HTTP::read_sequence(std::vector<char> &buffer, const std::string &te
     return std::string(buffer.begin(), buffer.end());
 }
 
+/**
+ * @brief HTTP::get_line
+ * @return
+ */
 std::string HTTP::get_line()
 {
     std::vector<char> buffer;
@@ -254,6 +299,12 @@ std::string HTTP::get_line()
     return a;
 }
 
+/**
+ * @brief HTTP::HTTP
+ * @param inServer
+ * @param inPath
+ * @param max_redir
+ */
 HTTP::HTTP(std::string inServer, std::string inPath, int max_redir)
 {
     m_maxRedir = max_redir;
@@ -273,7 +324,13 @@ HTTP::~HTTP()
 
 // HTTPS begin -----------------------------------------------------------------------------
 
-
+/**
+ * @brief HTTPS::HTTPS
+ * @param inServer
+ * @param inPath
+ * @param args
+ * @param max_redir
+ */
 HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args, int max_redir) : HTTP(inServer, inPath, max_redir)
 {
     m_args = args;
@@ -283,7 +340,7 @@ HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args, int max_
     OpenSSL_add_all_algorithms();
 
     m_port = 443;
-    ctx = SSL_CTX_new(TLSv1_2_client_method());
+    ctx = SSL_CTX_new(SSLv23_client_method());
     if (args->getCertfileUsed())
     {
         if (!SSL_CTX_load_verify_locations(ctx, args->sCertFileName().c_str(), NULL))
@@ -328,6 +385,10 @@ HTTPS::~HTTPS()
     }
 }
 
+/**
+ * @brief HTTPS::initiateConnection
+ * @return
+ */
 int HTTPS::initiateConnection()
 {
     HTTP::initiateConnection();
@@ -348,6 +409,9 @@ int HTTPS::initiateConnection()
     return 0;
 }
 
+/**
+ * @brief HTTPS::ssl_print_error
+ */
 void HTTPS::ssl_print_error()
 {
     if (SSL_get_peer_certificate(ssl) != NULL)
@@ -363,6 +427,10 @@ void HTTPS::ssl_print_error()
     }
 }
 
+/**
+ * @brief HTTPS::send_request
+ * @return
+ */
 int HTTPS::send_request()
 {
     std::string headers = makeHeaders(m_url, m_path);
@@ -374,7 +442,12 @@ int HTTPS::send_request()
     return 0;
 }
 
-
+/**
+ * @brief HTTPS::receive
+ * @param buf
+ * @param size
+ * @return
+ */
 int HTTPS::receive(void *buf, int size)
 {
     int rec = 0;

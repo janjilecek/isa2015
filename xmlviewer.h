@@ -8,11 +8,9 @@
 
 #endif // XMLVIEWER
 
-typedef enum
-{
-    ERR_XML_LOAD
-} xml_errors;
-
+/**
+ * @brief The xmlViewer class
+ */
 class xmlViewer
 {
 private:
@@ -22,11 +20,15 @@ private:
     xmlNode *root;
     Arguments *m_args;
 public:
+    /**
+     * @brief xmlViewer
+     * @param args
+     */
     xmlViewer(Arguments *args) : m_args(args)
     {
-        xmlBuff = nullptr;
+        xmlBuff = NULL;
         doc = xmlReadFile("output.xml", NULL, XML_PARSE_NOERROR | XML_PARSE_NOWARNING);
-        if (doc == nullptr)
+        if (doc == NULL)
         {
             throw ISAException("Error - XML file could not be loaded.");
         }

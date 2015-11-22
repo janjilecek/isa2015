@@ -1,6 +1,10 @@
 #include "cmdArguments.hpp"
 
-
+/**
+ * @brief Arguments::parseArgs
+ * @param argc
+ * @param argv
+ */
 void Arguments::parseArgs(int argc, char **argv)
 {
     if (argc == 1)
@@ -79,57 +83,108 @@ void Arguments::parseArgs(int argc, char **argv)
 
 }
 
+/**
+ * @brief Arguments::getUrlUsed
+ * @return
+ */
 bool Arguments::getUrlUsed() const
 {
     return urlUsed;
 }
 
+/**
+ * @brief Arguments::setUrlUsed
+ * @param value
+ */
 void Arguments::setUrlUsed(bool value)
 {
     urlUsed = value;
 }
+
+/**
+ * @brief Arguments::sUrl
+ * @return
+ */
 std::string Arguments::sUrl() const
 {
     return m_sUrl;
 }
 
+/**
+ * @brief Arguments::setSUrl
+ * @param sUrl
+ */
 void Arguments::setSUrl(const std::string &sUrl)
 {
     m_sUrl = sUrl;
 }
+
+/**
+ * @brief Arguments::sCertFileName
+ * @return
+ */
 std::string Arguments::sCertFileName() const
 {
     return m_sCertFileName;
 }
 
+/**
+ * @brief Arguments::setSCertFileName
+ * @param sCertFileName
+ */
 void Arguments::setSCertFileName(const std::string &sCertFileName)
 {
     m_sCertFileName = sCertFileName;
 }
+
+/**
+ * @brief Arguments::sCertFilesFolder
+ * @return
+ */
 std::string Arguments::sCertFilesFolder() const
 {
     return m_sCertFilesFolder;
 }
 
+/**
+ * @brief Arguments::setSCertFilesFolder
+ * @param sCertFilesFolder
+ */
 void Arguments::setSCertFilesFolder(const std::string &sCertFilesFolder)
 {
     m_sCertFilesFolder = sCertFilesFolder;
 }
+
+/**
+ * @brief Arguments::sFeedFile
+ * @return
+ */
 std::string Arguments::sFeedFile() const
 {
     return m_sFeedFile;
 }
 
+/**
+ * @brief Arguments::setSFeedFile
+ * @param sFeedFile
+ */
 void Arguments::setSFeedFile(const std::string &sFeedFile)
 {
     m_sFeedFile = sFeedFile;
 }
+
+/**
+ * @brief Arguments::getUrls
+ * @return
+ */
 std::vector<std::string> Arguments::getUrls() const
 {
     return urls;
 }
 
-
+/**
+ * @brief Arguments::printHelp
+ */
 void Arguments::printHelp()
 {
     std::cout << "Pouziti: arfeed http://tools.ietf.org/agenda/atom | -f feedfile [-c certfile] [-C certaddr] [-l] [-T] [-a] [-u]" << std::endl <<
@@ -144,66 +199,127 @@ void Arguments::printHelp()
                  "    Pri spusteni s parametrem -a se pro kazdy zaznam zobrazi jmeno autora (je-li ve stazenem souboru obsazeno)." << std::endl <<
                  "    Pri spusteni s parametrem -u se pro kazdy zaznam zobrazi asociovane URL (je-li ve stazenem souboru obsazeno)." << std::endl;
 }
+/**
+ * @brief Arguments::getCertfileUsed
+ * @return
+ */
 bool Arguments::getCertfileUsed() const
 {
     return certfileUsed;
 }
 
+/**
+ * @brief Arguments::setCertfileUsed
+ * @param value
+ */
 void Arguments::setCertfileUsed(bool value)
 {
     certfileUsed = value;
 }
+
+/**
+ * @brief Arguments::getCertfileFolderUsed
+ * @return
+ */
 bool Arguments::getCertfileFolderUsed() const
 {
     return certfileFolderUsed;
 }
 
+/**
+ * @brief Arguments::setCertfileFolderUsed
+ * @param value
+ */
 void Arguments::setCertfileFolderUsed(bool value)
 {
     certfileFolderUsed = value;
 }
 
+/**
+ * @brief Arguments::getAktualizace
+ * @return
+ */
 bool Arguments::getAktualizace() const
 {
     return aktualizace;
 }
 
+/**
+ * @brief Arguments::setAktualizace
+ * @param value
+ */
 void Arguments::setAktualizace(bool value)
 {
     aktualizace = value;
 }
+
+/**
+ * @brief Arguments::getAutor
+ * @return
+ */
 bool Arguments::getAutor() const
 {
 return autor;
 }
 
+/**
+ * @brief Arguments::setAutor
+ * @param value
+ */
 void Arguments::setAutor(bool value)
 {
 autor = value;
 }
+
+/**
+ * @brief Arguments::getUrl
+ * @return
+ */
 bool Arguments::getUrl() const
 {
 return url;
 }
 
+/**
+ * @brief Arguments::setUrl
+ * @param value
+ */
 void Arguments::setUrl(bool value)
 {
 url = value;
 }
+
+/**
+ * @brief Arguments::getLatest
+ * @return
+ */
 bool Arguments::getLatest() const
 {
     return latest;
 }
 
+/**
+ * @brief Arguments::setLatest
+ * @param value
+ */
 void Arguments::setLatest(bool value)
 {
     latest = value;
 }
+
+/**
+ * @brief Arguments::getFeedfileUsed
+ * @return
+ */
 bool Arguments::getFeedfileUsed() const
 {
     return feedfileUsed;
 }
 
+/**
+ * @brief Arguments::setFeedfileUsed
+ * @param value
+ */
 void Arguments::setFeedfileUsed(bool value)
 {
     feedfileUsed = value;

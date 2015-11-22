@@ -1,18 +1,27 @@
 #include "xmlviewer.h"
-
+/**
+ * @brief xmlViewer::dumpXML
+ * @return
+ */
 std::string xmlViewer::dumpXML()
 {
     xmlDocDumpFormatMemory(doc, &xmlBuff, &bufferSize, 1);
     return static_cast<std::string>((char*) xmlBuff);
 }
-
+/**
+ * @brief xmlViewer::loadTree
+ */
 void xmlViewer::loadTree()
 {
     //TODO error checking
     root = xmlDocGetRootElement(doc);
     elements(root);
 }
-
+/**
+ * @brief xmlViewer::getEntry
+ * @param inputNode
+ * @return
+ */
 std::vector<std::string> xmlViewer::getEntry(xmlNode *inputNode)
 {
     std::vector<std::string> output;
@@ -78,7 +87,10 @@ std::vector<std::string> xmlViewer::getEntry(xmlNode *inputNode)
     if (endLine) output.push_back(""); //push one more line if any arguments were specified
     return output;
 }
-
+/**
+ * @brief xmlViewer::elements
+ * @param inputNode
+ */
 void xmlViewer::elements(xmlNode *inputNode)
 {
     xmlNodePtr node;

@@ -1,5 +1,10 @@
 #include "gadgets.h"
 
+/**
+ * @brief strToChar
+ * @param s
+ * @return
+ */
 char* strToChar(std::string s)
 {
     char *cstr = &s[0u];
@@ -9,12 +14,20 @@ char* strToChar(std::string s)
 
 using namespace std;
 
+/**
+ * @brief urlParser::urlParser
+ * @param url_s
+ */
 urlParser::urlParser(const string &url_s)
 {
     parse(url_s);
 }
 
 //Source of url parser: http://stackoverflow.com/a/2616217, author: stackoverflow user wilhelmtell
+/**
+ * @brief urlParser::parse
+ * @param url_s
+ */
 void urlParser::parse(const string& url_s)
 {
     const string prot_end("://");
@@ -38,62 +51,102 @@ void urlParser::parse(const string& url_s)
         ++query_i;
     query_.assign(query_i, url_s.end());
 }
-
+/**
+ * @brief urlParser::query
+ * @return
+ */
 std::string urlParser::query() const
 {
     return query_;
 }
 
+/**
+ * @brief urlParser::setQuery
+ * @param query
+ */
 void urlParser::setQuery(const std::string &query)
 {
     query_ = query;
 }
 
+/**
+ * @brief urlParser::path
+ * @return
+ */
 std::string urlParser::path() const
 {
     return path_;
 }
-
+/**
+ * @brief urlParser::setPath
+ * @param path
+ */
 void urlParser::setPath(const std::string &path)
 {
     path_ = path;
 }
-
+/**
+ * @brief urlParser::host
+ * @return
+ */
 std::string urlParser::host() const
 {
     return host_;
 }
-
+/**
+ * @brief urlParser::setHost
+ * @param host
+ */
 void urlParser::setHost(const std::string &host)
 {
     host_ = host;
 }
-
+/**
+ * @brief urlParser::protocol
+ * @return
+ */
 std::string urlParser::protocol() const
 {
     return protocol_;
 }
-
+/**
+ * @brief urlParser::setProtocol
+ * @param protocol
+ */
 void urlParser::setProtocol(const std::string &protocol)
 {
     protocol_ = protocol;
 }
 
-
+/**
+ * @brief Gadgets::printError
+ * @param msg
+ */
 void Gadgets::printError(std::string msg)
 
 {
     std::cerr << msg << std::endl;
 }
-
+/**
+ * @brief Gadgets::redirc
+ */
 std::string Gadgets::redirc = "redirection complete";
-
+/**
+ * @brief Gadgets::contains_substring
+ * @param input
+ * @param seq
+ * @return
+ */
 bool Gadgets::contains_substring(std::string& input, std::string seq)
 {
     auto result = std::search(input.begin(), input.end(), seq.begin(), seq.end());
     return (result != input.end()) ? true : false;
 }
-
+/**
+ * @brief Gadgets::find_chunked
+ * @param content
+ * @return
+ */
 int Gadgets::find_chunked(std::string& content)
 {
     int retVal = 0;
@@ -125,7 +178,11 @@ int Gadgets::find_chunked(std::string& content)
     content = backup;
     return retVal;
 }
-
+/**
+ * @brief Gadgets::find_location_on_redirect
+ * @param content
+ * @return
+ */
 string Gadgets::find_location_on_redirect(string &content)
 {
     std::string seq = "Location: ";
@@ -141,11 +198,15 @@ string Gadgets::find_location_on_redirect(string &content)
 
     return "";
 }
-
+/**
+ * @brief Gadgets::loadFileIntoVector
+ * @param filename
+ * @param urls
+ */
 void Gadgets::loadFileIntoVector(string filename, std::vector<string> *urls)
 {
     string line;
-    ifstream feedfile(filename);
+    ifstream feedfile(filename.c_str());
     if (feedfile.is_open())
     {
         while (getline(feedfile, line))
@@ -164,35 +225,53 @@ void Gadgets::loadFileIntoVector(string filename, std::vector<string> *urls)
 }
 
 
-
+/**
+ * @brief UrlDetail::port
+ * @return
+ */
 int UrlDetail::port() const
 {
     return m_port;
 }
-
+/**
+ * @brief UrlDetail::path
+ * @return
+ */
 std::string UrlDetail::path() const
 {
     return m_path;
 }
-
+/**
+ * @brief UrlDetail::server
+ * @return
+ */
 std::string UrlDetail::server() const
 {
     return m_server;
 }
 
-
+/**
+ * @brief UrlDetail::query
+ * @return
+ */
 std::string UrlDetail::query() const
 {
     return m_query;
 }
-
+/**
+ * @brief UrlDetail::file
+ * @return
+ */
 string UrlDetail::file() const
 {
     ostringstream oss;
     oss << m_path << "?" << m_query;
     return oss.str();
 }
-
+/**
+ * @brief UrlDetail::UrlDetail
+ * @param url
+ */
 UrlDetail::UrlDetail(std::string url)
 {
     urlParser up(url);

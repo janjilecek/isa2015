@@ -3,9 +3,20 @@
 #include "datadownloader.hpp"
 
 using namespace std;
-
+/**
+ * @brief DL
+ * @param args
+ * @param mainUrl
+ * @return
+ */
 int DL(Arguments args, std::string mainUrl);
 
+/**
+ * @brief main
+ * @param argc
+ * @param argv
+ * @return
+ */
 int main(int argc, char **argv)
 {
     Arguments args;

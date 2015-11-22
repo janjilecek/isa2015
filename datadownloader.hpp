@@ -15,34 +15,10 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <sys/time.h>
-#include "shared.h"
-#include "gadgets.h"
 #include "cmdArguments.hpp"
 #include "xmlviewer.h"
 
 #endif // DATADOWNLOADER_HPP
-
-
-typedef enum
-{
-    ERR_SOCKET,
-    ERR_IP,
-    ERR_CONN,
-    ERR_QUERY,
-    ERR_RECV,
-    NOT_HTTP,
-    ERR_CHUNKED,
-    ERR_SSL_PEM,
-    ERR_SSL_FOLDER,
-    SSL_CONN_FAILED,
-    SSL_CERTCHECK_FAIL,
-    SSL_FAILED_SEND,
-    ERR_DIFFERENT_CODE,
-    SSL_CONN_ERROR,
-    BAD_CERT,
-    NO_URLS,
-    NON_EXISTENT_FEEDFILE
-} errors;
 
 class IDownload
 {
@@ -84,6 +60,7 @@ protected:
     struct in_addr **addresses;
     struct sockaddr_in m_server;
     struct in_addr m_addr;
+
     Arguments* m_args;
 public:
     HTTP(std::string inServer, std::string inPath, int max_redir = 10);
@@ -107,8 +84,6 @@ private:
     X509_STORE *certstore;
     SSL_CTX *ctx;
     SSL *ssl;
-    BIO *bio;
-    std::string bioAddrStr;
 public:
     HTTPS(std::string inServer, std::string inPath, Arguments *args, int max_redir = 10);
     virtual ~HTTPS();
