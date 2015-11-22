@@ -82,6 +82,7 @@ std::vector<std::string> xmlViewer::getEntry(xmlNode *inputNode)
 void xmlViewer::elements(xmlNode *inputNode)
 {
     xmlNodePtr node;
+    std::vector<std::string> testing;
     for (node = inputNode->children; node; node = node->next)
     {
         std::string name = (char*)node->name;
@@ -92,12 +93,14 @@ void xmlViewer::elements(xmlNode *inputNode)
             if (name == "title")
             {
                 std::cout << "*** " << node->children->content << " ***" << std::endl;
+                testing.push_back((char*)node->children->content);
             }
             else if (name == "entry")
             {
                 for (auto &line : getEntry(node)) //call getEntry function and print every line of the returned vector
                 {
                     std::cout << line << std::endl;
+                    testing.push_back(line);
                 }
                 if (m_args->getLatest()) break;
             }
@@ -105,4 +108,5 @@ void xmlViewer::elements(xmlNode *inputNode)
         }
     }
     if (m_args->getFeedfileUsed()) std::cout << std::endl;
+    if (testing.size() == 0) std::cerr << "Error - Not an Atom feed" << std::endl;
 }

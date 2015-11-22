@@ -38,6 +38,7 @@ void urlParser::parse(const string& url_s)
         ++query_i;
     query_.assign(query_i, url_s.end());
 }
+
 std::string urlParser::query() const
 {
     return query_;
@@ -85,6 +86,8 @@ void Gadgets::printError(std::string msg)
     std::cerr << msg << std::endl;
 }
 
+std::string Gadgets::redirc = "redirection complete";
+
 bool Gadgets::contains_substring(std::string& input, std::string seq)
 {
     auto result = std::search(input.begin(), input.end(), seq.begin(), seq.end());
@@ -94,18 +97,18 @@ bool Gadgets::contains_substring(std::string& input, std::string seq)
 int Gadgets::find_chunked(std::string& content)
 {
     int retVal = 0;
-    //std::cout << content << std::endl;
-   // std::transform(content.begin(), content.end(), content.begin(), ::tolower);
-    //std::cout << content << std::endl;
-    if (contains_substring(content, "Transfer-Encoding: chunked"))
+    std::string backup = content;
+    std::transform(content.begin(), content.end(), content.begin(), ::tolower);
+    if (contains_substring(content, "transfer-encoding: chunked"))
     {
         retVal = -1;
+        content = backup; // renew the backed-up copy of the header string
         return retVal;
     }
     else
     {
         // find content length
-        std::string seq = "Content-Length: ";
+        std::string seq = "content-length: ";
         std::string endl = "\r\n";
         if (contains_substring(content, seq))
         {
@@ -114,10 +117,12 @@ int Gadgets::find_chunked(std::string& content)
             std::string num(start+seq.length(), end);
             std::stringstream ss(num);
             ss >> retVal;
+            content = backup;
             return retVal;
         }
     }
     // returns content length if available, else returns -1 (chunked)
+    content = backup;
     return retVal;
 }
 

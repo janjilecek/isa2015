@@ -81,24 +81,28 @@ int HTTP::get_headers()
                     std::string redirectUrl = Gadgets::find_location_on_redirect(m_headers);
                     UrlDetail urldet(redirectUrl);
 
-
-                    if (urldet.port() == 80)
+                    if (m_maxRedir > 0)
                     {
-                        HTTP downloader(urldet.server(), urldet.file());
-                        downloader.download();
-                        throw ISAException("redirection complete");
+                        if (urldet.port() == 80)
+                        {
+                            HTTP downloader(urldet.server(), urldet.file(), m_maxRedir - 1);
+                            downloader.download();
+                            throw ISAException(Gadgets::redirc);
+                        }
+                        else
+                        {
+                            HTTPS downloader(urldet.server(), urldet.file(), m_args, m_maxRedir - 1);
+                            downloader.download();
+                            throw ISAException(Gadgets::redirc);
+                        }
                     }
                     else
                     {
-                        HTTPS downloader(urldet.server(), urldet.file(), m_args);
-                        downloader.download();
-                        throw ISAException("redirection complete");
+                        throw ISAException("Error - Maximal redirection limit 10 reached");
                     }
 
 
                 }
-
-                std::cout << m_headers << std::endl;
                 break;
             }
         }
@@ -250,8 +254,9 @@ std::string HTTP::get_line()
     return a;
 }
 
-HTTP::HTTP(std::string inServer, std::string inPath)
+HTTP::HTTP(std::string inServer, std::string inPath, int max_redir)
 {
+    m_maxRedir = max_redir;
     m_url = inServer;
     m_path = inPath;
     m_port = 80;
@@ -269,7 +274,7 @@ HTTP::~HTTP()
 // HTTPS begin -----------------------------------------------------------------------------
 
 
-HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args) : HTTP(inServer, inPath)
+HTTPS::HTTPS(std::string inServer, std::string inPath, Arguments *args, int max_redir) : HTTP(inServer, inPath, max_redir)
 {
     ctx = NULL;
     ssl = NULL;

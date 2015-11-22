@@ -1,5 +1,4 @@
 #include <iostream>
-#include "downloader.hpp"
 #include "cmdArguments.hpp"
 #include "datadownloader.hpp"
 
@@ -33,8 +32,11 @@ int main(int argc, char **argv)
     }
     catch (ISAException &e)
     {
-        std::cerr << e.what() << std::endl;
-        return 1;
+        if (e.what() != Gadgets::redirc)
+        {
+            std::cerr << e.what() << std::endl;
+            return 1;
+        }
     }
 
 
@@ -61,7 +63,7 @@ int DL(Arguments args, std::string mainUrl)
     }
     catch (ISAException &e)
     {
-        if (e.what() != "redirection complete")
+        if (e.what() != Gadgets::redirc)
         {
             std::cerr << e.what() << std::endl;
             return 1;

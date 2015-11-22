@@ -8,7 +8,6 @@
 #include <vector>
 #include <stdexcept>
 
-
 class ISAException : public std::runtime_error
 {
 private:

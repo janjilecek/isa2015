@@ -24,7 +24,8 @@ private:
 public:
     xmlViewer(Arguments *args) : m_args(args)
     {
-        doc = xmlReadFile("output.xml", NULL, 0);
+        xmlBuff = nullptr;
+        doc = xmlReadFile("output.xml", NULL, XML_PARSE_NOERROR | XML_PARSE_NOWARNING);
         if (doc == nullptr)
         {
             throw ISAException("Error - XML file could not be loaded.");
@@ -41,7 +42,11 @@ public:
 
     ~xmlViewer()
     {
-        //xmlFree(xmlBuff);
+        if (xmlBuff)
+        {
+            xmlFree(xmlBuff);
+        }
+
         xmlFreeDoc(doc);
         xmlCleanupParser();
     }

@@ -63,6 +63,7 @@ class IDownload
 class HTTP : virtual IDownload
 {
 protected:
+    int m_maxRedir;
     std::string m_url;
     std::string m_url_server;
     std::string m_url_path;
@@ -85,7 +86,7 @@ protected:
     struct in_addr m_addr;
     Arguments* m_args;
 public:
-    HTTP(std::string inServer, std::string inPath);
+    HTTP(std::string inServer, std::string inPath, int max_redir = 10);
     virtual ~HTTP();
     virtual int receive(void *buf, int size);
     virtual int send_request();
@@ -108,7 +109,7 @@ private:
     BIO *bio;
     std::string bioAddrStr;
 public:
-    HTTPS(std::string inServer, std::string inPath, Arguments *args);
+    HTTPS(std::string inServer, std::string inPath, Arguments *args, int max_redir = 10);
     virtual ~HTTPS();
     virtual int receive(void *buf, int size);
     virtual int send_request();

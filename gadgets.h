@@ -39,6 +39,7 @@ public:
     static int find_chunked(std::string& content);
     static std::string find_location_on_redirect(std::string& content);
     void loadFileIntoVector(std::string filename, std::vector<std::string> *urls);
+    static std::string redirc;
 };
 
 class UrlDetail
